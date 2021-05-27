@@ -4,7 +4,14 @@
 \alias{E}
 \title{...}
 \usage{
-E(...)
+E(
+  expr,
+  ...,
+  context = NULL,
+  description = NULL,
+  value_comparer = identical,
+  side_effects_comparer = side_effects_identical
+)
 }
 \arguments{
 \item{...}{}
