@@ -45,8 +45,6 @@ The introduced vocabulary is (and will be kept!) minimalistic:
     with a series of descriptors (created via `P` or `R` and using
     a comparer provided) and stores the matching one (if any).
 
-You can then summarise the results however you want. It is up to you.
-By default  ....@TODO....
 
 ```r
 # identical
@@ -55,17 +53,15 @@ E(sqrt(4), 2.0)  # equivalent to E(sqrt(4), P(2.0))
 # almost-equal (round-off errors)
 E(sin(pi), 0.0, value_comparer=all.equal)
 
-# two equally good possible outcomes:
+# two equally okay possible outcomes:
 E(sample(c("head", "tail"), 1), "head", "tail")
 
 # a warning is expected
 E(sqrt(-1), P(NaN, warning=TRUE))
 
-E(sqrt(-1), NaN)
-
 # it'd be better if the following generated a warning:
 E(
-    paste0(1:2, 1:3),  # expression to test
+    paste0(1:2, 1:3),  # expression to test - concatenation of corresponding strings
     description="partial recycling",  # info - what behaviour are we testing?
     desired=P(  # ideally, we'd like to have this
         c("11", "22", "13"),
@@ -74,7 +70,14 @@ E(
     current=c("11", "22", "13"),  # this is the behaviour we have now
     undesired=P(error=TRUE)  # this is R, we should obey the recycling rule
 )
+
+# the default test-fail handler prints out the differences and throws an error
+E(E(sin(pi), 0.0), P(error=TRUE, stdout=TRUE))
 ```
+
+You can then summarise the results however you want. It is up to you.
+By default  ....@TODO....
+
 
 Labels `desired`, `current`, `undesired`, etc. are not hard-coded -- you
 choose the vocabulary.

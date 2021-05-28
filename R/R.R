@@ -21,18 +21,22 @@
 #' @description
 #' Evaluates an expression and records its result as well as
 #' whether it generates any errors, warnings, or messages
-#' if it prints anything on
+#' and if it prints anything on
 #' \code{\link[base]{stdout}} or \code{\link[base]{stderr}}.
 #'
 #' @details
 #' There may be other side effects, like changing the state of
-#' a random number generator or plotting, but these are not captured.
+#' a random number generator or plotting, but these are not captured,
+#' at least, not by the current version of the package.
 #'
 #' @param expr a formal argument to be evaluated
 #'
 #'
 #' @return
-#' See \code{\link{P}}, which this function calls.
+#' A list of class \code{realtest_descriptor},
+#' see \code{\link{P}}, which this function calls.
+#' Additional named component \code{expr} gives the
+#' expression used to generate the \code{value}.
 #'
 #' @seealso
 #' \code{\link{E}}, \code{\link{P}}
@@ -47,6 +51,8 @@
 #' @rdname R
 R <- function(expr)
 {
+    this_call <- match.call()
+
     .warning <- NULL
     .message <- NULL
     .error <- NULL
@@ -82,6 +88,16 @@ R <- function(expr)
     if (length(.stdout) == 0) .stdout <- NULL
     if (length(.stderr) == 0) .stderr <- NULL
 
-    P(value=.value, error=.error, warning=.warning, message=.message,
-        stdout=.stdout, stderr=.stderr)
+    ret <- P(
+        value=.value,
+        error=.error,
+        warning=.warning,
+        message=.message,
+        stdout=.stdout,
+        stderr=.stderr
+    )
+
+    ret[["expr"]] <- this_call[["expr"]]
+
+    ret
 }

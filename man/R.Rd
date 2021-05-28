@@ -10,17 +10,21 @@ R(expr)
 \item{expr}{a formal argument to be evaluated}
 }
 \value{
-See \code{\link{P}}, which this function calls.
+A list of class \code{realtest_descriptor},
+see \code{\link{P}}, which this function calls.
+Additional named component \code{expr} gives the
+expression used to generate the \code{value}.
 }
 \description{
 Evaluates an expression and records its result as well as
 whether it generates any errors, warnings, or messages
-if it prints anything on
+and if it prints anything on
 \code{\link[base]{stdout}} or \code{\link[base]{stderr}}.
 }
 \details{
 There may be other side effects, like changing the state of
-a random number generator or plotting, but these are not captured.
+a random number generator or plotting, but these are not captured,
+at least, not by the current version of the package.
 }
 \examples{
 R(sum(1:10))

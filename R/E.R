@@ -15,61 +15,10 @@
 ## a copy of the GNU General Public License along with this program.
 
 
-#' @export
-side_effects_identical <- function(x, y, element_comparer=identical)
-{
-    # error, warning, message, stderr, stdout -- all except the "value" field
-    compare_maps(
-        x, y,
-        element_comparer=element_comparer
-    )
-}
-
-
-#' @export
-side_effects_ignored <- function(x, y)
-{
-    TRUE  # side effects in descriptor x are equal to that of y
-}
-
-
-
-
-# compares two named lists as sets of key-value pairs (order does not matter)
-# treats NULLs as empty lists
-# does not distinguish between NULL fields and missing fields
-compare_maps <- function(x, y, element_comparer=identical)
-{
-    if (is.null(x)) x <- structure(list(), names=character(0))  # empty named list
-    if (is.null(y)) y <- structure(list(), names=character(0))
-    stopifnot(is.list(x), !is.null(names(x)))  # is named list
-    stopifnot(is.list(y), !is.null(names(y)))
-
-    all_names <- unique(c(names(x), names(y)))  # union
-    for (n in all_names) {
-        # is.null(x[[n]]) also might mean that it's nonexistent
-        if (!isTRUE(element_comparer(x[[n]], y[[n]])))
-            return(FALSE)
-    }
-
-    TRUE
-}
-
-identical(1, 1L)
-identical(1, c(a=1))
-all.equal(1, c(a=1))
-all.equal(1, 1L)
-all.equal(1, structure(1, attrib="present"))
-all.equal(sin(pi), 0)
-
-unattr <- function(x) { attributes(x) <- NULL; x }
-
-all.equal(structure(1, attrib1="one", attrib2="two"), structure(1, attrib2="two", attrib1="one"))
-identical(structure(1, attrib1="one", attrib2="two"), structure(1, attrib2="two", attrib1="one"))
 
 
 #' @title
-#' ...
+#' Test if Expectations are Met
 #'
 #' @description
 #' ...
@@ -77,73 +26,108 @@ identical(structure(1, attrib1="one", attrib2="two"), structure(1, attrib2="two"
 #' @details
 #' ...
 #'
-#' @param ...
+#' \code{value_comparer} and \code{sides_comparer} are 2-ary functions
+#' that return TRUE if two objects are equivalent
+#' and FALSE or a character string summarising the differences otherwise.
 #'
+#'
+#' @param expr an expression to be recorded (via \code{\link{R}}) and
+#'     and compared with the prototypes
+#' @param ... a sequence of 1 or more prototypes constructed
+#'     via \code{\link{R}} or \code{\link{P}}; objects which are not
+#'     of class \code{realtest_descriptor} will be passed to \code{\link{P}}
+#' @param context,description optional objects to be included in the
+#'     \code{context} and \code{description} fields in the return value
+#' @param value_comparer a two-argument function used to compare the
+#'     values with each other, e.g., \code{\link[base]{identical}}
+#'     or \code{\link[base]{all.equal}}
+#' @param sides_comparer a two-argument used to compare
+#'     the side effects with each other,
+#'     e.g., \code{\link{maps_identical_or_TRUE}}
+#' @param side names of side effects to consider
+#' @param postprocessor a function to call on the generated
+#'     \code{realtest_result}
 #'
 #' @return
-#' ...
+#' The function creates an object of class \code{realtest_result},
+#' which is a named list with the following components:
+#' \itemize{
+#' \item \code{object} - an object of class \code{realtest_descriptor},
+#'     ultimately \code{\link{R}(expr)}
+#' \item \code{prototypes} - a list of objects of class \code{realtest_descriptor}
+#'     a list of descriptors passed via \code{...}
+#' \item \code{matching_prototypes} - an integer vector of the indexes
+#'     of prototypes matching the object (can be empty)
+#' \item \code{context} - copied as-is from the argument of the same name
+#' \item \code{description} - copied as-is from the argument of the same name
+#' }
+#' Such an object is passed to \code{postprocessor} which becomes
+#' responsible for generating the return value.
 #'
 #' @examples
-#' # ...
+#' E(sqrt(4), 2.0)
+#' E(sin(pi), 0.0, value_comparer=all.equal)  # almost-equal
+#' E(sqrt(-1), P(NaN, warning=TRUE))  # a warning is expected
+#' E(sample(c("head", "tail"), 1), "head", "tail")  # two prototypes
 #'
 #' @export
 #' @rdname E
 E <- function(
     expr,
     ...,
-    context=NULL,
-    description=NULL,
-    value_comparer=identical,
-    side_effects_comparer=side_effects_identical
+    context=getOption("realtest_context", NULL),
+    description=getOption("realtest_description", NULL),
+    value_comparer=getOption("realtest_value_comparer", identical),
+    sides_comparer=getOption("realtest_sides_comparer", maps_identical_or_TRUE),
+    sides=getOption("realtest_sides", c("error", "warning", "message", "stdout", "stderr")),
+    postprocessor=getOption("realtest_postprocessor", stop_if_results_different)
 ) {
     this_call <- match.call()
 
-    if (is.null(context)) {
-        # name or expression, e.g., pkg::fun or anonymous function
-        context <- deparse(this_call[["expr"]][[1]])
-    }
-    stopifnot(is.character(context), length(context) == 1, !is.na(context))
+    stopifnot(is.function(value_comparer))
+    stopifnot(is.function(sides_comparer))
+    stopifnot(is.function(postprocessor))
 
-    if (isFALSE(side_effects_comparer) || is.null(side_effects_comparer))
-        side_effects_comparer <- side_effects_ignored
-    else if (isTRUE(side_effects_comparer))
-        side_effects_comparer <- side_effects_identical
-    stopifnot(is.function(side_effects_comparer))
-
-
+    # if (!inherits(expr, "realtest_descriptor"))  # we don't want to force eval here!
     object <- R(expr)  # will force eval inside
-    prototypes <- list(...)
+    object[["expr"]] <- this_call[["expr"]]
 
-    matching_prototype <- NA_integer_  # list(...)[[NA_integer_]] is NULL
+    prototypes <- list(...)
+    stopifnot(length(prototypes) >= 1)
+
+    matching_prototypes <- integer(0)  # list(...)[[NA_integer_]] is NULL
     for (i in seq_along(prototypes)) {
         if (!inherits(prototypes[[i]], "realtest_descriptor"))
             prototypes[[i]] <- P(value=prototypes[[i]])
-        if (isTRUE(value_comparer(object[["value"]], prototypes[[i]][["value"]]))) {
-            if (side_effects_comparer(
-                unclass(object[names(object) != "value"]),
-                unclass(prototypes[[i]][names(prototypes[[i]]) != "value"])
-            )) {
-                matching_prototype <- i
-                break
-            }
-        }
+
+        cmp_value <- value_comparer(object[["value"]], prototypes[[i]][["value"]])
+        cmp_sides <- sides_comparer(
+            unclass(object[names(object) %in% sides]),
+            unclass(prototypes[[i]][names(prototypes[[i]]) %in% sides])
+        )
+
+        prototypes[[i]][["differences"]] <- c(
+            if (isTRUE(cmp_value)) NULL
+            else if (isFALSE(cmp_value)) "objects are different"
+            else cmp_value,
+            if (isTRUE(cmp_sides)) NULL
+            else if (isFALSE(cmp_sides)) "side effects are different"
+            else cmp_sides
+        )  # setting NULL does not set
+        if (is.null(prototypes[[i]][["differences"]]))
+            matching_prototypes <- c(matching_prototypes, i)
     }
 
-    ret <- list()
-    ret[["expr"]] <- this_call[["expr"]]
-    if (!is.null(context))     ret[["context"]]     <- context
-    if (!is.null(description)) ret[["description"]] <- description
-    ret[["object"]] <- object
-    ret[["matching_prototype"]] <- prototypes[[matching_prototype]]
-    ret
+    ret <- structure(
+        list(
+            object=object,
+            prototypes=prototypes,
+            matching_prototypes=matching_prototypes
+        ),
+        class=c("realtest_result", "realtest")
+    )
+    ret[["context"]]             <- context      # can be NULL
+    ret[["description"]]         <- description  # can be NULL
+
+    postprocessor(ret)
 }
-
-
-# print(E(7))
-# print(E(sum(1:10, 7, pi)))  # val
-# print(E(1:10 * 2))  # val
-# print(E(head(ToothGrowth)))  # val with attribs
-# print(E(stringx::printf(":)")))  # stdout
-# print(E(stringx::sprintf("%d%d", 1:2, 1:3)))  # warning
-# print(E(base::sprintf("%d%d", 1:2, 1:3)))  # error
-# print(E(stringx::sprintf("%d%d%d", 1:2, 1:3)))  # warning+error

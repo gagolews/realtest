@@ -2,31 +2,75 @@
 % Please edit documentation in R/E.R
 \name{E}
 \alias{E}
-\title{...}
+\title{Test if Expectations are Met}
 \usage{
 E(
   expr,
   ...,
-  context = NULL,
-  description = NULL,
-  value_comparer = identical,
-  side_effects_comparer = side_effects_identical
+  context = getOption("realtest_context", NULL),
+  description = getOption("realtest_description", NULL),
+  value_comparer = getOption("realtest_value_comparer", identical),
+  sides_comparer = getOption("realtest_sides_comparer", maps_identical_or_TRUE),
+  sides = getOption("realtest_sides", c("error", "warning", "message", "stdout",
+    "stderr")),
+  postprocessor = getOption("realtest_postprocessor", stop_if_results_different)
 )
 }
 \arguments{
-\item{...}{}
+\item{expr}{an expression to be recorded (via \code{\link{R}}) and
+and compared with the prototypes}
+
+\item{...}{a sequence of 1 or more prototypes constructed
+via \code{\link{R}} or \code{\link{P}}; objects which are not
+of class \code{realtest_descriptor} will be passed to \code{\link{P}}}
+
+\item{context, description}{optional objects to be included in the
+\code{context} and \code{description} fields in the return value}
+
+\item{value_comparer}{a two-argument function used to compare the
+values with each other, e.g., \code{\link[base]{identical}}
+or \code{\link[base]{all.equal}}}
+
+\item{sides_comparer}{a two-argument used to compare
+the side effects with each other,
+e.g., \code{\link{maps_identical_or_TRUE}}}
+
+\item{postprocessor}{a function to call on the generated
+\code{realtest_result}}
+
+\item{side}{names of side effects to consider}
 }
 \value{
-...
+The function creates an object of class \code{realtest_result},
+which is a named list with the following components:
+\itemize{
+\item \code{object} - an object of class \code{realtest_descriptor},
+    ultimately \code{\link{R}(expr)}
+\item \code{prototypes} - a list of objects of class \code{realtest_descriptor}
+    a list of descriptors passed via \code{...}
+\item \code{matching_prototypes} - an integer vector of the indexes
+    of prototypes matching the object (can be empty)
+\item \code{context} - copied as-is from the argument of the same name
+\item \code{description} - copied as-is from the argument of the same name
+}
+Such an object is passed to \code{postprocessor} which becomes
+responsible for generating the return value.
 }
 \description{
 ...
 }
 \details{
 ...
+
+\code{value_comparer} and \code{sides_comparer} are 2-ary functions
+that return TRUE if two objects are equivalent
+and FALSE or a character string summarising the differences otherwise.
 }
 \examples{
-# ...
+E(sqrt(4), 2.0)
+E(sin(pi), 0.0, value_comparer=all.equal)  # almost-equal
+E(sqrt(-1), P(NaN, warning=TRUE))  # a warning is expected
+E(sample(c("head", "tail"), 1), "head", "tail")  # two prototypes
 
 }
 \author{

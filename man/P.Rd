@@ -20,7 +20,8 @@ P(
 see \code{\link[base]{stop}}, \code{\link[base]{warning}}, and
 \code{\link[base]{message}}}
 
-\item{stdout, stderr}{character data written to \code{\link[base]{stdout}}
+\item{stdout, stderr}{character data expected on
+\code{\link[base]{stdout}}
 and \code{\link[base]{stderr}}, respectively}
 }
 \value{
@@ -37,17 +38,19 @@ Allows for formulating expectations like 'the desired outcome is
 \code{error}, \code{warning}, \code{message}, \code{stdout}, and
 \code{stderr} may be one of:
 \itemize{
-    \item \code{NULL} -- no side effect of a particular kind is expected;
+    \item \code{NULL} or \code{FALSE} -- no side effect of a particular kind is expected;
     \item \code{TRUE} -- an effect is expected to occur
        (but details are irrelevant, e.g., a function throws a warning);
     \item character vector -- a specific message/output is desired.
 }
 Note that only one error can occur per a function call, hence
 \code{error} can only be a single string (or \code{NULL} or \code{TRUE}).
-Note that when an error is expected, the \code{value} must be \code{NULL}.
+When an error is expected, the \code{value} must be \code{NULL}.
 
-Typically, messages, warnings, and errors are written to \code{stderr},
-but these are considered separately here.
+Typically, messages, warnings, and errors are written to
+\code{\link[base]{stderr}},
+but these are considered separately here. In other words, the
+expected \code{stderr} should not include the anticipated error messages etc.
 }
 \examples{
 P(1:3)  # the desired outcome is c(1L, 2L, 3L)

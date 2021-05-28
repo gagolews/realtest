@@ -15,24 +15,6 @@
 ## a copy of the GNU General Public License along with this program.
 
 
-# internal function
-check_descriptor <- function(d)
-{
-    stopifnot(inherits(d, "realtest_descriptor"))
-    stopifnot(is.list(d))
-    stopifnot("value" %in% names(d))
-    stopifnot(is.null(d$error)    || isTRUE(d$error)    || is.character(d$error)    && length(d$error) == 1)
-    stopifnot(is.null(d$warning)  || isTRUE(d$warning)  || is.character(d$warning)  && length(d$warning) >= 1)
-    stopifnot(is.null(d$message)  || isTRUE(d$message)  || is.character(d$message)  && length(d$message) >= 1)
-    stopifnot(is.null(d$stdout)   || isTRUE(d$stdout)   || is.character(d$stdout)   && length(d$stdout) >= 1)
-    stopifnot(is.null(d$stderr)   || isTRUE(d$stderr)   || is.character(d$stderr)   && length(d$stderr) >= 1)
-
-    stopifnot(is.null(d$error) || is.null(d$value))  # both cannot be non-NULL (if an error occurs, there's not retval)
-
-    invisible(TRUE)
-}
-
-
 #' @title
 #' Manually Create a Test Descriptor Prototype
 #'
@@ -44,25 +26,27 @@ check_descriptor <- function(d)
 #' \code{error}, \code{warning}, \code{message}, \code{stdout}, and
 #' \code{stderr} may be one of:
 #' \itemize{
-#'     \item \code{NULL} -- no side effect of a particular kind is expected;
+#'     \item \code{NULL} or \code{FALSE} -- no side effect of a particular kind is expected;
 #'     \item \code{TRUE} -- an effect is expected to occur
 #'        (but details are irrelevant, e.g., a function throws a warning);
 #'     \item character vector -- a specific message/output is desired.
 #' }
 #' Note that only one error can occur per a function call, hence
 #' \code{error} can only be a single string (or \code{NULL} or \code{TRUE}).
-#' Note that when an error is expected, the \code{value} must be \code{NULL}.
+#' When an error is expected, the \code{value} must be \code{NULL}.
 #'
-#' Typically, messages, warnings, and errors are written to \code{stderr},
-#' but these are considered separately here.
-#'
+#' Typically, messages, warnings, and errors are written to
+#' \code{\link[base]{stderr}},
+#' but these are considered separately here. In other words, the
+#' expected \code{stderr} should not include the anticipated error messages etc.
 #'
 #'
 #' @param value object (may be equipped with attributes)
 #' @param error,warning,message \link{conditions} expected to occur,
 #'    see \code{\link[base]{stop}}, \code{\link[base]{warning}}, and
 #'    \code{\link[base]{message}}
-#' @param stdout,stderr character data written to \code{\link[base]{stdout}}
+#' @param stdout,stderr character data expected on
+#'    \code{\link[base]{stdout}}
 #'    and \code{\link[base]{stderr}}, respectively
 #'
 #'
@@ -84,8 +68,6 @@ check_descriptor <- function(d)
 #' @rdname P
 P <- function(value=NULL, error=NULL, warning=NULL, message=NULL, stdout=NULL, stderr=NULL)
 {
-    stopifnot(!inherits(value, "realtest_descriptor"))
-
     ret <- structure(
         list(
             value=value
@@ -93,13 +75,13 @@ P <- function(value=NULL, error=NULL, warning=NULL, message=NULL, stdout=NULL, s
         class=c("realtest_descriptor", "realtest")
     )
 
-    if (!is.null(error))   ret[["error"]]   <- error
-    if (!is.null(warning)) ret[["warning"]] <- warning
-    if (!is.null(message)) ret[["message"]] <- message
-    if (!is.null(stdout))  ret[["stdout"]]  <- stdout
-    if (!is.null(stderr))  ret[["stderr"]]  <- stderr
+    if (!is.null(error)   && !isFALSE(error))   ret[["error"]]   <- error
+    if (!is.null(warning) && !isFALSE(warning)) ret[["warning"]] <- warning
+    if (!is.null(message) && !isFALSE(message)) ret[["message"]] <- message
+    if (!is.null(stdout)  && !isFALSE(stdout))  ret[["stdout"]]  <- stdout
+    if (!is.null(stderr)  && !isFALSE(stderr))  ret[["stderr"]]  <- stderr
 
-    check_descriptor(ret)
+    realtest:::stopifnot_descriptor_valid(ret)
 
     ret
 }
