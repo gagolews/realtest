@@ -23,10 +23,7 @@ reload: r
 		jupyter-qtconsole-sender --silent "reload('${PKGNAME}')"; \
 	fi
 
-tinytest:
-	Rscript -e 'source("devel/tinytest.R")'
-
-test: r tinytest
+test: r check
 
 stop-on-utf8:
 	# Stop if some files are not in ASCII:

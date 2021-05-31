@@ -16,26 +16,30 @@
 
 
 #' @title
-#' Create a Test Descriptor by Recording Effects of a Call
+#' Create a Result Descriptor by Recording Effects of an Expression Evaluation
+#'
 #'
 #' @description
-#' Evaluates an expression and records its result as well as
-#' whether it generates any errors, warnings, or messages
-#' and if it prints anything on
-#' \code{\link[base]{stdout}} or \code{\link[base]{stderr}}.
+#' Evaluates an expression and records its direct and indirect effects:
+#' the resulting value as well as the information whether any errors,
+#' warnings, or messages are generated and if anything on
+#' \code{\link[base]{stdout}} or \code{\link[base]{stderr}} is printed.
+#'
 #'
 #' @details
-#' There may be other side effects, like changing the state of
-#' a random number generator or plotting, but these are not captured,
+#' There may be other side effects, such as changing the state of
+#' the random number generator, modifying options or environment variables,
+#' or plotting, but these are not captured,
 #' at least, not by the current version of the package.
 #'
 #' @param expr a formal argument to be evaluated
+#' @param ... further arguments to be passed to \code{\link{P}}
 #'
 #'
 #' @return
 #' A list of class \code{realtest_descriptor},
 #' see \code{\link{P}}, which this function calls.
-#' Additional named component \code{expr} gives the
+#' The additional named component \code{expr} gives the
 #' expression used to generate the \code{value}.
 #'
 #' @seealso
@@ -47,9 +51,10 @@
 #' R(sqrt(c(-1, 0, 1, 2, 4)))
 #' R(log("aaaargh"))
 #'
+#' @importFrom utils capture.output
 #' @export
 #' @rdname R
-R <- function(expr)
+R <- function(expr, ...)
 {
     this_call <- match.call()
 
@@ -94,7 +99,8 @@ R <- function(expr)
         warning=.warning,
         message=.message,
         stdout=.stdout,
-        stderr=.stderr
+        stderr=.stderr,
+        ...
     )
 
     ret[["expr"]] <- this_call[["expr"]]

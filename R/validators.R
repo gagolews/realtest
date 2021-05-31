@@ -20,15 +20,27 @@
 stopifnot_descriptor_valid <- function(d)
 {
     stopifnot(inherits(d, "realtest_descriptor"))
-    stopifnot(is.list(d))
-    stopifnot("value" %in% names(d))
-    stopifnot(is.null(d[["error"]])    || isTRUE(d[["error"]])    || is.character(d[["error"]])    && length(d[["error"]])   == 1)
-    stopifnot(is.null(d[["warning"]])  || isTRUE(d[["warning"]])  || is.character(d[["warning"]])  && length(d[["warning"]]) >= 1)
-    stopifnot(is.null(d[["message"]])  || isTRUE(d[["message"]])  || is.character(d[["message"]])  && length(d[["message"]]) >= 1)
-    stopifnot(is.null(d[["stdout"]])   || isTRUE(d[["stdout"]])   || is.character(d[["stdout"]])   && length(d[["stdout"]])  >= 1)
-    stopifnot(is.null(d[["stderr"]])   || isTRUE(d[["stderr"]])   || is.character(d[["stderr"]])   && length(d[["stderr"]])  >= 1)
+    stopifnot(is.list(d), !is.null(names(d)))
+    stopifnot("value" %in% names(d))  # required field
+    stopifnot(is.null(d[["value_comparer"]]) || is.function(d[["value_comparer"]]))
+    stopifnot(is.null(d[["sides_comparer"]]) || is.function(d[["sides_comparer"]]))
+    stopifnot(is.null(d[["expr"]]) || is.language(d[["expr"]]) ||
+        is.atomic(d[["expr"]]) && length(d[["expr"]]) == 1)
 
-    if (!is.null(d$error) && !is.null(d$value)) {
+    NULL_TRUE_or_character <- function(v, single=FALSE) {
+        is.null(v) ||
+        isTRUE(v)  ||
+        is.character(v) && length(v) >= 1 && (!single || length(v) == 1)
+    }
+
+    stopifnot(is.null(d[["sides"]]) || is.list(d[["sides"]]))
+    stopifnot(NULL_TRUE_or_character(d[["sides"]][["error"]], single=TRUE))
+    stopifnot(NULL_TRUE_or_character(d[["sides"]][["warning"]]))
+    stopifnot(NULL_TRUE_or_character(d[["sides"]][["message"]]))
+    stopifnot(NULL_TRUE_or_character(d[["sides"]][["stdout"]]))
+    stopifnot(NULL_TRUE_or_character(d[["sides"]][["stderr"]]))
+
+    if (!is.null(d[["sides"]][["error"]]) && !is.null(d[["value"]])) {
         # both cannot be non-NULL (if an error occurs, there is no retval)
         stop("there can either be an error or a value, not both at the same time")
     }
@@ -43,18 +55,17 @@ stopifnot_result_valid <- function(r)
 {
     stopifnot(inherits(r, "realtest_result"))
     stopifnot(is.list(r))
-    stopifnot(c("object", "prototypes", "matching_prototypes")  %in% names(r))
+    stopifnot(c("object", "prototypes", "matches") %in% names(r))
 
     stopifnot_descriptor_valid(r[["object"]])
     for (p in r[["prototypes"]])
         stopifnot_descriptor_valid(p)
 
-    m <- r[["matching_prototypes"]]
-    stopifnot(is.null(m) || is.numeric(m))
+    m <- r[["matches"]]
+    stopifnot(is.numeric(m))
     stopifnot(length(m) == 0 || (min(m) >= 1 && max(m) <= length(r[["prototypes"]])))
 
     stopifnot(!is.null(r[["object"]][["expr"]]))
 
     invisible(TRUE)
 }
-

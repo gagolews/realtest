@@ -2,28 +2,31 @@
 % Please edit documentation in R/R.R
 \name{R}
 \alias{R}
-\title{Create a Test Descriptor by Recording Effects of a Call}
+\title{Create a Result Descriptor by Recording Effects of an Expression Evaluation}
 \usage{
-R(expr)
+R(expr, ...)
 }
 \arguments{
 \item{expr}{a formal argument to be evaluated}
+
+\item{...}{further arguments to be passed to \code{\link{P}}}
 }
 \value{
 A list of class \code{realtest_descriptor},
 see \code{\link{P}}, which this function calls.
-Additional named component \code{expr} gives the
+The additional named component \code{expr} gives the
 expression used to generate the \code{value}.
 }
 \description{
-Evaluates an expression and records its result as well as
-whether it generates any errors, warnings, or messages
-and if it prints anything on
-\code{\link[base]{stdout}} or \code{\link[base]{stderr}}.
+Evaluates an expression and records its direct and indirect effects:
+the resulting value as well as the information whether any errors,
+warnings, or messages are generated and if anything on
+\code{\link[base]{stdout}} or \code{\link[base]{stderr}} is printed.
 }
 \details{
-There may be other side effects, like changing the state of
-a random number generator or plotting, but these are not captured,
+There may be other side effects, such as changing the state of
+the random number generator, modifying options or environment variables,
+or plotting, but these are not captured,
 at least, not by the current version of the package.
 }
 \examples{

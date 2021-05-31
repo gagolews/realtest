@@ -13,14 +13,13 @@ stop_if_results_different(r)
 Returns \code{r}, invisibly.
 }
 \description{
-Calls \code{\link[base]{str}(r)} and throws an error
-if an expectation is not met, i.e., when \code{r[["matching_prototypes"]]}
+This is an example result postprocessor that can be used in \code{\link{E}}.
+Calls \code{\link[utils]{str}(r)} and throws an error
+if an expectation is not met, i.e., when \code{r[["matches"]]}
 is of length 0.
 }
 \details{
-Can be used as a result postprocessor in \code{\link{E}}.
-
-The user can create a function \code{str.realtest_result}
+You can always create a function \code{str.realtest_result}
 implementing the pretty printing of an error message.
 }
 \author{

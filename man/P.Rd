@@ -10,7 +10,9 @@ P(
   warning = NULL,
   message = NULL,
   stdout = NULL,
-  stderr = NULL
+  stderr = NULL,
+  value_comparer = NULL,
+  sides_comparer = NULL
 )
 }
 \arguments{
@@ -23,22 +25,33 @@ see \code{\link[base]{stop}}, \code{\link[base]{warning}}, and
 \item{stdout, stderr}{character data expected on
 \code{\link[base]{stdout}}
 and \code{\link[base]{stderr}}, respectively}
+
+\item{value_comparer, sides_comparer}{optional two-argument functions
+which may be used to override the default comparers used by \code{\link{E}}}
 }
 \value{
 A list of class \code{realtest_descriptor}
-with named components \code{value}, \code{error}, \code{warnings},
-\code{messages}, \code{stdout}, and \code{stderr}.
-Those which are missing are assumed to be equal to \code{NULL}.
+with named components:
+\itemize{
+\item \code{value},
+\item \code{sides} (optional) -- a list with named elements
+    \code{error}, \code{warnings},
+    \code{messages}, \code{stdout}, and \code{stderr};
+    those which are missing are assumed to be equal to \code{NULL},
+\item \code{value_comparer} (optional) -- function object,
+\item \code{sides_comparer} (optional) -- function object,
+}
 }
 \description{
 Allows for formulating expectations like 'the desired outcome is
-\code{c(1, 2, 3)}, with a warning'.
+\code{c(1, 2, 3)}, with a warning' or 'an error should occur'.
 }
 \details{
 \code{error}, \code{warning}, \code{message}, \code{stdout}, and
 \code{stderr} may be one of:
 \itemize{
-    \item \code{NULL} or \code{FALSE} -- no side effect of a particular kind is expected;
+    \item \code{NULL} or \code{FALSE} -- no side effect of a particular
+       kind is expected;
     \item \code{TRUE} -- an effect is expected to occur
        (but details are irrelevant, e.g., a function throws a warning);
     \item character vector -- a specific message/output is desired.
@@ -50,7 +63,8 @@ When an error is expected, the \code{value} must be \code{NULL}.
 Typically, messages, warnings, and errors are written to
 \code{\link[base]{stderr}},
 but these are considered separately here. In other words, the
-expected \code{stderr} should not include the anticipated error messages etc.
+expected \code{stderr} should not include the anticipated diagnostic
+messages.
 }
 \examples{
 P(1:3)  # the desired outcome is c(1L, 2L, 3L)

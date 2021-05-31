@@ -18,23 +18,34 @@
 
 
 #' @title
-#' Object and Side Effects Comparers
+#' Example Object and Side Effect Comparers
 #'
 #' @description
-#' return TRUE or FALSE or error message....
+#' Two-argument functions to compare direct or indirect effects
+#' of two test descriptors (see \code{\link{P}} and \code{\link{R}}).
+#' These can be passed as \code{value_comparer} and \code{sides_comparer}
+#' to \code{\link{E}}.
+#'
+#'
+#' @return TRUE or FALSE or error message....
 #' \code{\link[base]{identical}}
 #' \code{\link[base]{all.equal}}
+#' write a custom one if you want attributes to be omitted
 #' \code{identical_or_TRUE}....
 #' \code{maps_identical_or_TRUE}...
 #' \code{maps_comparer} compares two named lists as sets of key-value pairs (order does not matter)
 #' treats NULLs as empty lists
 #' does not distinguish between NULL fields and missing fields
 #'
+#' @param x TODO
+#' @param y TODO
+#' @param element_comparer TODO
+#'
 #' @rdname comparers
 #' @export
 ignore_differences <- function(x, y)
 {
-    TRUE  # side effects in descriptor x are equal to that of y
+    TRUE  # x and y are always equal
 }
 
 

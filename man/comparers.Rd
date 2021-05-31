@@ -5,7 +5,7 @@
 \alias{identical_or_TRUE}
 \alias{maps_comparer}
 \alias{maps_identical_or_TRUE}
-\title{Object and Side Effects Comparers}
+\title{Example Object and Side Effect Comparers}
 \usage{
 ignore_differences(x, y)
 
@@ -15,15 +15,29 @@ maps_comparer(x, y, element_comparer)
 
 maps_identical_or_TRUE(x, y)
 }
-\description{
-return TRUE or FALSE or error message....
+\arguments{
+\item{x}{TODO}
+
+\item{y}{TODO}
+
+\item{element_comparer}{TODO}
+}
+\value{
+TRUE or FALSE or error message....
 \code{\link[base]{identical}}
 \code{\link[base]{all.equal}}
+write a custom one if you want attributes to be omitted
 \code{identical_or_TRUE}....
 \code{maps_identical_or_TRUE}...
 \code{maps_comparer} compares two named lists as sets of key-value pairs (order does not matter)
 treats NULLs as empty lists
 does not distinguish between NULL fields and missing fields
+}
+\description{
+Two-argument functions to compare direct or indirect effects
+of two test descriptors (see \code{\link{P}} and \code{\link{R}}).
+These can be passed as \code{value_comparer} and \code{sides_comparer}
+to \code{\link{E}}.
 }
 \author{
 \href{https://www.gagolewski.com/}{Marek Gagolewski}
