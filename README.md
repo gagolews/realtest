@@ -70,12 +70,13 @@ E(sqrt(-1), NaN, sides_comparer=ignore_differences)
 E(
     paste0(1:2, 1:3),                  # expression to test - concatenation
     .description="partial recycling",  # info - what behaviour are we testing?
-    desired=P(                         # what we yearn for (ideally)
+    best=P(                            # what we yearn for (ideally)
         c("11", "22", "13"),
         warning="longer object length is not a multiple of shorter object length"
     ),
     current=c("11", "22", "13"),       # this is the behaviour we have now
-    undesired=P(error=TRUE)            # avoid regression
+    bad=P(error=TRUE)                  # avoid regression
+    # and of course, everything else (un-expected) makes up a failed test
 )
 
 # if a test fails, the default result postprocessor
@@ -83,12 +84,25 @@ E(
 E(E(sin(pi), 7), P(error=TRUE, stdout=TRUE))  # inception: realtest tests itself
 ```
 
-Labels `desired`, `current`, `undesired`, etc., are not hard-coded – you
-yourself choose the vocabulary (you are only limited by your imagination
-and programming skills).
-You can then summarise the results and customise them to your liking —
+Labels `desired`, `current`, `undesired`, `good`, `better`,
+`bad`, `worst`, etc., are not hard-coded – you choose the vocabulary yourself.
+You can then summarise the results and customise them to your liking
+(e.g., how many `good` or `bad` instances have been caught) —
 it is up to you: the test outcomes are represented as ordinary R lists.
 
+Pros:
+
+* minimalistic
+* general
+* an expression under scrutiny is evaluated once and all its different
+  effects can be examined in one test
+* makes planning for future features/improved behaviour easier
+
+Cons:
+
+* steeper learning curve, you are limited by your imagination
+  and programming skills (as compared other tools e.g., `tinytest`, `testthat`,
+  `RUnit`).
 
 Refer to the on-line documentation at https://realtest.gagolewski.com
 for some inspirations and to

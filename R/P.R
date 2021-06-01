@@ -62,8 +62,8 @@
 #'     \code{error}, \code{warnings},
 #'     \code{messages}, \code{stdout}, and \code{stderr};
 #'     those which are missing are assumed to be equal to \code{NULL},
-#' \item \code{value_comparer} (optional) -- function object,
-#' \item \code{sides_comparer} (optional) -- function object,
+#' \item \code{value_comparer} (optional) -- a function object,
+#' \item \code{sides_comparer} (optional) -- a function object,
 #' }
 #'
 #' @seealso

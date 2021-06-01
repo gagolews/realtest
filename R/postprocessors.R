@@ -17,17 +17,22 @@
 
 
 #' @title
-#' Fail on Unmet Expectations
+#' Example Test Result Postprocessors
 #'
 #' @description
-#' This is an example result postprocessor that can be used in \code{\link{E}}.
-#' Calls \code{\link[utils]{str}(r)} and throws an error
-#' if an expectation is not met, i.e., when \code{r[["matches"]]}
-#' is of length 0.
+#' Test result postprocessors are used in \code{\link{E}}.
+#' \code{failstop} calls \code{\link[utils]{str}(r)}
+#' and throws an error if an expectation is not met, i.e.,
+#' when \code{r[["matches"]]} is of length 0.
 #'
 #' @details
-#' You can always create a function \code{str.realtest_result}
-#' implementing the pretty printing of an error message.
+#' These are example postprocessors. You are encouraged to write your
+#' own ones that will suit your own needs. Explore their source code
+#' for some inspirations. It's an open source (and free!) project after all.
+#'
+#' For \code{failstop}, you can always create a function
+#' \code{str.realtest_result} implementing the pretty printing of an error
+#' message.
 #'
 #' @param r object of class \code{realtest_result}, see \code{\link{E}}
 #'
@@ -37,7 +42,7 @@
 #' @importFrom utils str
 #' @rdname postprocessors
 #' @export
-stop_if_results_different <- function(r)
+failstop <- function(r)
 {
     stopifnot_result_valid(r)  # internal function
 

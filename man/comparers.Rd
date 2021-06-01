@@ -3,7 +3,6 @@
 \name{ignore_differences}
 \alias{ignore_differences}
 \alias{identical_or_TRUE}
-\alias{maps_comparer}
 \alias{maps_identical_or_TRUE}
 \title{Example Object and Side Effect Comparers}
 \usage{
@@ -11,33 +10,56 @@ ignore_differences(x, y)
 
 identical_or_TRUE(x, y)
 
-maps_comparer(x, y, element_comparer)
-
 maps_identical_or_TRUE(x, y)
 }
 \arguments{
-\item{x}{TODO}
+\item{x}{prototype or part thereof}
 
-\item{y}{TODO}
-
-\item{element_comparer}{TODO}
+\item{y}{object under scrutiny or part thereof}
 }
 \value{
-TRUE or FALSE or error message....
-\code{\link[base]{identical}}
-\code{\link[base]{all.equal}}
-write a custom one if you want attributes to be omitted
-\code{identical_or_TRUE}....
-\code{maps_identical_or_TRUE}...
-\code{maps_comparer} compares two named lists as sets of key-value pairs (order does not matter)
-treats NULLs as empty lists
-does not distinguish between NULL fields and missing fields
+Each comparer should yield \code{TRUE} if the test condition
+is considered met or anything else otherwise.
+However, it is highly recommended that in the latter case,
+a single string with a short
+summary of the differences is returned, as in \code{\link[base]{all.equal}}.
 }
 \description{
 Two-argument functions to compare direct or indirect effects
 of two test descriptors (see \code{\link{P}} and \code{\link{R}}).
 These can be passed as \code{value_comparer} and \code{sides_comparer}
 to \code{\link{E}}.
+}
+\details{
+Example built-in (base R) comparers include \code{\link[base]{identical}}
+(the strictest possible)
+and \code{\link[base]{all.equal}} (can ignore, amongst others,
+round-off errors).
+
+\code{ignore_differences} is a dummy comparer that always returns
+\code{TRUE}. Hence, it does not discriminate between anything.
+
+\code{identical_or_TRUE} is useful when comparing particular side effects,
+where is assumed that a value \code{TRUE} represents the occurrence
+of a condition, but without going into any details
+(e.g., some warning).
+
+\code{maps_identical_or_TRUE} propagates \code{identical_or_TRUE}
+on each element of a given named list (treated as an unordered set
+of key-value pairs) and aggregates the results.
+
+A user can of course define any comparer of their own liking:
+the possibilities are endless. For example:
+\itemize{
+\item a comparer for side effects based on regular expressions,
+\item a comparer that tests whether all elements in a vector are
+    equal to \code{TRUE},
+\item a comparer that verifies whether each element falls into
+    a specified interval,
+\item a comparer that ignores all the object attributes (possibly
+    in combination with other comparers),
+}
+and so forth.
 }
 \author{
 \href{https://www.gagolewski.com/}{Marek Gagolewski}

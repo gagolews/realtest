@@ -27,19 +27,47 @@
 #' to \code{\link{E}}.
 #'
 #'
-#' @return TRUE or FALSE or error message....
-#' \code{\link[base]{identical}}
-#' \code{\link[base]{all.equal}}
-#' write a custom one if you want attributes to be omitted
-#' \code{identical_or_TRUE}....
-#' \code{maps_identical_or_TRUE}...
-#' \code{maps_comparer} compares two named lists as sets of key-value pairs (order does not matter)
-#' treats NULLs as empty lists
-#' does not distinguish between NULL fields and missing fields
+#' @details
+#' Example built-in (base R) comparers include \code{\link[base]{identical}}
+#' (the strictest possible)
+#' and \code{\link[base]{all.equal}} (can ignore, amongst others,
+#' round-off errors).
 #'
-#' @param x TODO
-#' @param y TODO
-#' @param element_comparer TODO
+#' \code{ignore_differences} is a dummy comparer that always returns
+#' \code{TRUE}. Hence, it does not discriminate between anything.
+#'
+#' \code{identical_or_TRUE} is useful when comparing particular side effects,
+#' where is assumed that a value \code{TRUE} represents the occurrence
+#' of a condition, but without going into any details
+#' (e.g., some warning).
+#'
+#' \code{maps_identical_or_TRUE} propagates \code{identical_or_TRUE}
+#' on each element of a given named list (treated as an unordered set
+#' of key-value pairs) and aggregates the results.
+#'
+#' A user can of course define any comparer of their own liking:
+#' the possibilities are endless. For example:
+#' \itemize{
+#' \item a comparer for side effects based on regular expressions,
+#' \item a comparer that tests whether all elements in a vector are
+#'     equal to \code{TRUE},
+#' \item a comparer that verifies whether each element falls into
+#'     a specified interval,
+#' \item a comparer that ignores all the object attributes (possibly
+#'     in combination with other comparers),
+#' }
+#' and so forth.
+#'
+#'
+#' @param x prototype or part thereof
+#' @param y object under scrutiny or part thereof
+#'
+#' @return
+#' Each comparer should yield \code{TRUE} if the test condition
+#' is considered met or anything else otherwise.
+#' However, it is highly recommended that in the latter case,
+#' a single string with a short
+#' summary of the differences is returned, as in \code{\link[base]{all.equal}}.
 #'
 #' @rdname comparers
 #' @export
@@ -62,10 +90,13 @@ identical_or_TRUE <- function(x, y)
 
 
 
-#' @rdname comparers
-#' @export
-maps_comparer <- function(x, y, element_comparer)
+# internal
+maps_comparer <- function(x, y, comparer)
 {
+    # compares two named lists as sets of key-value pairs (order does not matter)
+    # treats NULLs as empty lists
+    # does not distinguish between NULL fields and missing fields
+
     if (is.null(x)) x <- structure(list(), names=character(0))  # empty named list
     if (is.null(y)) y <- structure(list(), names=character(0))
     stopifnot(is.list(x), !is.null(names(x)))  # is named list
@@ -75,7 +106,7 @@ maps_comparer <- function(x, y, element_comparer)
     differences <- character(0)
     for (n in all_names) {
         # is.null(x[[n]]) also might mean that it's nonexistent
-        cmp <- element_comparer(x[[n]], y[[n]])
+        cmp <- comparer(x[[n]], y[[n]])
         if (!isTRUE(cmp))
             differences <- c(differences,
                 sprintf(
@@ -96,6 +127,6 @@ maps_identical_or_TRUE <- function(x, y)
 {
     maps_comparer(
         x, y,
-        element_comparer=identical_or_TRUE
+        comparer=identical_or_TRUE
     )
 }
