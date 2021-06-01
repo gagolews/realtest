@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>E: Test Which Expectations are Met &mdash; realtest</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+    <link rel="canonical" href="https://realtest.gagolewski.com/rapi/E.html" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="P: Manually Create a Test Descriptor Prototype" href="P.html" />
+    <link rel="prev" title="realtest: When expectations meet reality: Realistic unit testing in R" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> realtest
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">realtest</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://realtest.gagolewski.com/">About</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Manual</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">E: Test Which Expectations are Met</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arguments">Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#details">Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#value">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#author-s">Author(s)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="P.html">P: Manually Create a Test Descriptor Prototype</a></li>
+<li class="toctree-l1"><a class="reference internal" href="R.html">R: Create a Result Descriptor by Recording Effects of an Expression Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_realtest.html">about_realtest: Where Expectations Meet Reality: Realistic Unit Testing in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comparers.html">comparers: Example Object and Side Effect Comparers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postprocessors.html">postprocessors: Example Test Result Postprocessors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="realtest_results.html">realtest_results: Summarise and Display Test Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source2.html">source2: Read and Evaluate Code from an R Script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test_dir.html">test_dir: Gather All Test Results From R Scripts</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/realtest">Source Code (GitHub)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/realtest/issues">Bug Tracker and Feature Suggestions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gagolewski.com/">Author's Homepage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">What Is New in <em>realtest</em></a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">realtest</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>E: Test Which Expectations are Met</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="P.html" class="btn btn-neutral float-right" title="P: Manually Create a Test Descriptor Prototype" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="realtest: When expectations meet reality: Realistic unit testing in R" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="e-test-which-expectations-are-met">
+<h1>E: Test Which Expectations are Met<a class="headerlink" href="#e-test-which-expectations-are-met" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Performs a unit test and summarises the results.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">E</span><span class="p">(</span>
+  <span class="n">expr</span><span class="p">,</span>
+  <span class="kc">...</span><span class="p">,</span>
+  <span class="n">value_comparer</span> <span class="o">=</span> <span class="nf">getOption</span><span class="p">(</span><span class="s">&quot;realtest_value_comparer&quot;</span><span class="p">,</span> <span class="n">identical</span><span class="p">),</span>
+  <span class="n">sides_comparer</span> <span class="o">=</span> <span class="nf">getOption</span><span class="p">(</span><span class="s">&quot;realtest_sides_comparer&quot;</span><span class="p">,</span> <span class="n">maps_identical_or_TRUE</span><span class="p">),</span>
+  <span class="n">postprocessor</span> <span class="o">=</span> <span class="nf">getOption</span><span class="p">(</span><span class="s">&quot;realtest_postprocessor&quot;</span><span class="p">,</span> <span class="n">failstop</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="arguments">
+<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">expr</span></code></p></td>
+<td><p>an expression to be recorded (via <a class="reference external" href="https://realtest.gagolewski.com/rapi/R.html"><code class="docutils literal notranslate"><span class="pre">R</span></code></a>) and and compared with the prototypes</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
+<td><p>a sequence of 1 or more (possibly named) prototypes constructed via <a class="reference external" href="https://realtest.gagolewski.com/rapi/R.html"><code class="docutils literal notranslate"><span class="pre">R</span></code></a> or <a class="reference external" href="https://realtest.gagolewski.com/rapi/P.html"><code class="docutils literal notranslate"><span class="pre">P</span></code></a> (objects which are not of class <code class="docutils literal notranslate"><span class="pre">realtest_descriptor</span></code> will be passed to <a class="reference external" href="https://realtest.gagolewski.com/rapi/P.html"><code class="docutils literal notranslate"><span class="pre">P</span></code></a>); arguments whose names start with a dot (like <code class="docutils literal notranslate"><span class="pre">.label=value</span></code>) can be used to introduce metadata (e.g., additional details in natural language)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">value_comparer</span></code></p></td>
+<td><p>a two-argument function used (unless overridden by the prototype) to compare the values with each other, e.g., <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/identical.html"><code class="docutils literal notranslate"><span class="pre">identical</span></code></a> or <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/all.equal.html"><code class="docutils literal notranslate"><span class="pre">all.equal</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sides_comparer</span></code></p></td>
+<td><p>a two-argument function used (unless overridden by the prototype) to compare the side effects (essentially: two lists) with each other, e.g., <a class="reference external" href="https://realtest.gagolewski.com/rapi/maps_identical_or_TRUE.html"><code class="docutils literal notranslate"><span class="pre">maps_identical_or_TRUE</span></code></a> or <a class="reference external" href="https://realtest.gagolewski.com/rapi/ignore_differences.html"><code class="docutils literal notranslate"><span class="pre">ignore_differences</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">postprocessor</span></code></p></td>
+<td><p>a function to call on the generated <code class="docutils literal notranslate"><span class="pre">realtest_result</span></code>, e.g., <a class="reference external" href="https://realtest.gagolewski.com/rapi/failstop.html"><code class="docutils literal notranslate"><span class="pre">failstop</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="details">
+<h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<p>Each R expression has a range of possible effects. The direct effect corresponds to the value generated by evaluating the expression. Side effects may include errors, warnings, text printed out on the console, etc., see <a class="reference external" href="https://realtest.gagolewski.com/rapi/P.html"><code class="docutils literal notranslate"><span class="pre">P</span></code></a> and <a class="reference external" href="https://realtest.gagolewski.com/rapi/R.html"><code class="docutils literal notranslate"><span class="pre">R</span></code></a>.</p>
+<p>Arguments passed via <code class="docutils literal notranslate"><span class="pre">...</span></code> whose names do not start with a dot should be objects of class <code class="docutils literal notranslate"><span class="pre">realtest_descriptor</span></code> (otherwise they are passed to <a class="reference external" href="https://realtest.gagolewski.com/rapi/P.html"><code class="docutils literal notranslate"><span class="pre">P</span></code></a>). They define the prototypes against which the object generated by computing <code class="docutils literal notranslate"><span class="pre">expr</span></code> will be tested.</p>
+<p><code class="docutils literal notranslate"><span class="pre">value_comparer</span></code> and <code class="docutils literal notranslate"><span class="pre">sides_comparer</span></code> are 2-ary functions that return <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> if two objects/side effects are equivalent and a character string summarising the differences (or any other kind or object) otherwise.</p>
+<p>The test case is considered as met, whenever <code class="docutils literal notranslate"><span class="pre">value_comparer(prototype[[&quot;value&quot;]],</span> <span class="pre">object[[&quot;value&quot;]])</span></code> and <code class="docutils literal notranslate"><span class="pre">sides_comparer(prototype[[&quot;sides&quot;]],</span> <span class="pre">object[[&quot;sides&quot;]])</span></code> are both <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> for some <code class="docutils literal notranslate"><span class="pre">prototype</span></code>. The comparers may be overridden on a per-prototype basis, though. If <code class="docutils literal notranslate"><span class="pre">prototype[[&quot;value_comparer&quot;]]</span></code> or <code class="docutils literal notranslate"><span class="pre">prototype[[&quot;sides_comparer&quot;]]</span></code> are defined, these are used instead.</p>
+</div>
+<div class="section" id="value">
+<h2>Value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
+<p>The function creates an object of class <code class="docutils literal notranslate"><span class="pre">realtest_result</span></code>, which is a named list with the following components:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">object</span></code> – an object of class <code class="docutils literal notranslate"><span class="pre">realtest_descriptor</span></code>, ultimately <a class="reference external" href="https://realtest.gagolewski.com/rapi/R.html"><code class="docutils literal notranslate"><span class="pre">R</span></code></a>(expr),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prototypes</span></code> – a (possibly named) list of objects of class <code class="docutils literal notranslate"><span class="pre">realtest_descriptor</span></code> that were passed via <code class="docutils literal notranslate"><span class="pre">...</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matches</span></code> – a (possibly empty) numeric vector of the indexes of the prototypes matching the object (can be named),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.dotted.names</span></code> – copied as-is from the arguments of the same name.</p></li>
+</ul>
+<p>This object is then passed to the <code class="docutils literal notranslate"><span class="pre">postprocessor</span></code> which itself becomes responsible for generating the output value to be returned by the current function (and, e.g., throwing an error if the test fails).</p>
+</div>
+<div class="section" id="author-s">
+<h2>Author(s)<a class="headerlink" href="#author-s" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.gagolewski.com/">Marek Gagolewski</a></p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<p>The official online manual of <span class="pkg">realtest</span> at <a class="reference external" href="https://realtest.gagolewski.com/">https://realtest.gagolewski.com/</a></p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># the default result postprocessor throws an error on a failed test:</span>
+<span class="nf">E</span><span class="p">(</span><span class="nf">E</span><span class="p">(</span><span class="nf">sqrt</span><span class="p">(</span><span class="m">4</span><span class="p">),</span> <span class="nf">P</span><span class="p">(</span><span class="m">7</span><span class="p">)),</span> <span class="nf">P</span><span class="p">(</span><span class="n">error</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span>
+<span class="nf">E</span><span class="p">(</span><span class="nf">sqrt</span><span class="p">(</span><span class="m">4</span><span class="p">),</span> <span class="m">2.0</span><span class="p">)</span>  <span class="c1"># the same as E(sqrt(4), P(2.0))</span>
+<span class="nf">E</span><span class="p">(</span><span class="nf">sin</span><span class="p">(</span><span class="kc">pi</span><span class="p">),</span> <span class="m">0.0</span><span class="p">,</span> <span class="n">value_comparer</span><span class="o">=</span><span class="n">all.equal</span><span class="p">)</span>  <span class="c1"># almost-equal</span>
+<span class="nf">E</span><span class="p">(</span><span class="nf">sqrt</span><span class="p">(</span><span class="m">-1</span><span class="p">),</span> <span class="nf">P</span><span class="p">(</span><span class="kc">NaN</span><span class="p">,</span> <span class="n">warning</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span>  <span class="c1"># a warning is expected</span>
+<span class="nf">E</span><span class="p">(</span>
+ <span class="nf">sample</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;head&quot;</span><span class="p">,</span> <span class="s">&quot;tail&quot;</span><span class="p">),</span> <span class="m">1</span><span class="p">),</span>
+ <span class="n">.description</span><span class="o">=</span><span class="s">&quot;this call has two possible outcomes&quot;</span><span class="p">,</span>
+ <span class="s">&quot;head&quot;</span><span class="p">,</span>  <span class="c1"># first prototype</span>
+ <span class="s">&quot;tail&quot;</span>   <span class="c1"># second prototype</span>
+<span class="p">)</span>
+<span class="nf">E</span><span class="p">(</span><span class="nf">sqrt</span><span class="p">(</span><span class="m">-1</span><span class="p">),</span> <span class="kc">NaN</span><span class="p">,</span> <span class="n">sides_comparer</span><span class="o">=</span><span class="n">ignore_differences</span><span class="p">)</span> <span class="c1"># do not test side effects</span>
+<span class="nf">E</span><span class="p">(</span>
+  <span class="nf">paste0</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">),</span>                  <span class="c1"># expression to test - concatenation</span>
+  <span class="n">.description</span><span class="o">=</span><span class="s">&quot;partial recycling&quot;</span><span class="p">,</span>  <span class="c1"># info - what behaviour are we testing?</span>
+  <span class="n">desired</span><span class="o">=</span><span class="nf">P</span><span class="p">(</span>                         <span class="c1"># what we yearn for (ideally)</span>
+    <span class="nf">c</span><span class="p">(</span><span class="s">&quot;11&quot;</span><span class="p">,</span> <span class="s">&quot;22&quot;</span><span class="p">,</span> <span class="s">&quot;13&quot;</span><span class="p">),</span>
+    <span class="n">warning</span><span class="o">=</span><span class="s">&quot;longer object length is not a multiple of shorter object length&quot;</span>
+  <span class="p">),</span>
+  <span class="n">current</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;11&quot;</span><span class="p">,</span> <span class="s">&quot;22&quot;</span><span class="p">,</span> <span class="s">&quot;13&quot;</span><span class="p">),</span>       <span class="c1"># this is the behaviour we have now</span>
+  <span class="n">undesired</span><span class="o">=</span><span class="nf">P</span><span class="p">(</span><span class="n">error</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>            <span class="c1"># avoid regression</span>
+<span class="p">)</span>
+<span class="nf">E</span><span class="p">(</span><span class="nf">sin</span><span class="p">(</span><span class="kc">pi</span><span class="p">),</span> <span class="n">ideal</span><span class="o">=</span><span class="m">0.0</span><span class="p">,</span> <span class="n">expected</span><span class="o">=</span><span class="nf">P</span><span class="p">(</span><span class="m">0.0</span><span class="p">,</span> <span class="n">value_comparer</span><span class="o">=</span><span class="n">all.equal</span><span class="p">),</span>
+  <span class="n">.comment</span><span class="o">=</span><span class="s">&quot;well, this is not a symbolic language after all...&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="P.html" class="btn btn-neutral float-right" title="P: Manually Create a Test Descriptor Prototype" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="realtest: When expectations meet reality: Realistic unit testing in R" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Marek Gagolewski.
+      <span class="lastupdated">
+        Last updated on 2021-06-01 19:42:47.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

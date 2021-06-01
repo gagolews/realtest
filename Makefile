@@ -50,33 +50,33 @@ check-cran: stop-on-utf8 build
 
 ############## Rd2rst: https://github.com/gagolews/Rd2rst ######################
 
-# rd2myst:
-# 	cd devel/sphinx && Rscript -e "Rd2rst::Rd2myst('${PKGNAME}')"
-#
-# news:
-# 	cd devel/sphinx && cp ../../NEWS news.md
-#
-# weave-examples:
-# 	cd devel/sphinx/rapi && Rscript -e "Rd2rst::weave_examples('${PKGNAME}', '.')"
-# 	devel/sphinx/fix-code-blocks.sh devel/sphinx/rapi
-#
-# sphinx: stop-on-utf8 r rd2myst news weave-examples
-# 	rm -rf devel/sphinx/_build/
-# 	cd devel/sphinx && make html
-# 	echo "*** Browse the generated documentation at"\
-# 	    "file://`pwd`/devel/sphinx/_build/html/index.html"
-#
-# docs: sphinx
-# 	# this is recommended only when publishing an official release
-# 	# -> updates the package homepage
-# 	rm -rf devel/sphinx/_build/
-# 	cd devel/sphinx && make html
-# 	rm -rf docs/
-# 	mkdir docs/
-# 	cp -rf devel/sphinx/_build/html/* docs/
-# 	cp devel/CNAME.tpl docs/CNAME
-# 	touch docs/.nojekyll
-# 	touch .nojekyll
+rd2myst:
+	cd devel/sphinx && Rscript -e "Rd2rst::Rd2myst('${PKGNAME}')"
+
+news:
+	cd devel/sphinx && cp ../../NEWS news.md
+
+weave-examples:
+	cd devel/sphinx/rapi && Rscript -e "Rd2rst::weave_examples('${PKGNAME}', '.')"
+	devel/sphinx/fix-code-blocks.sh devel/sphinx/rapi
+
+sphinx: stop-on-utf8 r rd2myst news weave-examples
+	rm -rf devel/sphinx/_build/
+	cd devel/sphinx && make html
+	echo "*** Browse the generated documentation at"\
+	    "file://`pwd`/devel/sphinx/_build/html/index.html"
+
+docs: sphinx
+	# this is recommended only when publishing an official release
+	# -> updates the package homepage
+	rm -rf devel/sphinx/_build/
+	cd devel/sphinx && make html
+	rm -rf docs/
+	mkdir docs/
+	cp -rf devel/sphinx/_build/html/* docs/
+	cp devel/CNAME.tpl docs/CNAME
+	touch docs/.nojekyll
+	touch .nojekyll
 
 ################################################################################
 

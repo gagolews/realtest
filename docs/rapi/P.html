@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>P: Manually Create a Test Descriptor Prototype &mdash; realtest</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+    <link rel="canonical" href="https://realtest.gagolewski.com/rapi/P.html" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="R: Create a Result Descriptor by Recording Effects of an Expression Evaluation" href="R.html" />
+    <link rel="prev" title="E: Test Which Expectations are Met" href="E.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> realtest
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">realtest</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://realtest.gagolewski.com/">About</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="E.html">E: Test Which Expectations are Met</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">P: Manually Create a Test Descriptor Prototype</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arguments">Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#details">Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#value">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#author-s">Author(s)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="R.html">R: Create a Result Descriptor by Recording Effects of an Expression Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_realtest.html">about_realtest: Where Expectations Meet Reality: Realistic Unit Testing in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comparers.html">comparers: Example Object and Side Effect Comparers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postprocessors.html">postprocessors: Example Test Result Postprocessors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="realtest_results.html">realtest_results: Summarise and Display Test Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source2.html">source2: Read and Evaluate Code from an R Script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test_dir.html">test_dir: Gather All Test Results From R Scripts</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/realtest">Source Code (GitHub)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/realtest/issues">Bug Tracker and Feature Suggestions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gagolewski.com/">Author's Homepage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">What Is New in <em>realtest</em></a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">realtest</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>P: Manually Create a Test Descriptor Prototype</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="R.html" class="btn btn-neutral float-right" title="R: Create a Result Descriptor by Recording Effects of an Expression Evaluation" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+      
+      
+        <a href="E.html" class="btn btn-neutral float-left" title="E: Test Which Expectations are Met" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="p-manually-create-a-test-descriptor-prototype">
+<h1>P: Manually Create a Test Descriptor Prototype<a class="headerlink" href="#p-manually-create-a-test-descriptor-prototype" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Allows for formulating expectations like ‘the desired outcome is <code class="docutils literal notranslate"><span class="pre">c(1,</span> <span class="pre">2,</span> <span class="pre">3)</span></code>, with a warning’ or ‘an error should occur’.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">P</span><span class="p">(</span>
+  <span class="n">value</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+  <span class="n">error</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+  <span class="n">warning</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+  <span class="n">message</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+  <span class="n">stdout</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+  <span class="n">stderr</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+  <span class="n">value_comparer</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+  <span class="n">sides_comparer</span> <span class="o">=</span> <span class="kc">NULL</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="arguments">
+<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">value</span></code></p></td>
+<td><p>object (may be equipped with attributes)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">error,</span> <span class="pre">warning,</span> <span class="pre">message</span></code></p></td>
+<td><p><a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/conditions.html">conditions</a> expected to occur, see <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/stop.html"><code class="docutils literal notranslate"><span class="pre">stop</span></code></a>, <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/warning.html"><code class="docutils literal notranslate"><span class="pre">warning</span></code></a>, and <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/message.html"><code class="docutils literal notranslate"><span class="pre">message</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stdout,</span> <span class="pre">stderr</span></code></p></td>
+<td><p>character data expected on <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/stdout.html"><code class="docutils literal notranslate"><span class="pre">stdout</span></code></a> and <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/stderr.html"><code class="docutils literal notranslate"><span class="pre">stderr</span></code></a>, respectively</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">value_comparer,</span> <span class="pre">sides_comparer</span></code></p></td>
+<td><p>optional two-argument functions which may be used to override the default comparers used by <a class="reference external" href="https://realtest.gagolewski.com/rapi/E.html"><code class="docutils literal notranslate"><span class="pre">E</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="details">
+<h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">error</span></code>, <code class="docutils literal notranslate"><span class="pre">warning</span></code>, <code class="docutils literal notranslate"><span class="pre">message</span></code>, <code class="docutils literal notranslate"><span class="pre">stdout</span></code>, and <code class="docutils literal notranslate"><span class="pre">stderr</span></code> may be one of:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> or <code class="docutils literal notranslate"><span class="pre">FALSE</span></code> – no side effect of a particular kind is expected;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> – an effect is expected to occur (but details are irrelevant, e.g., a function throws a warning);</p></li>
+<li><p>character vector – a specific message/output is desired.</p></li>
+</ul>
+<p>Note that only one error can occur per a function call, hence <code class="docutils literal notranslate"><span class="pre">error</span></code> can only be a single string (or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> or <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>). When an error is expected, the <code class="docutils literal notranslate"><span class="pre">value</span></code> must be <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p>Typically, messages, warnings, and errors are written to <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/stderr.html"><code class="docutils literal notranslate"><span class="pre">stderr</span></code></a>, but these are considered separately here. In other words, the expected <code class="docutils literal notranslate"><span class="pre">stderr</span></code> should not include the anticipated diagnostic messages.</p>
+</div>
+<div class="section" id="value">
+<h2>Value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
+<p>A list of class <code class="docutils literal notranslate"><span class="pre">realtest_descriptor</span></code> with named components:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sides</span></code> (optional) – a list with named elements <code class="docutils literal notranslate"><span class="pre">error</span></code>, <code class="docutils literal notranslate"><span class="pre">warnings</span></code>, <code class="docutils literal notranslate"><span class="pre">messages</span></code>, <code class="docutils literal notranslate"><span class="pre">stdout</span></code>, and <code class="docutils literal notranslate"><span class="pre">stderr</span></code>; those which are missing are assumed to be equal to <code class="docutils literal notranslate"><span class="pre">NULL</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value_comparer</span></code> (optional) – a function object,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sides_comparer</span></code> (optional) – a function object,</p></li>
+</ul>
+</div>
+<div class="section" id="author-s">
+<h2>Author(s)<a class="headerlink" href="#author-s" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.gagolewski.com/">Marek Gagolewski</a></p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<p>The official online manual of <span class="pkg">realtest</span> at <a class="reference external" href="https://realtest.gagolewski.com/">https://realtest.gagolewski.com/</a></p>
+<p><a class="reference external" href="https://realtest.gagolewski.com/rapi/E.html"><code class="docutils literal notranslate"><span class="pre">E</span></code></a>, <a class="reference external" href="https://realtest.gagolewski.com/rapi/R.html"><code class="docutils literal notranslate"><span class="pre">R</span></code></a></p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">P</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">)</span>  <span class="c1"># the desired outcome is c(1L, 2L, 3L)</span>
+<span class="c1">## $value</span>
+<span class="c1">## [1] 1 2 3</span>
+<span class="c1">## </span>
+<span class="c1">## attr(,&quot;class&quot;)</span>
+<span class="c1">## [1] &quot;realtest_descriptor&quot; &quot;realtest&quot;</span>
+<span class="nf">P</span><span class="p">(</span><span class="n">error</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>  <span class="c1"># expecting an error</span>
+<span class="c1">## $value</span>
+<span class="c1">## NULL</span>
+<span class="c1">## </span>
+<span class="c1">## $sides</span>
+<span class="c1">## $sides$error</span>
+<span class="c1">## [1] TRUE</span>
+<span class="c1">## </span>
+<span class="c1">## </span>
+<span class="c1">## attr(,&quot;class&quot;)</span>
+<span class="c1">## [1] &quot;realtest_descriptor&quot; &quot;realtest&quot;</span>
+<span class="nf">P</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span> <span class="n">warning</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>  <span class="c1"># expecting c(1L, 2L, 3L), with a warning</span>
+<span class="c1">## $value</span>
+<span class="c1">## [1] 1 2 3</span>
+<span class="c1">## </span>
+<span class="c1">## $sides</span>
+<span class="c1">## $sides$warning</span>
+<span class="c1">## [1] TRUE</span>
+<span class="c1">## </span>
+<span class="c1">## </span>
+<span class="c1">## attr(,&quot;class&quot;)</span>
+<span class="c1">## [1] &quot;realtest_descriptor&quot; &quot;realtest&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="R.html" class="btn btn-neutral float-right" title="R: Create a Result Descriptor by Recording Effects of an Expression Evaluation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="E.html" class="btn btn-neutral float-left" title="E: Test Which Expectations are Met" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Marek Gagolewski.
+      <span class="lastupdated">
+        Last updated on 2021-06-01 19:42:47.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

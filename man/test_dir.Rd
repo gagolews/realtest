@@ -21,16 +21,34 @@ test_dir(
 \item{ignore.case}{logical, see \code{\link[base]{list.files}}}
 }
 \value{
-List of all test results, see \code{\link{E}}
+Returns a list of all test results
+(of class \code{realtest_results}),
+each being an object of class \code{realtest_result}, see \code{\link{E}},
+with additional fields \code{.file}, \code{.line}, and \code{.expr},
+giving the location and the source code of the test instance.
 }
 \description{
 Executes all R scripts in a given directory whose names match a given
 pattern and gathers all test result in a single list,
 which you can process however you desire.
+
+The function does not fail if some tests are not met -- you need
+to detect this yourself.
 }
-\author{
-\href{https://www.gagolewski.com/}{Marek Gagolewski}
+\examples{
+\donttest{
+r <- test_dir("~/R/realtest/tests")
+s <- summary(r)  # summary.realtest_results
+print(s)  # print.realtest_results_summary
+stopifnot(sum(s[["match"]]=="fail") == 0)  # halt if there are failed tests
+}
+
 }
 \seealso{
 The official online manual of \pkg{realtest} at \url{https://realtest.gagolewski.com/}
+
+\code{\link{source2}}, \code{\link{summary.realtest_results}}
+}
+\author{
+\href{https://www.gagolewski.com/}{Marek Gagolewski}
 }

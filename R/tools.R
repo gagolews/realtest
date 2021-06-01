@@ -81,12 +81,12 @@
 #'
 #' @examples
 #' \dontrun{
-#' # example error handler - report source file and line number
-#' options(error=function()
-#'    cat(sprintf(
-#'        "Error in %s:%s.\n", Sys.getenv("__FILE__"), Sys.getenv("__LINE__")
-#'    ), file=stderr()))
-#' source2("script_throwing_some_errors.R", local=new.env())
+#' ## example error handler - report source file and line number
+#' # options(error=function()
+#' #    cat(sprintf(
+#' #        "Error in %s:%s.\n", Sys.getenv("__FILE__"), Sys.getenv("__LINE__")
+#' #    ), file=stderr()))
+#' # source2("a_script_throwing_some_errors.R", local=new.env())
 #' }
 #'
 #' @export
@@ -125,15 +125,31 @@ source2 <- function(file, local=FALSE)
 #' pattern and gathers all test result in a single list,
 #' which you can process however you desire.
 #'
+#' The function does not fail if some tests are not met -- you need
+#' to detect this yourself.
+#'
 #' @param path directory with scripts to execute
 #' @param pattern regular expression specifying the file names to execute
 #' @param recursive logical, see \code{\link[base]{list.files}}
 #' @param ignore.case logical, see \code{\link[base]{list.files}}
 #'
-#' @return List of all test results, see \code{\link{E}}
+#' @return Returns a list of all test results
+#' (of class \code{realtest_results}),
+#' each being an object of class \code{realtest_result}, see \code{\link{E}},
+#' with additional fields \code{.file}, \code{.line}, and \code{.expr},
+#' giving the location and the source code of the test instance.
 #'
-#' @seealso \code{\link{source2}}
+#' @examples
+#' \donttest{
+#' r <- test_dir("~/R/realtest/tests")
+#' s <- summary(r)  # summary.realtest_results
+#' print(s)  # print.realtest_results_summary
+#' stopifnot(sum(s[["match"]]=="fail") == 0)  # halt if there are failed tests
+#' }
 #'
+#' @seealso \code{\link{source2}}, \code{\link{summary.realtest_results}}
+#'
+#' @rdname test_dir
 #' @export
 test_dir <- function(
     path="tests",
@@ -182,14 +198,96 @@ test_dir <- function(
 
     results <- .GlobalEnv[["__REALTEST_RESULTS"]]
     .GlobalEnv[["__REALTEST_RESULTS"]] <- NULL
-    results
+    structure(
+        results,
+        class=c("realtest_results", "realtest")
+    )
 }
 
 
+#' @title
+#' Summarise and Display Test Results
+#'
+#' @description
+#' An example (write your own which will better suit your needs)
+#' way to summarise the results returned by \code{test_dir}.
+#'
+#'
+#' @param object list of objects of class \code{realtest_result},
+#'     see \code{\link{E}}.
+#' @param x object returned by \code{summary.realtest_results}
+#' @param ... currently ignored
+#' @param label_pass single string denoting the default name for
+#'    unnamed prototypes
+#' @param label_fail single string labelling failed test cases
+#'
+#' @return
+#' \code{print.realtest_results_summary} returns \code{x}, invisibly.
+#'
+#' \code{summary.realtest_results} return an object of class
+#' \code{realtest_results_summary} which is a data frame summarising
+#' the test results, featuring the following columns:
+#' \itemize{
+#' \item \code{call} -- name of the function tested,
+#' \item \code{match} -- the name of the first matching prototype,
+#'    \code{label_pass} if it is unnamed or \code{label_fail} if
+#'    there is no match,
+#' \item \code{.file} (optional) -- name of the source file which
+#'    defined the expectation,
+#' \item \code{.line} (optional) -- line number,
+#' \item \code{.expr} (optional) -- source code of the whole tested expression.
+#' }
+#'
+#'
+#' @examples
+#' \donttest{
+#' r <- test_dir("~/R/realtest/tests")
+#' s <- summary(r)  # summary.realtest_results
+#' print(s)  # print.realtest_results_summary
+#' stopifnot(sum(s[["match"]]=="fail") == 0)  # halt if there are failed tests
+#' }
+#'
+#' @rdname summary_results
+#' @seealso \code{\link{test_dir}}
 #' @export
-results_summarise <- function(results, label_pass="pass", label_fail="fail")
+print.realtest_results_summary <- function(x, label_fail="fail", ...)
 {
-    s <- lapply(results, function(r) {
+    stopifnot(is.data.frame(x))
+    stopifnot(c("match") %in% names(x))
+
+    cat("*** realtest: test summary:\n")
+    if (!is.null(x[[".file"]]))
+        print(table(x[[".file"]], x[["match"]]))
+    else
+        print(table(x[["match"]]))
+    cat("\n")
+
+    fails <- x[x[["match"]] == label_fail, , drop=FALSE]
+    if (nrow(fails) == 0) {
+        cat("*** realtest: all tests succeeded\n")
+    } else {
+        cat("*** realtest: failed test details:\n")
+        fails2 <- fails[,
+            !(names(fails) %in% ".expr") & !sapply(fails, function(x) all(is.na(x))),
+            drop=FALSE]
+        print.data.frame(fails2)
+        cat("\n")
+    }
+
+    invisible(x)
+}
+
+
+#' @rdname summary_results
+#' @export
+summary.realtest_results <- function(object, label_pass="pass", label_fail="fail", ...)
+{
+    stopifnot(is.character(label_pass), length(label_pass) == 1)  # TODO: NA ok?
+    stopifnot(is.character(label_fail), length(label_fail) == 1)  # TODO: NA ok?
+    stopifnot(is.list(object), length(object) >= 1)
+
+    s <- lapply(object, function(r) {
+        stopifnot_result_valid(r)
         if (length(r[["matches"]]) == 0)
             match_name <- label_fail
         else if (is.null(names(r[["matches"]])))
@@ -220,7 +318,11 @@ results_summarise <- function(results, label_pass="pass", label_fail="fail")
     s <- do.call(rbind.data.frame, s)
     s[["match"]] <- factor(s[["match"]],
         levels=c(setdiff(s[["match"]], c(label_pass, label_fail)), c(label_pass, label_fail)))
-    s
+
+    structure(
+        s,
+        class=c("realtest_results_summary", "realtest", "data.frame")
+    )
 }
 
 

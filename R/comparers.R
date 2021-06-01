@@ -28,7 +28,7 @@
 #'
 #'
 #' @details
-#' Example built-in (base R) comparers include \code{\link[base]{identical}}
+#' Notable built-in (base R) comparers include \code{\link[base]{identical}}
 #' (the strictest possible)
 #' and \code{\link[base]{all.equal}} (can ignore, amongst others,
 #' round-off errors).
@@ -45,7 +45,7 @@
 #' on each element of a given named list (treated as an unordered set
 #' of key-value pairs) and aggregates the results.
 #'
-#' A user can of course define any comparer of their own liking:
+#' You can define any comparer of your own liking:
 #' the possibilities are endless. For example:
 #' \itemize{
 #' \item a comparer for side effects based on regular expressions,

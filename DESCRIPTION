@@ -1,22 +1,12 @@
 Package: realtest
 Type: Package
-Version: 0.1.0.9001
+Version: 0.1.1
 Date: 2021-06-01
 Title: When Expectations Meet Reality: Realistic Unit Testing
 Description:
-    We are all adults here. We can't always get what we want.
-    Such is life. You may say we're dreamers, but we're not the only ones:
-    in an ideal world, things could look different, there could be more
-    or less of this and that. Sometimes, there might be many equally correct
-    outcomes. Other behaviours are good enough for now, but we shall improve
-    them eventually, say, during the 2027 summer holidays. Sometimes, what we
-    have is barely acceptable, but we need to live with it: it is
-    scheduled to be fixed when we have time. Or when other dependencies
-    will finally take our feedback into account and accept that series of
-    bug fixes and enhancements. Sad but true, one needs to be patient.
-    The following is a framework for unit testing for realistic minimalists,
+    A framework for unit testing for realistic minimalists,
     where we distinguish between expected, acceptable, current, fallback,
-    and regressive behaviour. It can also be used for monitoring other
+    ideal, or regressive behaviour. It can also be used for monitoring other
     software projects for changes.
 Authors@R: c(
     person("Marek", "Gagolewski",
