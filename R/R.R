@@ -44,7 +44,7 @@
 #' The additional named component \code{expr} gives the
 #' expression used to generate the \code{value}.
 #'
-#' @seealso
+#' @seealso Related functions:
 #' \code{\link{E}}, \code{\link{P}}
 #'
 #' @examples

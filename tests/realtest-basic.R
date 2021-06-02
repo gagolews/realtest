@@ -15,6 +15,7 @@ E(sample(c("head", "tail"), 1), "head", "tail")
 
 # a warning is expected
 E(sqrt(-1), P(NaN, warning=TRUE))
+E(1:2 * c(1, 10, 100), P(c(1, 20, 100), warning=TRUE))
 
 # do not test side effects
 E(sqrt(-1), NaN, sides_comparer=ignore_differences)

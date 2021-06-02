@@ -1,6 +1,13 @@
 # What Is New in *realtest*
 
 
+## 0.1.1.9001 (to-be >= 0.1.2) (2021-XX-YY)
+
+* [BUGFIX] `test_dir` does not modify the global environment anymore.
+* [BUGFIX] `test_dir` now evaluates tests in a temporary environment
+  whose parent is the caller's envir, not `namespace:realtest`.
+
+
 ## 0.1.1 (2021-06-01)
 
 * [NEW FEATURE] Core functions: `E`, `P`, `R`.

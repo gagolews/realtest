@@ -75,6 +75,7 @@ P(1:3, warning=TRUE)  # expecting c(1L, 2L, 3L), with a warning
 \seealso{
 The official online manual of \pkg{realtest} at \url{https://realtest.gagolewski.com/}
 
+Related functions:
 \code{\link{E}}, \code{\link{R}}
 }
 \author{

@@ -114,6 +114,9 @@
 #' E(sin(pi), ideal=0.0, expected=P(0.0, value_comparer=all.equal),
 #'   .comment="well, this is not a symbolic language after all...")
 #'
+#' @seealso Related functions:
+#' \code{\link{P}}, \code{\link{R}}, \code{\link{test_dir}}
+#'
 #' @export
 #' @rdname E
 E <- function(

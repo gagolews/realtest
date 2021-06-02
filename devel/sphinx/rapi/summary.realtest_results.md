@@ -1,4 +1,4 @@
-# summary\_results: Summarise and Display Test Results
+# summary.realtest\_results: Summarise and Display Test Results
 
 ## Description
 
@@ -28,7 +28,7 @@ summary(object, label_pass = "pass", label_fail = "fail", ...)
 
 `print.realtest_results_summary` returns `x`, invisibly.
 
-`summary.realtest_results` return an object of class `realtest_results_summary` which is a data frame summarising the test results, featuring the following columns:
+`summary.realtest_results` returns an object of class `realtest_results_summary` which is a data frame summarising the test results, featuring the following columns:
 
 -   `call` -- name of the function tested,
 
@@ -48,7 +48,7 @@ summary(object, label_pass = "pass", label_fail = "fail", ...)
 
 The official online manual of <span class="pkg">realtest</span> at <https://realtest.gagolewski.com/>
 
-[`test_dir`](https://realtest.gagolewski.com/rapi/test_dir.html)
+Related functions: [`test_dir`](https://realtest.gagolewski.com/rapi/test_dir.html)
 
 ## Examples
 
@@ -62,7 +62,7 @@ print(s)  # print.realtest_results_summary
 ## *** realtest: test summary:
 ##                                                   
 ##                                                    current good pass fail
-##   /home/gagolews/R/realtest/tests/realtest-basic.R       0    0    8    0
+##   /home/gagolews/R/realtest/tests/realtest-basic.R       0    0    9    0
 ##   /home/gagolews/R/realtest/tests/realtest-named.R       1    1    6    0
 ## 
 ## *** realtest: all tests succeeded

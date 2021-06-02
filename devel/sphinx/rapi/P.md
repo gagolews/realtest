@@ -62,7 +62,7 @@ A list of class `realtest_descriptor` with named components:
 
 The official online manual of <span class="pkg">realtest</span> at <https://realtest.gagolewski.com/>
 
-[`E`](https://realtest.gagolewski.com/rapi/E.html), [`R`](https://realtest.gagolewski.com/rapi/R.html)
+Related functions: [`E`](https://realtest.gagolewski.com/rapi/E.html), [`R`](https://realtest.gagolewski.com/rapi/R.html)
 
 ## Examples
 

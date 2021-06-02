@@ -31,13 +31,15 @@ evaluating consecutive expressions:
 }
 }
 \examples{
-\dontrun{
-## example error handler - report source file and line number
-# options(error=function()
-#    cat(sprintf(
-#        "Error in \%s:\%s.\n", Sys.getenv("__FILE__"), Sys.getenv("__LINE__")
-#    ), file=stderr()))
-# source2("a_script_throwing_some_errors.R", local=new.env())
+\donttest{
+# example error handler - report source file and line number
+old_option_error <- getOption("error")
+options(error=function()
+   cat(sprintf(
+       "Error in \%s:\%s.\n", Sys.getenv("__FILE__"), Sys.getenv("__LINE__")
+   ), file=stderr()))
+# now call source2() to execute an R script that throws some errors...
+options(error=old_option_error)  # cleanup
 }
 
 }

@@ -80,13 +80,15 @@
 #' @return This function returns nothing.
 #'
 #' @examples
-#' \dontrun{
-#' ## example error handler - report source file and line number
-#' # options(error=function()
-#' #    cat(sprintf(
-#' #        "Error in %s:%s.\n", Sys.getenv("__FILE__"), Sys.getenv("__LINE__")
-#' #    ), file=stderr()))
-#' # source2("a_script_throwing_some_errors.R", local=new.env())
+#' \donttest{
+#' # example error handler - report source file and line number
+#' old_option_error <- getOption("error")
+#' options(error=function()
+#'    cat(sprintf(
+#'        "Error in %s:%s.\n", Sys.getenv("__FILE__"), Sys.getenv("__LINE__")
+#'    ), file=stderr()))
+#' # now call source2() to execute an R script that throws some errors...
+#' options(error=old_option_error)  # cleanup
 #' }
 #'
 #' @export
@@ -147,7 +149,8 @@ source2 <- function(file, local=FALSE)
 #' stopifnot(sum(s[["match"]]=="fail") == 0)  # halt if there are failed tests
 #' }
 #'
-#' @seealso \code{\link{source2}}, \code{\link{summary.realtest_results}}
+#' @seealso Related functions:
+#' \code{\link{source2}}, \code{\link{summary.realtest_results}}
 #'
 #' @rdname test_dir
 #' @export
@@ -160,12 +163,13 @@ test_dir <- function(
     ..old.realtest_postprocessor <- getOption("realtest_postprocessor")
     on.exit(options(realtest_postprocessor=..old.realtest_postprocessor))
 
+    ..realtest_results <- list()
+
     results_gather <- function(r)
     {
         stopifnot_result_valid(r)  # internal
 
-        if (is.null(.GlobalEnv[["__REALTEST_RESULTS"]]))
-            .GlobalEnv[["__REALTEST_RESULTS"]] <- list()
+        stopifnot(is.list(..realtest_results))
 
         if (Sys.getenv("__FILE__") != "")
             r[[".file"]] <- Sys.getenv("__FILE__")
@@ -177,15 +181,12 @@ test_dir <- function(
             r[[".expr"]] <- Sys.getenv("__EXPR__")
 
         # push_back:
-        .GlobalEnv[["__REALTEST_RESULTS"]][[
-            length(.GlobalEnv[["__REALTEST_RESULTS"]])+1
-        ]] <- r
+        ..realtest_results[[length(..realtest_results) + 1]] <<- r
 
         invisible(r)
     }
 
     options(realtest_postprocessor=results_gather)
-    .GlobalEnv[["__REALTEST_RESULTS"]] <- NULL
 
     fs <- list.files(
         path=path, pattern=pattern, full.names=TRUE,
@@ -193,13 +194,13 @@ test_dir <- function(
     )
 
     for (t in fs) {
-        source2(t, local=new.env())
+        # we need the caller's envir as parent,
+        # not the local function's envir whose parent is namespace:realtest
+        source2(t, local=new.env(parent=parent.frame()))
     }
 
-    results <- .GlobalEnv[["__REALTEST_RESULTS"]]
-    .GlobalEnv[["__REALTEST_RESULTS"]] <- NULL
     structure(
-        results,
+        ..realtest_results,
         class=c("realtest_results", "realtest")
     )
 }
@@ -224,7 +225,7 @@ test_dir <- function(
 #' @return
 #' \code{print.realtest_results_summary} returns \code{x}, invisibly.
 #'
-#' \code{summary.realtest_results} return an object of class
+#' \code{summary.realtest_results} returns an object of class
 #' \code{realtest_results_summary} which is a data frame summarising
 #' the test results, featuring the following columns:
 #' \itemize{
@@ -247,8 +248,11 @@ test_dir <- function(
 #' stopifnot(sum(s[["match"]]=="fail") == 0)  # halt if there are failed tests
 #' }
 #'
-#' @rdname summary_results
-#' @seealso \code{\link{test_dir}}
+#' @seealso Related functions:
+#' \code{\link{test_dir}}
+#'
+#' @rdname summary.realtest_results
+#' @aliases print.realtest_results_summary
 #' @export
 print.realtest_results_summary <- function(x, label_fail="fail", ...)
 {
@@ -278,7 +282,7 @@ print.realtest_results_summary <- function(x, label_fail="fail", ...)
 }
 
 
-#' @rdname summary_results
+#' @rdname summary.realtest_results
 #' @export
 summary.realtest_results <- function(object, label_pass="pass", label_fail="fail", ...)
 {

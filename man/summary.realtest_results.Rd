@@ -25,7 +25,7 @@ unnamed prototypes}
 \value{
 \code{print.realtest_results_summary} returns \code{x}, invisibly.
 
-\code{summary.realtest_results} return an object of class
+\code{summary.realtest_results} returns an object of class
 \code{realtest_results_summary} which is a data frame summarising
 the test results, featuring the following columns:
 \itemize{
@@ -55,6 +55,7 @@ stopifnot(sum(s[["match"]]=="fail") == 0)  # halt if there are failed tests
 \seealso{
 The official online manual of \pkg{realtest} at \url{https://realtest.gagolewski.com/}
 
+Related functions:
 \code{\link{test_dir}}
 }
 \author{

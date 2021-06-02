@@ -66,7 +66,7 @@
 #' \item \code{sides_comparer} (optional) -- a function object,
 #' }
 #'
-#' @seealso
+#' @seealso Related functions:
 #' \code{\link{E}}, \code{\link{R}}
 #'
 #' @examples

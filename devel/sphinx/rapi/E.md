@@ -58,6 +58,8 @@ This object is then passed to the `postprocessor` which itself becomes responsib
 
 The official online manual of <span class="pkg">realtest</span> at <https://realtest.gagolewski.com/>
 
+Related functions: [`P`](https://realtest.gagolewski.com/rapi/P.html), [`R`](https://realtest.gagolewski.com/rapi/R.html), [`test_dir`](https://realtest.gagolewski.com/rapi/test_dir.html)
+
 ## Examples
 
 

@@ -41,6 +41,7 @@ R(log("aaaargh"))
 \seealso{
 The official online manual of \pkg{realtest} at \url{https://realtest.gagolewski.com/}
 
+Related functions:
 \code{\link{E}}, \code{\link{P}}
 }
 \author{

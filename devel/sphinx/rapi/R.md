@@ -33,7 +33,7 @@ A list of class `realtest_descriptor`, see [`P`](https://realtest.gagolewski.com
 
 The official online manual of <span class="pkg">realtest</span> at <https://realtest.gagolewski.com/>
 
-[`E`](https://realtest.gagolewski.com/rapi/E.html), [`P`](https://realtest.gagolewski.com/rapi/P.html)
+Related functions: [`E`](https://realtest.gagolewski.com/rapi/E.html), [`P`](https://realtest.gagolewski.com/rapi/P.html)
 
 ## Examples
 

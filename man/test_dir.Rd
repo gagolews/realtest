@@ -47,6 +47,7 @@ stopifnot(sum(s[["match"]]=="fail") == 0)  # halt if there are failed tests
 \seealso{
 The official online manual of \pkg{realtest} at \url{https://realtest.gagolewski.com/}
 
+Related functions:
 \code{\link{source2}}, \code{\link{summary.realtest_results}}
 }
 \author{

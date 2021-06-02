@@ -38,7 +38,7 @@ Returns a list of all test results (of class `realtest_results`), each being an 
 
 The official online manual of <span class="pkg">realtest</span> at <https://realtest.gagolewski.com/>
 
-[`source2`](https://realtest.gagolewski.com/rapi/source2.html), [`summary.realtest_results`](https://realtest.gagolewski.com/rapi/summary.realtest_results.html)
+Related functions: [`source2`](https://realtest.gagolewski.com/rapi/source2.html), [`summary.realtest_results`](https://realtest.gagolewski.com/rapi/summary.realtest_results.html)
 
 ## Examples
 
@@ -52,7 +52,7 @@ print(s)  # print.realtest_results_summary
 ## *** realtest: test summary:
 ##                                                   
 ##                                                    current good pass fail
-##   /home/gagolews/R/realtest/tests/realtest-basic.R       0    0    8    0
+##   /home/gagolews/R/realtest/tests/realtest-basic.R       0    0    9    0
 ##   /home/gagolews/R/realtest/tests/realtest-named.R       1    1    6    0
 ## 
 ## *** realtest: all tests succeeded

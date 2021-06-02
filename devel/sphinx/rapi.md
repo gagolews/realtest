@@ -11,6 +11,6 @@ rapi/P
 rapi/postprocessors
 rapi/R
 rapi/source2
-rapi/summary_results
+rapi/summary.realtest_results
 rapi/test_dir
 ```

@@ -111,9 +111,12 @@ E(sin(pi), ideal=0.0, expected=P(0.0, value_comparer=all.equal),
   .comment="well, this is not a symbolic language after all...")
 
 }
-\author{
-\href{https://www.gagolewski.com/}{Marek Gagolewski}
-}
 \seealso{
 The official online manual of \pkg{realtest} at \url{https://realtest.gagolewski.com/}
+
+Related functions:
+\code{\link{P}}, \code{\link{R}}, \code{\link{test_dir}}
+}
+\author{
+\href{https://www.gagolewski.com/}{Marek Gagolewski}
 }

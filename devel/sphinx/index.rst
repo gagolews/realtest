@@ -82,9 +82,9 @@ Some examples:
 
 Labels `desired`, `current`, `undesired`, `good`, `better`,
 `bad`, `worst`, etc., are not hard-coded – you choose the vocabulary yourself.
-You can then summarise the results and customise them to your liking
+You can then summarise/visualise/analyse/customise the results to your liking
 (e.g., how many `good` or `bad` instances have been caught) –
-it is up to you: the test outcomes are represented as ordinary R lists.
+the test outcomes are represented as ordinary R lists.
 
 
 Pros:
@@ -93,7 +93,9 @@ Pros:
 * general and flexible – can be easily adapted to suit your needs,
 * economic – an expression under scrutiny is evaluated once and
   all its different effects can be examined in a single unit,
-* organised – makes planning future features/improved behaviour easier.
+* organised – makes planning future features/improved behaviour easier,
+* analysable – introduces data science to unit testing: what story
+  can you tell based on the observed facts?
 
 
 Cons:
