@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.1.2
               </div>
             
           
@@ -112,8 +112,8 @@
 <li class="toctree-l1"><a class="reference internal" href="about_realtest.html">about_realtest: Where Expectations Meet Reality: Realistic Unit Testing in R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comparers.html">comparers: Example Object and Side Effect Comparers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="postprocessors.html">postprocessors: Example Test Result Postprocessors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="realtest_results.html">realtest_results: Summarise and Display Test Results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source2.html">source2: Read and Evaluate Code from an R Script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.realtest_results.html">summary.realtest_results: Summarise and Display Test Results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test_dir.html">test_dir: Gather All Test Results From R Scripts</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Other</span></p>
@@ -224,27 +224,27 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">expr</span></code></p></td>
-<td><p>an expression to be recorded (via <a class="reference external" href="https://realtest.gagolewski.com/rapi/R.html"><code class="docutils literal notranslate"><span class="pre">R</span></code></a>) and and compared with the prototypes</p></td>
+<td><p>an expression to be recorded (via <a class="reference internal" href="R.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">R</span></code></span></a>) and and compared with the prototypes</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
-<td><p>a sequence of 1 or more (possibly named) prototypes constructed via <a class="reference external" href="https://realtest.gagolewski.com/rapi/R.html"><code class="docutils literal notranslate"><span class="pre">R</span></code></a> or <a class="reference external" href="https://realtest.gagolewski.com/rapi/P.html"><code class="docutils literal notranslate"><span class="pre">P</span></code></a> (objects which are not of class <code class="docutils literal notranslate"><span class="pre">realtest_descriptor</span></code> will be passed to <a class="reference external" href="https://realtest.gagolewski.com/rapi/P.html"><code class="docutils literal notranslate"><span class="pre">P</span></code></a>); arguments whose names start with a dot (like <code class="docutils literal notranslate"><span class="pre">.label=value</span></code>) can be used to introduce metadata (e.g., additional details in natural language)</p></td>
+<td><p>a sequence of 1 or more (possibly named) prototypes constructed via <a class="reference internal" href="R.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">R</span></code></span></a> or <a class="reference internal" href="P.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">P</span></code></span></a> (objects which are not of class <code class="docutils literal notranslate"><span class="pre">realtest_descriptor</span></code> will be passed to <a class="reference internal" href="P.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">P</span></code></span></a>); arguments whose names start with a dot (like <code class="docutils literal notranslate"><span class="pre">.label=value</span></code>) can be used to introduce metadata (e.g., additional details in natural language)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">value_comparer</span></code></p></td>
-<td><p>a two-argument function used (unless overridden by the prototype) to compare the values with each other, e.g., <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/identical.html"><code class="docutils literal notranslate"><span class="pre">identical</span></code></a> or <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/all.equal.html"><code class="docutils literal notranslate"><span class="pre">all.equal</span></code></a></p></td>
+<td><p>a two-argument function used (unless overridden by the prototype) to compare the values with each other, e.g., <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/identical.html"><code class="docutils literal notranslate"><span class="pre">identical</span></code></a> or <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/all.equal.html"><code class="docutils literal notranslate"><span class="pre">all.equal</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sides_comparer</span></code></p></td>
-<td><p>a two-argument function used (unless overridden by the prototype) to compare the side effects (essentially: two lists) with each other, e.g., <a class="reference external" href="https://realtest.gagolewski.com/rapi/maps_identical_or_TRUE.html"><code class="docutils literal notranslate"><span class="pre">maps_identical_or_TRUE</span></code></a> or <a class="reference external" href="https://realtest.gagolewski.com/rapi/ignore_differences.html"><code class="docutils literal notranslate"><span class="pre">ignore_differences</span></code></a></p></td>
+<td><p>a two-argument function used (unless overridden by the prototype) to compare the side effects (essentially: two lists) with each other, e.g., <a class="reference internal" href="comparers.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">maps_identical_or_TRUE</span></code></span></a> or <a class="reference internal" href="comparers.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">ignore_differences</span></code></span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">postprocessor</span></code></p></td>
-<td><p>a function to call on the generated <code class="docutils literal notranslate"><span class="pre">realtest_result</span></code>, e.g., <a class="reference external" href="https://realtest.gagolewski.com/rapi/failstop.html"><code class="docutils literal notranslate"><span class="pre">failstop</span></code></a></p></td>
+<td><p>a function to call on the generated <code class="docutils literal notranslate"><span class="pre">realtest_result</span></code>, e.g., <a class="reference internal" href="postprocessors.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">failstop</span></code></span></a></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="details">
 <h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
-<p>Each R expression has a range of possible effects. The direct effect corresponds to the value generated by evaluating the expression. Side effects may include errors, warnings, text printed out on the console, etc., see <a class="reference external" href="https://realtest.gagolewski.com/rapi/P.html"><code class="docutils literal notranslate"><span class="pre">P</span></code></a> and <a class="reference external" href="https://realtest.gagolewski.com/rapi/R.html"><code class="docutils literal notranslate"><span class="pre">R</span></code></a>.</p>
-<p>Arguments passed via <code class="docutils literal notranslate"><span class="pre">...</span></code> whose names do not start with a dot should be objects of class <code class="docutils literal notranslate"><span class="pre">realtest_descriptor</span></code> (otherwise they are passed to <a class="reference external" href="https://realtest.gagolewski.com/rapi/P.html"><code class="docutils literal notranslate"><span class="pre">P</span></code></a>). They define the prototypes against which the object generated by computing <code class="docutils literal notranslate"><span class="pre">expr</span></code> will be tested.</p>
+<p>Each R expression has a range of possible effects. The direct effect corresponds to the value generated by evaluating the expression. Side effects may include errors, warnings, text printed out on the console, etc., see <a class="reference internal" href="P.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">P</span></code></span></a> and <a class="reference internal" href="R.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">R</span></code></span></a>.</p>
+<p>Arguments passed via <code class="docutils literal notranslate"><span class="pre">...</span></code> whose names do not start with a dot should be objects of class <code class="docutils literal notranslate"><span class="pre">realtest_descriptor</span></code> (otherwise they are passed to <a class="reference internal" href="P.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">P</span></code></span></a>). They define the prototypes against which the object generated by computing <code class="docutils literal notranslate"><span class="pre">expr</span></code> will be tested.</p>
 <p><code class="docutils literal notranslate"><span class="pre">value_comparer</span></code> and <code class="docutils literal notranslate"><span class="pre">sides_comparer</span></code> are 2-ary functions that return <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> if two objects/side effects are equivalent and a character string summarising the differences (or any other kind or object) otherwise.</p>
 <p>The test case is considered as met, whenever <code class="docutils literal notranslate"><span class="pre">value_comparer(prototype[[&quot;value&quot;]],</span> <span class="pre">object[[&quot;value&quot;]])</span></code> and <code class="docutils literal notranslate"><span class="pre">sides_comparer(prototype[[&quot;sides&quot;]],</span> <span class="pre">object[[&quot;sides&quot;]])</span></code> are both <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> for some <code class="docutils literal notranslate"><span class="pre">prototype</span></code>. The comparers may be overridden on a per-prototype basis, though. If <code class="docutils literal notranslate"><span class="pre">prototype[[&quot;value_comparer&quot;]]</span></code> or <code class="docutils literal notranslate"><span class="pre">prototype[[&quot;sides_comparer&quot;]]</span></code> are defined, these are used instead.</p>
 </div>
@@ -252,7 +252,7 @@
 <h2>Value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
 <p>The function creates an object of class <code class="docutils literal notranslate"><span class="pre">realtest_result</span></code>, which is a named list with the following components:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">object</span></code> – an object of class <code class="docutils literal notranslate"><span class="pre">realtest_descriptor</span></code>, ultimately <a class="reference external" href="https://realtest.gagolewski.com/rapi/R.html"><code class="docutils literal notranslate"><span class="pre">R</span></code></a>(expr),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">object</span></code> – an object of class <code class="docutils literal notranslate"><span class="pre">realtest_descriptor</span></code>, ultimately <code class="docutils literal notranslate"><span class="pre">R(expr)</span></code>,</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">prototypes</span></code> – a (possibly named) list of objects of class <code class="docutils literal notranslate"><span class="pre">realtest_descriptor</span></code> that were passed via <code class="docutils literal notranslate"><span class="pre">...</span></code>,</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">matches</span></code> – a (possibly empty) numeric vector of the indexes of the prototypes matching the object (can be named),</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.dotted.names</span></code> – copied as-is from the arguments of the same name.</p></li>
@@ -266,6 +266,7 @@
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <p>The official online manual of <span class="pkg">realtest</span> at <a class="reference external" href="https://realtest.gagolewski.com/">https://realtest.gagolewski.com/</a></p>
+<p>Related functions: <a class="reference internal" href="P.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">P</span></code></span></a>, <a class="reference internal" href="R.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">R</span></code></span></a>, <a class="reference internal" href="test_dir.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">test_dir</span></code></span></a></p>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
@@ -314,7 +315,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-06-01 19:42:47.
+        Last updated on 2021-06-03 13:28:29.
       </span>
 
     </p>

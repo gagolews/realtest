@@ -2,7 +2,7 @@
 
 ## Description
 
-Evaluates an expression and records its direct and indirect effects: the resulting value as well as the information whether any errors, warnings, or messages are generated and if anything on [`stdout`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/stdout.html) or [`stderr`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/stderr.html) is printed.
+Evaluates an expression and records its direct and indirect effects: the resulting value as well as the information whether any errors, warnings, or messages are generated and if anything on [`stdout`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stdout.html) or [`stderr`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stderr.html) is printed.
 
 ## Usage
 
@@ -12,10 +12,10 @@ R(expr, ...)
 
 ## Arguments
 
-|        |                                                                                      |
-|--------|--------------------------------------------------------------------------------------|
-| `expr` | a formal argument to be evaluated                                                    |
-| `...`  | further arguments to be passed to [`P`](https://realtest.gagolewski.com/rapi/P.html) |
+|        |                                               |
+|--------|-----------------------------------------------|
+| `expr` | a formal argument to be evaluated             |
+| `...`  | further arguments to be passed to [`P`](P.md) |
 
 ## Details
 
@@ -23,7 +23,7 @@ There may be other side effects, such as changing the state of the random number
 
 ## Value
 
-A list of class `realtest_descriptor`, see [`P`](https://realtest.gagolewski.com/rapi/P.html), which this function calls. The additional named component `expr` gives the expression used to generate the `value`.
+A list of class `realtest_descriptor`, see [`P`](P.md), which this function calls. The additional named component `expr` gives the expression used to generate the `value`.
 
 ## Author(s)
 
@@ -33,7 +33,7 @@ A list of class `realtest_descriptor`, see [`P`](https://realtest.gagolewski.com
 
 The official online manual of <span class="pkg">realtest</span> at <https://realtest.gagolewski.com/>
 
-Related functions: [`E`](https://realtest.gagolewski.com/rapi/E.html), [`P`](https://realtest.gagolewski.com/rapi/P.html)
+Related functions: [`E`](E.md), [`P`](P.md)
 
 ## Examples
 

@@ -2,7 +2,7 @@
 
 ## Description
 
-A simplified alternative to [`source`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/source.html), which additionally sets some environment variables whilst executing a series of expressions to ease debugging.
+A simplified alternative to [`source`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/source.html), which additionally sets some environment variables whilst executing a series of expressions to ease debugging.
 
 ## Usage
 
@@ -12,10 +12,10 @@ source2(file, local = FALSE)
 
 ## Arguments
 
-|         |                                                                                                                                                      |
-|---------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `file`  | usually a file name, see [`parse`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/parse.html)                                             |
-| `local` | specifies the environment where expressions will be evaluated, see [`source`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/source.html) |
+|         |                                                                                                                                                    |
+|---------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| `file`  | usually a file name, see [`parse`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/parse.html)                                             |
+| `local` | specifies the environment where expressions will be evaluated, see [`source`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/source.html) |
 
 ## Details
 
@@ -45,13 +45,12 @@ The official online manual of <span class="pkg">realtest</span> at <https://real
 
 
 ```r
-## Not run: 
-## example error handler - report source file and line number
-# options(error=function()
-#    cat(sprintf(
-#        "Error in %s:%s.\n", Sys.getenv("__FILE__"), Sys.getenv("__LINE__")
-#    ), file=stderr()))
-# source2("a_script_throwing_some_errors.R", local=new.env())
-
-## End(Not run)
+# example error handler - report source file and line number
+old_option_error <- getOption("error")
+options(error=function()
+   cat(sprintf(
+       "Error in %s:%s.\n", Sys.getenv("__FILE__"), Sys.getenv("__LINE__")
+   ), file=stderr()))
+# now call source2() to execute an R script that throws some errors...
+options(error=old_option_error)  # cleanup
 ```

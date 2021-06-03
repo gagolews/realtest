@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.1.2
               </div>
             
           
@@ -101,8 +101,8 @@
 <li class="toctree-l1"><a class="reference internal" href="rapi/about_realtest.html">about_realtest: Where Expectations Meet Reality: Realistic Unit Testing in R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/comparers.html">comparers: Example Object and Side Effect Comparers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/postprocessors.html">postprocessors: Example Test Result Postprocessors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rapi/realtest_results.html">realtest_results: Summarise and Display Test Results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/source2.html">source2: Read and Evaluate Code from an R Script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/summary.realtest_results.html">summary.realtest_results: Summarise and Display Test Results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/test_dir.html">test_dir: Gather All Test Results From R Scripts</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Other</span></p>
@@ -111,8 +111,9 @@
 <li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/realtest/issues">Bug Tracker and Feature Suggestions</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.gagolewski.com/">Author's Homepage</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">What Is New in <em>realtest</em></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">0.1.1 (2021-06-01)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">0.0.0 (2021-05-27)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">0.1.2 (2021-06-03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">0.1.1 (2021-06-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">0.0.0 (2021-05-27)</a></li>
 </ul>
 </li>
 </ul>
@@ -190,7 +191,15 @@
   <div class="section" id="what-is-new-in-realtest">
 <h1>What Is New in <em>realtest</em><a class="headerlink" href="#what-is-new-in-realtest" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>0.1.1 (2021-06-01)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>0.1.2 (2021-06-03)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>[BUGFIX] <code class="docutils literal notranslate"><span class="pre">test_dir</span></code> does not modify the global environment anymore.</p></li>
+<li><p>[BUGFIX] <code class="docutils literal notranslate"><span class="pre">test_dir</span></code> now evaluates tests in a temporary environment
+whose parent is the caller’s envir, not <code class="docutils literal notranslate"><span class="pre">namespace:realtest</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>0.1.1 (2021-06-01)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>[NEW FEATURE] Core functions: <code class="docutils literal notranslate"><span class="pre">E</span></code>, <code class="docutils literal notranslate"><span class="pre">P</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p></li>
 <li><p>[NEW FEATURE] Example comparers.</p></li>
@@ -198,8 +207,8 @@
 <li><p>[NEW FEATURE] <code class="docutils literal notranslate"><span class="pre">test_dir</span></code>.</p></li>
 </ul>
 </div>
-<div class="section" id="id2">
-<h2>0.0.0 (2021-05-27)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>0.0.0 (2021-05-27)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>The <em>realtest</em> project has been established.</p></li>
 </ul>
@@ -221,7 +230,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-06-01 19:42:47.
+        Last updated on 2021-06-03 13:28:29.
       </span>
 
     </p>

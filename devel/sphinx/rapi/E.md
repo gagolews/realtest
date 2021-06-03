@@ -18,19 +18,19 @@ E(
 
 ## Arguments
 
-|                  |                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `expr`           | an expression to be recorded (via [`R`](https://realtest.gagolewski.com/rapi/R.html)) and and compared with the prototypes                                                                                                                                                                                                                                                                                                                              |
-| `...`            | a sequence of 1 or more (possibly named) prototypes constructed via [`R`](https://realtest.gagolewski.com/rapi/R.html) or [`P`](https://realtest.gagolewski.com/rapi/P.html) (objects which are not of class `realtest_descriptor` will be passed to [`P`](https://realtest.gagolewski.com/rapi/P.html)); arguments whose names start with a dot (like `.label=value`) can be used to introduce metadata (e.g., additional details in natural language) |
-| `value_comparer` | a two-argument function used (unless overridden by the prototype) to compare the values with each other, e.g., [`identical`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/identical.html) or [`all.equal`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/all.equal.html)                                                                                                                                                       |
-| `sides_comparer` | a two-argument function used (unless overridden by the prototype) to compare the side effects (essentially: two lists) with each other, e.g., [`maps_identical_or_TRUE`](https://realtest.gagolewski.com/rapi/maps_identical_or_TRUE.html) or [`ignore_differences`](https://realtest.gagolewski.com/rapi/ignore_differences.html)                                                                                                                      |
-| `postprocessor`  | a function to call on the generated `realtest_result`, e.g., [`failstop`](https://realtest.gagolewski.com/rapi/failstop.html)                                                                                                                                                                                                                                                                                                                           |
+|                  |                                                                                                                                                                                                                                                                                                                                    |
+|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `expr`           | an expression to be recorded (via [`R`](R.md)) and and compared with the prototypes                                                                                                                                                                                                                                                |
+| `...`            | a sequence of 1 or more (possibly named) prototypes constructed via [`R`](R.md) or [`P`](P.md) (objects which are not of class `realtest_descriptor` will be passed to [`P`](P.md)); arguments whose names start with a dot (like `.label=value`) can be used to introduce metadata (e.g., additional details in natural language) |
+| `value_comparer` | a two-argument function used (unless overridden by the prototype) to compare the values with each other, e.g., [`identical`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/identical.html) or [`all.equal`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/all.equal.html)                                      |
+| `sides_comparer` | a two-argument function used (unless overridden by the prototype) to compare the side effects (essentially: two lists) with each other, e.g., [`maps_identical_or_TRUE`](comparers.md) or [`ignore_differences`](comparers.md)                                                                                                     |
+| `postprocessor`  | a function to call on the generated `realtest_result`, e.g., [`failstop`](postprocessors.md)                                                                                                                                                                                                                                       |
 
 ## Details
 
-Each R expression has a range of possible effects. The direct effect corresponds to the value generated by evaluating the expression. Side effects may include errors, warnings, text printed out on the console, etc., see [`P`](https://realtest.gagolewski.com/rapi/P.html) and [`R`](https://realtest.gagolewski.com/rapi/R.html).
+Each R expression has a range of possible effects. The direct effect corresponds to the value generated by evaluating the expression. Side effects may include errors, warnings, text printed out on the console, etc., see [`P`](P.md) and [`R`](R.md).
 
-Arguments passed via `...` whose names do not start with a dot should be objects of class `realtest_descriptor` (otherwise they are passed to [`P`](https://realtest.gagolewski.com/rapi/P.html)). They define the prototypes against which the object generated by computing `expr` will be tested.
+Arguments passed via `...` whose names do not start with a dot should be objects of class `realtest_descriptor` (otherwise they are passed to [`P`](P.md)). They define the prototypes against which the object generated by computing `expr` will be tested.
 
 `value_comparer` and `sides_comparer` are 2-ary functions that return `TRUE` if two objects/side effects are equivalent and a character string summarising the differences (or any other kind or object) otherwise.
 
@@ -40,7 +40,7 @@ The test case is considered as met, whenever `value_comparer(prototype[["value"]
 
 The function creates an object of class `realtest_result`, which is a named list with the following components:
 
--   `object` -- an object of class `realtest_descriptor`, ultimately [`R`](https://realtest.gagolewski.com/rapi/R.html)(expr),
+-   `object` -- an object of class `realtest_descriptor`, ultimately `R(expr)`,
 
 -   `prototypes` -- a (possibly named) list of objects of class `realtest_descriptor` that were passed via `...`,
 
@@ -58,7 +58,7 @@ This object is then passed to the `postprocessor` which itself becomes responsib
 
 The official online manual of <span class="pkg">realtest</span> at <https://realtest.gagolewski.com/>
 
-Related functions: [`P`](https://realtest.gagolewski.com/rapi/P.html), [`R`](https://realtest.gagolewski.com/rapi/R.html), [`test_dir`](https://realtest.gagolewski.com/rapi/test_dir.html)
+Related functions: [`P`](P.md), [`R`](R.md), [`test_dir`](test_dir.md)
 
 ## Examples
 

@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.1.2
               </div>
             
           
@@ -101,8 +101,8 @@
 <li class="toctree-l1"><a class="reference internal" href="rapi/about_realtest.html">about_realtest: Where Expectations Meet Reality: Realistic Unit Testing in R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/comparers.html">comparers: Example Object and Side Effect Comparers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/postprocessors.html">postprocessors: Example Test Result Postprocessors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rapi/realtest_results.html">realtest_results: Summarise and Display Test Results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/source2.html">source2: Read and Evaluate Code from an R Script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/summary.realtest_results.html">summary.realtest_results: Summarise and Display Test Results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/test_dir.html">test_dir: Gather All Test Results From R Scripts</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Other</span></p>
@@ -270,16 +270,18 @@ a pairwise comparer provided) and stores the matching one (if any).</p>
 </div>
 <p>Labels <cite>desired</cite>, <cite>current</cite>, <cite>undesired</cite>, <cite>good</cite>, <cite>better</cite>,
 <cite>bad</cite>, <cite>worst</cite>, etc., are not hard-coded – you choose the vocabulary yourself.
-You can then summarise the results and customise them to your liking
+You can then summarise/visualise/analyse/customise the results to your liking
 (e.g., how many <cite>good</cite> or <cite>bad</cite> instances have been caught) –
-it is up to you: the test outcomes are represented as ordinary R lists.</p>
+the test outcomes are represented as ordinary R lists.</p>
 <p>Pros:</p>
 <ul class="simple">
 <li><p>minimalistic – clean design and non-overwhelming vocabulary,</p></li>
 <li><p>general and flexible – can be easily adapted to suit your needs,</p></li>
 <li><p>economic – an expression under scrutiny is evaluated once and
 all its different effects can be examined in a single unit,</p></li>
-<li><p>organised – makes planning future features/improved behaviour easier.</p></li>
+<li><p>organised – makes planning future features/improved behaviour easier,</p></li>
+<li><p>analysable – introduces data science to unit testing: what story
+can you tell based on the observed facts?</p></li>
 </ul>
 <p>Cons:</p>
 <ul class="simple">
@@ -364,16 +366,6 @@ GNU General Public License, either Version 2 or Version 3, see
 <li class="toctree-l2"><a class="reference internal" href="rapi/postprocessors.html#see-also">See Also</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="rapi/realtest_results.html">realtest_results: Summarise and Display Test Results</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rapi/realtest_results.html#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/realtest_results.html#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/realtest_results.html#arguments">Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/realtest_results.html#value">Value</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/realtest_results.html#author-s">Author(s)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/realtest_results.html#see-also">See Also</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/realtest_results.html#examples">Examples</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/source2.html">source2: Read and Evaluate Code from an R Script</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="rapi/source2.html#description">Description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rapi/source2.html#usage">Usage</a></li>
@@ -383,6 +375,16 @@ GNU General Public License, either Version 2 or Version 3, see
 <li class="toctree-l2"><a class="reference internal" href="rapi/source2.html#author-s">Author(s)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rapi/source2.html#see-also">See Also</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rapi/source2.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/summary.realtest_results.html">summary.realtest_results: Summarise and Display Test Results</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rapi/summary.realtest_results.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rapi/summary.realtest_results.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rapi/summary.realtest_results.html#arguments">Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rapi/summary.realtest_results.html#value">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rapi/summary.realtest_results.html#author-s">Author(s)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rapi/summary.realtest_results.html#see-also">See Also</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rapi/summary.realtest_results.html#examples">Examples</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/test_dir.html">test_dir: Gather All Test Results From R Scripts</a><ul>
@@ -403,11 +405,7 @@ GNU General Public License, either Version 2 or Version 3, see
 <li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/realtest">Source Code (GitHub)</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/realtest/issues">Bug Tracker and Feature Suggestions</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.gagolewski.com/">Author's Homepage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="news.html">What Is New in <em>realtest</em></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="news.html#id1">0.1.1 (2021-06-01)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="news.html#id2">0.0.0 (2021-05-27)</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">What Is New in <em>realtest</em></a></li>
 </ul>
 </div>
 </div>
@@ -427,7 +425,7 @@ GNU General Public License, either Version 2 or Version 3, see
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-06-01 19:42:47.
+        Last updated on 2021-06-03 13:28:29.
       </span>
 
     </p>

@@ -21,12 +21,12 @@ P(
 
 ## Arguments
 
-|                                  |                                                                                                                                                                                                                                                                                                                                                                            |
-|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `value`                          | object (may be equipped with attributes)                                                                                                                                                                                                                                                                                                                                   |
-| `error, warning, message`        | [conditions](https://stat.ethz.ch/R-manual/R-patched/library/base/html/conditions.html) expected to occur, see [`stop`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/stop.html), [`warning`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/warning.html), and [`message`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/message.html) |
-| `stdout, stderr`                 | character data expected on [`stdout`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/stdout.html) and [`stderr`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/stderr.html), respectively                                                                                                                                                           |
-| `value_comparer, sides_comparer` | optional two-argument functions which may be used to override the default comparers used by [`E`](https://realtest.gagolewski.com/rapi/E.html)                                                                                                                                                                                                                             |
+|                                  |                                                                                                                                                                                                                                                                                                                                                                    |
+|----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `value`                          | object (may be equipped with attributes)                                                                                                                                                                                                                                                                                                                           |
+| `error, warning, message`        | [conditions](https://stat.ethz.ch/R-manual/R-devel/library/base/html/conditions.html) expected to occur, see [`stop`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stop.html), [`warning`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/warning.html), and [`message`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/message.html) |
+| `stdout, stderr`                 | character data expected on [`stdout`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stdout.html) and [`stderr`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stderr.html), respectively                                                                                                                                                       |
+| `value_comparer, sides_comparer` | optional two-argument functions which may be used to override the default comparers used by [`E`](E.md)                                                                                                                                                                                                                                                            |
 
 ## Details
 
@@ -40,7 +40,7 @@ P(
 
 Note that only one error can occur per a function call, hence `error` can only be a single string (or `NULL` or `TRUE`). When an error is expected, the `value` must be `NULL`.
 
-Typically, messages, warnings, and errors are written to [`stderr`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/stderr.html), but these are considered separately here. In other words, the expected `stderr` should not include the anticipated diagnostic messages.
+Typically, messages, warnings, and errors are written to [`stderr`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stderr.html), but these are considered separately here. In other words, the expected `stderr` should not include the anticipated diagnostic messages.
 
 ## Value
 
@@ -62,7 +62,7 @@ A list of class `realtest_descriptor` with named components:
 
 The official online manual of <span class="pkg">realtest</span> at <https://realtest.gagolewski.com/>
 
-[`E`](https://realtest.gagolewski.com/rapi/E.html), [`R`](https://realtest.gagolewski.com/rapi/R.html)
+Related functions: [`E`](E.md), [`R`](R.md)
 
 ## Examples
 

@@ -2,7 +2,7 @@
 
 ## Description
 
-Test result postprocessors are used in [`E`](https://realtest.gagolewski.com/rapi/E.html). `failstop` calls `str(r)` and throws an error if an expectation is not met, i.e., when `r[["matches"]]` is of length 0.
+Test result postprocessors are used in [`E`](E.md). `failstop` calls `str(r)` and throws an error if an expectation is not met, i.e., when `r[["matches"]]` is of length 0.
 
 ## Usage
 
@@ -12,9 +12,9 @@ failstop(r)
 
 ## Arguments
 
-|     |                                                                                           |
-|-----|-------------------------------------------------------------------------------------------|
-| `r` | object of class `realtest_result`, see [`E`](https://realtest.gagolewski.com/rapi/E.html) |
+|     |                                                    |
+|-----|----------------------------------------------------|
+| `r` | object of class `realtest_result`, see [`E`](E.md) |
 
 ## Details
 

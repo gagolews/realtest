@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.1.2
               </div>
             
           
@@ -112,8 +112,8 @@
 <li class="toctree-l1"><a class="reference internal" href="about_realtest.html">about_realtest: Where Expectations Meet Reality: Realistic Unit Testing in R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comparers.html">comparers: Example Object and Side Effect Comparers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="postprocessors.html">postprocessors: Example Test Result Postprocessors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="realtest_results.html">realtest_results: Summarise and Display Test Results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source2.html">source2: Read and Evaluate Code from an R Script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.realtest_results.html">summary.realtest_results: Summarise and Display Test Results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test_dir.html">test_dir: Gather All Test Results From R Scripts</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Other</span></p>
@@ -230,13 +230,13 @@
 <td><p>object (may be equipped with attributes)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">error,</span> <span class="pre">warning,</span> <span class="pre">message</span></code></p></td>
-<td><p><a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/conditions.html">conditions</a> expected to occur, see <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/stop.html"><code class="docutils literal notranslate"><span class="pre">stop</span></code></a>, <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/warning.html"><code class="docutils literal notranslate"><span class="pre">warning</span></code></a>, and <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/message.html"><code class="docutils literal notranslate"><span class="pre">message</span></code></a></p></td>
+<td><p><a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/conditions.html">conditions</a> expected to occur, see <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/stop.html"><code class="docutils literal notranslate"><span class="pre">stop</span></code></a>, <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/warning.html"><code class="docutils literal notranslate"><span class="pre">warning</span></code></a>, and <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/message.html"><code class="docutils literal notranslate"><span class="pre">message</span></code></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stdout,</span> <span class="pre">stderr</span></code></p></td>
-<td><p>character data expected on <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/stdout.html"><code class="docutils literal notranslate"><span class="pre">stdout</span></code></a> and <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/stderr.html"><code class="docutils literal notranslate"><span class="pre">stderr</span></code></a>, respectively</p></td>
+<td><p>character data expected on <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/stdout.html"><code class="docutils literal notranslate"><span class="pre">stdout</span></code></a> and <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/stderr.html"><code class="docutils literal notranslate"><span class="pre">stderr</span></code></a>, respectively</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">value_comparer,</span> <span class="pre">sides_comparer</span></code></p></td>
-<td><p>optional two-argument functions which may be used to override the default comparers used by <a class="reference external" href="https://realtest.gagolewski.com/rapi/E.html"><code class="docutils literal notranslate"><span class="pre">E</span></code></a></p></td>
+<td><p>optional two-argument functions which may be used to override the default comparers used by <a class="reference internal" href="E.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">E</span></code></span></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -250,7 +250,7 @@
 <li><p>character vector – a specific message/output is desired.</p></li>
 </ul>
 <p>Note that only one error can occur per a function call, hence <code class="docutils literal notranslate"><span class="pre">error</span></code> can only be a single string (or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> or <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>). When an error is expected, the <code class="docutils literal notranslate"><span class="pre">value</span></code> must be <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<p>Typically, messages, warnings, and errors are written to <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/stderr.html"><code class="docutils literal notranslate"><span class="pre">stderr</span></code></a>, but these are considered separately here. In other words, the expected <code class="docutils literal notranslate"><span class="pre">stderr</span></code> should not include the anticipated diagnostic messages.</p>
+<p>Typically, messages, warnings, and errors are written to <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/stderr.html"><code class="docutils literal notranslate"><span class="pre">stderr</span></code></a>, but these are considered separately here. In other words, the expected <code class="docutils literal notranslate"><span class="pre">stderr</span></code> should not include the anticipated diagnostic messages.</p>
 </div>
 <div class="section" id="value">
 <h2>Value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
@@ -269,7 +269,7 @@
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <p>The official online manual of <span class="pkg">realtest</span> at <a class="reference external" href="https://realtest.gagolewski.com/">https://realtest.gagolewski.com/</a></p>
-<p><a class="reference external" href="https://realtest.gagolewski.com/rapi/E.html"><code class="docutils literal notranslate"><span class="pre">E</span></code></a>, <a class="reference external" href="https://realtest.gagolewski.com/rapi/R.html"><code class="docutils literal notranslate"><span class="pre">R</span></code></a></p>
+<p>Related functions: <a class="reference internal" href="E.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">E</span></code></span></a>, <a class="reference internal" href="R.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">R</span></code></span></a></p>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
@@ -322,7 +322,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-06-01 19:42:47.
+        Last updated on 2021-06-03 13:28:29.
       </span>
 
     </p>

@@ -6,7 +6,7 @@
 \usage{
 test_dir(
   path = "tests",
-  pattern = "^realtest-.*\\\\.R",
+  pattern = "^realtest-.*\\\\.R$",
   recursive = FALSE,
   ignore.case = FALSE
 )

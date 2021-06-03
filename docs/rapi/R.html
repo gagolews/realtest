@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.1.2
               </div>
             
           
@@ -112,8 +112,8 @@
 <li class="toctree-l1"><a class="reference internal" href="about_realtest.html">about_realtest: Where Expectations Meet Reality: Realistic Unit Testing in R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comparers.html">comparers: Example Object and Side Effect Comparers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="postprocessors.html">postprocessors: Example Test Result Postprocessors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="realtest_results.html">realtest_results: Summarise and Display Test Results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source2.html">source2: Read and Evaluate Code from an R Script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.realtest_results.html">summary.realtest_results: Summarise and Display Test Results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test_dir.html">test_dir: Gather All Test Results From R Scripts</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Other</span></p>
@@ -200,7 +200,7 @@
 <h1>R: Create a Result Descriptor by Recording Effects of an Expression Evaluation<a class="headerlink" href="#r-create-a-result-descriptor-by-recording-effects-of-an-expression-evaluation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>Evaluates an expression and records its direct and indirect effects: the resulting value as well as the information whether any errors, warnings, or messages are generated and if anything on <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/stdout.html"><code class="docutils literal notranslate"><span class="pre">stdout</span></code></a> or <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/stderr.html"><code class="docutils literal notranslate"><span class="pre">stderr</span></code></a> is printed.</p>
+<p>Evaluates an expression and records its direct and indirect effects: the resulting value as well as the information whether any errors, warnings, or messages are generated and if anything on <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/stdout.html"><code class="docutils literal notranslate"><span class="pre">stdout</span></code></a> or <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/stderr.html"><code class="docutils literal notranslate"><span class="pre">stderr</span></code></a> is printed.</p>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
@@ -221,7 +221,7 @@
 <td><p>a formal argument to be evaluated</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
-<td><p>further arguments to be passed to <a class="reference external" href="https://realtest.gagolewski.com/rapi/P.html"><code class="docutils literal notranslate"><span class="pre">P</span></code></a></p></td>
+<td><p>further arguments to be passed to <a class="reference internal" href="P.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">P</span></code></span></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -232,7 +232,7 @@
 </div>
 <div class="section" id="value">
 <h2>Value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
-<p>A list of class <code class="docutils literal notranslate"><span class="pre">realtest_descriptor</span></code>, see <a class="reference external" href="https://realtest.gagolewski.com/rapi/P.html"><code class="docutils literal notranslate"><span class="pre">P</span></code></a>, which this function calls. The additional named component <code class="docutils literal notranslate"><span class="pre">expr</span></code> gives the expression used to generate the <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+<p>A list of class <code class="docutils literal notranslate"><span class="pre">realtest_descriptor</span></code>, see <a class="reference internal" href="P.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">P</span></code></span></a>, which this function calls. The additional named component <code class="docutils literal notranslate"><span class="pre">expr</span></code> gives the expression used to generate the <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
 </div>
 <div class="section" id="author-s">
 <h2>Author(s)<a class="headerlink" href="#author-s" title="Permalink to this headline">¶</a></h2>
@@ -241,7 +241,7 @@
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <p>The official online manual of <span class="pkg">realtest</span> at <a class="reference external" href="https://realtest.gagolewski.com/">https://realtest.gagolewski.com/</a></p>
-<p><a class="reference external" href="https://realtest.gagolewski.com/rapi/E.html"><code class="docutils literal notranslate"><span class="pre">E</span></code></a>, <a class="reference external" href="https://realtest.gagolewski.com/rapi/P.html"><code class="docutils literal notranslate"><span class="pre">P</span></code></a></p>
+<p>Related functions: <a class="reference internal" href="E.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">E</span></code></span></a>, <a class="reference internal" href="P.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">P</span></code></span></a></p>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
@@ -317,7 +317,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-06-01 19:42:47.
+        Last updated on 2021-06-03 13:28:29.
       </span>
 
     </p>

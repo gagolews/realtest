@@ -16,13 +16,13 @@ summary(object, label_pass = "pass", label_fail = "fail", ...)
 
 ## Arguments
 
-|              |                                                                                                     |
-|--------------|-----------------------------------------------------------------------------------------------------|
-| `x`          | object returned by `summary.realtest_results`                                                       |
-| `label_fail` | single string labelling failed test cases                                                           |
-| `...`        | currently ignored                                                                                   |
-| `object`     | list of objects of class `realtest_result`, see [`E`](https://realtest.gagolewski.com/rapi/E.html). |
-| `label_pass` | single string denoting the default name for unnamed prototypes                                      |
+|              |                                                                |
+|--------------|----------------------------------------------------------------|
+| `x`          | object returned by `summary.realtest_results`                  |
+| `label_fail` | single string labelling failed test cases                      |
+| `...`        | currently ignored                                              |
+| `object`     | list of objects of class `realtest_result`, see [`E`](E.md).   |
+| `label_pass` | single string denoting the default name for unnamed prototypes |
 
 ## Value
 
@@ -48,7 +48,7 @@ summary(object, label_pass = "pass", label_fail = "fail", ...)
 
 The official online manual of <span class="pkg">realtest</span> at <https://realtest.gagolewski.com/>
 
-Related functions: [`test_dir`](https://realtest.gagolewski.com/rapi/test_dir.html)
+Related functions: [`test_dir`](test_dir.md)
 
 ## Examples
 

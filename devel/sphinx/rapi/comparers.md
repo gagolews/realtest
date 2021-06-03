@@ -2,7 +2,7 @@
 
 ## Description
 
-Two-argument functions to compare direct or indirect effects of two test descriptors (see [`P`](https://realtest.gagolewski.com/rapi/P.html) and [`R`](https://realtest.gagolewski.com/rapi/R.html)). These can be passed as `value_comparer` and `sides_comparer` to [`E`](https://realtest.gagolewski.com/rapi/E.html).
+Two-argument functions to compare direct or indirect effects of two test descriptors (see [`P`](P.md) and [`R`](R.md)). These can be passed as `value_comparer` and `sides_comparer` to [`E`](E.md).
 
 ## Usage
 
@@ -23,7 +23,7 @@ maps_identical_or_TRUE(x, y)
 
 ## Details
 
-Notable built-in (base R) comparers include [`identical`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/identical.html) (the strictest possible) and [`all.equal`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/all.equal.html) (can ignore, amongst others, round-off errors).
+Notable built-in (base R) comparers include [`identical`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/identical.html) (the strictest possible) and [`all.equal`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/all.equal.html) (can ignore, amongst others, round-off errors).
 
 `ignore_differences` is a dummy comparer that always returns `TRUE`. Hence, it does not discriminate between anything.
 
@@ -45,7 +45,7 @@ and so forth.
 
 ## Value
 
-Each comparer should yield `TRUE` if the test condition is considered met or anything else otherwise. However, it is highly recommended that in the latter case, a single string with a short summary of the differences is returned, as in [`all.equal`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/all.equal.html).
+Each comparer should yield `TRUE` if the test condition is considered met or anything else otherwise. However, it is highly recommended that in the latter case, a single string with a short summary of the differences is returned, as in [`all.equal`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/all.equal.html).
 
 ## Author(s)
 

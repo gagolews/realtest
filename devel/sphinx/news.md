@@ -1,7 +1,7 @@
 # What Is New in *realtest*
 
 
-## 0.1.1.9001 (to-be >= 0.1.2) (2021-XX-YY)
+## 0.1.2 (2021-06-03)
 
 * [BUGFIX] `test_dir` does not modify the global environment anymore.
 * [BUGFIX] `test_dir` now evaluates tests in a temporary environment

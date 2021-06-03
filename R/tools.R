@@ -156,7 +156,7 @@ source2 <- function(file, local=FALSE)
 #' @export
 test_dir <- function(
     path="tests",
-    pattern="^realtest-.*\\.R",
+    pattern="^realtest-.*\\.R$",
     recursive=FALSE,
     ignore.case=FALSE
 ) {

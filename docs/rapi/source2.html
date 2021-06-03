@@ -40,8 +40,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="test_dir: Gather All Test Results From R Scripts" href="test_dir.html" />
-    <link rel="prev" title="realtest_results: Summarise and Display Test Results" href="realtest_results.html" /> 
+    <link rel="next" title="summary.realtest_results: Summarise and Display Test Results" href="summary.realtest_results.html" />
+    <link rel="prev" title="postprocessors: Example Test Result Postprocessors" href="postprocessors.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.1.2
               </div>
             
           
@@ -102,7 +102,6 @@
 <li class="toctree-l1"><a class="reference internal" href="about_realtest.html">about_realtest: Where Expectations Meet Reality: Realistic Unit Testing in R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comparers.html">comparers: Example Object and Side Effect Comparers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="postprocessors.html">postprocessors: Example Test Result Postprocessors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="realtest_results.html">realtest_results: Summarise and Display Test Results</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">source2: Read and Evaluate Code from an R Script</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
@@ -114,6 +113,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="summary.realtest_results.html">summary.realtest_results: Summarise and Display Test Results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test_dir.html">test_dir: Gather All Test Results From R Scripts</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Other</span></p>
@@ -184,10 +184,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="test_dir.html" class="btn btn-neutral float-right" title="test_dir: Gather All Test Results From R Scripts" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="summary.realtest_results.html" class="btn btn-neutral float-right" title="summary.realtest_results: Summarise and Display Test Results" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="realtest_results.html" class="btn btn-neutral float-left" title="realtest_results: Summarise and Display Test Results" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="postprocessors.html" class="btn btn-neutral float-left" title="postprocessors: Example Test Result Postprocessors" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -200,7 +200,7 @@
 <h1>source2: Read and Evaluate Code from an R Script<a class="headerlink" href="#source2-read-and-evaluate-code-from-an-r-script" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>A simplified alternative to <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/source.html"><code class="docutils literal notranslate"><span class="pre">source</span></code></a>, which additionally sets some environment variables whilst executing a series of expressions to ease debugging.</p>
+<p>A simplified alternative to <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/source.html"><code class="docutils literal notranslate"><span class="pre">source</span></code></a>, which additionally sets some environment variables whilst executing a series of expressions to ease debugging.</p>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
@@ -218,10 +218,10 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">file</span></code></p></td>
-<td><p>usually a file name, see <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/parse.html"><code class="docutils literal notranslate"><span class="pre">parse</span></code></a></p></td>
+<td><p>usually a file name, see <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/parse.html"><code class="docutils literal notranslate"><span class="pre">parse</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">local</span></code></p></td>
-<td><p>specifies the environment where expressions will be evaluated, see <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/source.html"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></p></td>
+<td><p>specifies the environment where expressions will be evaluated, see <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/source.html"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -249,15 +249,14 @@
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">## Not run: </span>
-<span class="c1">## example error handler - report source file and line number</span>
-<span class="c1"># options(error=function()</span>
-<span class="c1">#    cat(sprintf(</span>
-<span class="c1">#        &quot;Error in %s:%s.\n&quot;, Sys.getenv(&quot;__FILE__&quot;), Sys.getenv(&quot;__LINE__&quot;)</span>
-<span class="c1">#    ), file=stderr()))</span>
-<span class="c1"># source2(&quot;a_script_throwing_some_errors.R&quot;, local=new.env())</span>
-
-<span class="c1">## End(Not run)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># example error handler - report source file and line number</span>
+<span class="n">old_option_error</span> <span class="o">&lt;-</span> <span class="nf">getOption</span><span class="p">(</span><span class="s">&quot;error&quot;</span><span class="p">)</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">error</span><span class="o">=</span><span class="nf">function</span><span class="p">()</span>
+   <span class="nf">cat</span><span class="p">(</span><span class="nf">sprintf</span><span class="p">(</span>
+       <span class="s">&quot;Error in %s:%s.\n&quot;</span><span class="p">,</span> <span class="nf">Sys.getenv</span><span class="p">(</span><span class="s">&quot;__FILE__&quot;</span><span class="p">),</span> <span class="nf">Sys.getenv</span><span class="p">(</span><span class="s">&quot;__LINE__&quot;</span><span class="p">)</span>
+   <span class="p">),</span> <span class="n">file</span><span class="o">=</span><span class="nf">stderr</span><span class="p">()))</span>
+<span class="c1"># now call source2() to execute an R script that throws some errors...</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">error</span><span class="o">=</span><span class="n">old_option_error</span><span class="p">)</span>  <span class="c1"># cleanup</span>
 </pre></div>
 </div>
 </div>
@@ -269,8 +268,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="test_dir.html" class="btn btn-neutral float-right" title="test_dir: Gather All Test Results From R Scripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="realtest_results.html" class="btn btn-neutral float-left" title="realtest_results: Summarise and Display Test Results" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="summary.realtest_results.html" class="btn btn-neutral float-right" title="summary.realtest_results: Summarise and Display Test Results" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="postprocessors.html" class="btn btn-neutral float-left" title="postprocessors: Example Test Result Postprocessors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
@@ -279,7 +278,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-06-01 19:42:47.
+        Last updated on 2021-06-03 13:28:29.
       </span>
 
     </p>

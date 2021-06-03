@@ -2,7 +2,7 @@
 
 ## Description
 
-A simplified alternative to [`source`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/source.html), which additionally sets some environment variables whilst executing a series of expressions to ease debugging.
+A simplified alternative to [`source`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/source.html), which additionally sets some environment variables whilst executing a series of expressions to ease debugging.
 
 ## Usage
 
@@ -12,10 +12,10 @@ source2(file, local = FALSE)
 
 ## Arguments
 
-|         |                                                                                                                                                      |
-|---------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `file`  | usually a file name, see [`parse`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/parse.html)                                             |
-| `local` | specifies the environment where expressions will be evaluated, see [`source`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/source.html) |
+|         |                                                                                                                                                    |
+|---------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| `file`  | usually a file name, see [`parse`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/parse.html)                                             |
+| `local` | specifies the environment where expressions will be evaluated, see [`source`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/source.html) |
 
 ## Details
 
