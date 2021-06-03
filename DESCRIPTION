@@ -1,13 +1,13 @@
 Package: realtest
 Type: Package
-Version: 0.1.2
+Version: 0.1.2.9001
 Date: 2021-06-03
 Title: When Expectations Meet Reality: Realistic Unit Testing
 Description:
     A framework for unit testing for realistic minimalists,
     where we distinguish between expected, acceptable, current, fallback,
-    ideal, or regressive behaviour. It can also be used for monitoring other
-    software projects for changes.
+    ideal, or regressive behaviour. It can also be used for monitoring
+    third-party software projects for changes.
 Authors@R: c(
     person("Marek", "Gagolewski",
         role = c("aut", "cre", "cph"),

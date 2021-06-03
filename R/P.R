@@ -23,27 +23,18 @@
 #' \code{c(1, 2, 3)}, with a warning' or 'an error should occur'.
 #'
 #' @details
-#' \code{error}, \code{warning}, \code{message}, \code{stdout}, and
-#' \code{stderr} may be one of:
-#' \itemize{
-#'     \item \code{NULL} or \code{FALSE} -- no side effect of a particular
-#'        kind is expected;
-#'     \item \code{TRUE} -- an effect is expected to occur
-#'        (but details are irrelevant, e.g., a function throws a warning);
-#'     \item character vector -- a specific message/output is desired.
-#' }
-#' Note that only one error can occur per a function call, hence
-#' \code{error} can only be a single string (or \code{NULL} or \code{TRUE}).
-#' When an error is expected, the \code{value} must be \code{NULL}.
+#' If \code{error}, \code{warning}, \code{message}, \code{stdout}, or
+#' \code{stderr} is \code{NULL}, then no side effect of a particular
+#' kind is included in the output.
 #'
-#' Typically, messages, warnings, and errors are written to
-#' \code{\link[base]{stderr}},
-#' but these are considered separately here. In other words, the
-#' expected \code{stderr} should not include the anticipated diagnostic
-#' messages.
+#' The semantics is solely defined by the \code{sides_comparer}.
+#' \code{\link{E}} by default uses \code{\link{sides_similar}}
+#' (see its description therein), although you are free to override
+#' it manually or via a global option.
 #'
 #'
-#' @param value object (may be equipped with attributes)
+#'
+#' @param value object (may of course be equipped with attributes)
 #' @param error,warning,message \link{conditions} expected to occur,
 #'    see \code{\link[base]{stop}}, \code{\link[base]{warning}}, and
 #'    \code{\link[base]{message}}
@@ -63,8 +54,11 @@
 #'     \code{messages}, \code{stdout}, and \code{stderr};
 #'     those which are missing are assumed to be equal to \code{NULL},
 #' \item \code{value_comparer} (optional) -- a function object,
-#' \item \code{sides_comparer} (optional) -- a function object,
+#' \item \code{sides_comparer} (optional) -- a function object.
 #' }
+#' Other functions are free to add more named components, and do with them
+#' whatever they please.
+#'
 #'
 #' @seealso Related functions:
 #' \code{\link{E}}, \code{\link{R}}
@@ -78,22 +72,24 @@
 #' @rdname P
 P <- function(
     value=NULL,
-    error=NULL, warning=NULL, message=NULL, stdout=NULL, stderr=NULL,
+    error=NULL, warning=NULL, message=NULL,
+    stdout=NULL, stderr=NULL,
     value_comparer=NULL, sides_comparer=NULL
 ) {
-    sides <- NULL
-    if (!is.null(error)   && !isFALSE(error))   sides[["error"]]   <- error
-    if (!is.null(warning) && !isFALSE(warning)) sides[["warning"]] <- warning
-    if (!is.null(message) && !isFALSE(message)) sides[["message"]] <- message
-    if (!is.null(stdout)  && !isFALSE(stdout))  sides[["stdout"]]  <- stdout
-    if (!is.null(stderr)  && !isFALSE(stderr))  sides[["stderr"]]  <- stderr
-
     ret <- structure(
         list(
-            value=value
+            value=value  # always included
         ),
         class=c("realtest_descriptor", "realtest")
     )
+
+
+    sides <- NULL
+    sides[["error"]]   <- error
+    sides[["warning"]] <- warning
+    sides[["message"]] <- message
+    sides[["stdout"]]  <- stdout
+    sides[["stderr"]]  <- stderr
 
     # if NULL, they won't be added at all:
     ret[["sides"]] <- sides

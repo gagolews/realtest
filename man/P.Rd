@@ -16,7 +16,7 @@ P(
 )
 }
 \arguments{
-\item{value}{object (may be equipped with attributes)}
+\item{value}{object (may of course be equipped with attributes)}
 
 \item{error, warning, message}{\link{conditions} expected to occur,
 see \code{\link[base]{stop}}, \code{\link[base]{warning}}, and
@@ -39,32 +39,24 @@ with named components:
     \code{messages}, \code{stdout}, and \code{stderr};
     those which are missing are assumed to be equal to \code{NULL},
 \item \code{value_comparer} (optional) -- a function object,
-\item \code{sides_comparer} (optional) -- a function object,
+\item \code{sides_comparer} (optional) -- a function object.
 }
+Other functions are free to add more named components, and do with them
+whatever they please.
 }
 \description{
 Allows for formulating expectations like 'the desired outcome is
 \code{c(1, 2, 3)}, with a warning' or 'an error should occur'.
 }
 \details{
-\code{error}, \code{warning}, \code{message}, \code{stdout}, and
-\code{stderr} may be one of:
-\itemize{
-    \item \code{NULL} or \code{FALSE} -- no side effect of a particular
-       kind is expected;
-    \item \code{TRUE} -- an effect is expected to occur
-       (but details are irrelevant, e.g., a function throws a warning);
-    \item character vector -- a specific message/output is desired.
-}
-Note that only one error can occur per a function call, hence
-\code{error} can only be a single string (or \code{NULL} or \code{TRUE}).
-When an error is expected, the \code{value} must be \code{NULL}.
+If \code{error}, \code{warning}, \code{message}, \code{stdout}, or
+\code{stderr} is \code{NULL}, then no side effect of a particular
+kind is included in the output.
 
-Typically, messages, warnings, and errors are written to
-\code{\link[base]{stderr}},
-but these are considered separately here. In other words, the
-expected \code{stderr} should not include the anticipated diagnostic
-messages.
+The semantics is solely defined by the \code{sides_comparer}.
+\code{\link{E}} by default uses \code{\link{sides_similar}}
+(see its description therein), although you are free to override
+it manually or via a global option.
 }
 \examples{
 P(1:3)  # the desired outcome is c(1L, 2L, 3L)

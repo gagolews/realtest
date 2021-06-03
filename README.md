@@ -18,12 +18,13 @@
 > [*realtest*](https://realtest.gagolewski.com) is a framework for unit testing
 > for realistic minimalists; it aids in formalising:
 >
-> * assertions
-> * current behaviour that we'd like to see changed in the future
+> * assertions,
+> * current behaviour that we'd like to see changed in the future,
 > * alternative yet perfectly acceptable behaviours (e.g., when outputs
-> are platform-dependent and should remain so)
+>   are platform-dependent and should remain so),
 > * requested features to be implemented in due time
-> (e.g., as part of the monitoring of other software projects for changes)
+>   (e.g., as part of the monitoring of third-party
+>   software projects for changes).
 
 --------------------------------------------------------------------------------
 
@@ -51,6 +52,8 @@ The introduced vocabulary is (and will be kept!) minimalistic:
 Some examples:
 
 ```r
+library("realtest")  # call install.packages("realtest") first
+
 # identical
 E(sqrt(4), 2.0)  # equivalent to E(sqrt(4), P(2.0))
 

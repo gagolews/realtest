@@ -23,24 +23,16 @@ P(
 
 |                                  |                                                                                                                                                                                                                                                                                                                                                                    |
 |----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `value`                          | object (may be equipped with attributes)                                                                                                                                                                                                                                                                                                                           |
+| `value`                          | object (may of course be equipped with attributes)                                                                                                                                                                                                                                                                                                                 |
 | `error, warning, message`        | [conditions](https://stat.ethz.ch/R-manual/R-devel/library/base/html/conditions.html) expected to occur, see [`stop`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stop.html), [`warning`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/warning.html), and [`message`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/message.html) |
 | `stdout, stderr`                 | character data expected on [`stdout`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stdout.html) and [`stderr`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stderr.html), respectively                                                                                                                                                       |
 | `value_comparer, sides_comparer` | optional two-argument functions which may be used to override the default comparers used by [`E`](E.md)                                                                                                                                                                                                                                                            |
 
 ## Details
 
-`error`, `warning`, `message`, `stdout`, and `stderr` may be one of:
+If `error`, `warning`, `message`, `stdout`, or `stderr` is `NULL`, then no side effect of a particular kind is included in the output.
 
--   `NULL` or `FALSE` -- no side effect of a particular kind is expected;
-
--   `TRUE` -- an effect is expected to occur (but details are irrelevant, e.g., a function throws a warning);
-
--   character vector -- a specific message/output is desired.
-
-Note that only one error can occur per a function call, hence `error` can only be a single string (or `NULL` or `TRUE`). When an error is expected, the `value` must be `NULL`.
-
-Typically, messages, warnings, and errors are written to [`stderr`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stderr.html), but these are considered separately here. In other words, the expected `stderr` should not include the anticipated diagnostic messages.
+The semantics is solely defined by the `sides_comparer`. [`E`](E.md) by default uses [`sides_similar`](comparers.md) (see its description therein), although you are free to override it manually or via a global option.
 
 ## Value
 
@@ -52,7 +44,9 @@ A list of class `realtest_descriptor` with named components:
 
 -   `value_comparer` (optional) -- a function object,
 
--   `sides_comparer` (optional) -- a function object,
+-   `sides_comparer` (optional) -- a function object.
+
+Other functions are free to add more named components, and do with them whatever they please.
 
 ## Author(s)
 

@@ -27,6 +27,12 @@
 #'
 #'
 #' @details
+#' Note that messages, warnings, and errors are typically written to
+#' \code{\link[base]{stderr}}, but these are considered separately here.
+#' In other words, when testing expectations with \code{\link{E}},
+#' e.g., the reference \code{stderr} should not include the anticipated
+#' diagnostic messages.
+#'
 #' There may be other side effects, such as changing the state of
 #' the random number generator, modifying options or environment variables,
 #' modifying the calling or global environment (e.g., creating new global
@@ -44,6 +50,13 @@
 #' The additional named component \code{expr} gives the
 #' expression used to generate the \code{value}.
 #'
+#' If an effect of particular kind does not occur,
+#' it is not included in the resulting list.
+#' \code{stdout}, \code{stderr}, and \code{error} are at most single strings.
+#'
+#' When an error occurs, \code{value} is \code{NULL}.
+#'
+#'
 #' @seealso Related functions:
 #' \code{\link{E}}, \code{\link{P}}
 #'
@@ -52,6 +65,11 @@
 #' R(cat("a bit talkative, innit?"))
 #' R(sqrt(c(-1, 0, 1, 2, 4)))
 #' R(log("aaaargh"))
+#' R({
+#'     cat("STDOUT"); cat("STDERR", file=stderr()); message("MESSAGE");
+#'     warning("WARNING"); warning("WARNING AGAIN"); cat("MORE STDOUT");
+#'     message("ANOTHER MESSAGE"); stop("ERROR"); "NO RETURN VALUE"
+#' })
 #'
 #' @importFrom utils capture.output
 #' @export

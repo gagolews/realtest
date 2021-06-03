@@ -26,11 +26,11 @@
 #     attributes(x) <- NULL
 #     x
 # }
-
+# write `attributes<-`(x, NULL) instead
 
 # ignore_attributes <- function(comparer=getOption("realtest_value_comparer", identical))
 # {
-#     function(x, y) comparer(unattr(x), unattr(y))
+#     function(x, y) comparer(`attributes<-`(x, NULL), `attributes<-`(y, NULL))
 # }
 
 

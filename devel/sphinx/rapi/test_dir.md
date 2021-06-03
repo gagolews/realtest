@@ -51,9 +51,9 @@ s <- summary(r)  # summary.realtest_results
 print(s)  # print.realtest_results_summary
 ## *** realtest: test summary:
 ##                                                   
-##                                                    current good pass fail
-##   /home/gagolews/R/realtest/tests/realtest-basic.R       0    0    9    0
-##   /home/gagolews/R/realtest/tests/realtest-named.R       1    1    6    0
+##                                                    good best pass fail
+##   /home/gagolews/R/realtest/tests/realtest-basic.R    0    0   12    0
+##   /home/gagolews/R/realtest/tests/realtest-named.R    1    1   12    0
 ## 
 ## *** realtest: all tests succeeded
 stopifnot(sum(s[["match"]]=="fail") == 0)  # halt if there are failed tests

@@ -15,12 +15,13 @@ realtest: When expectations meet reality: Realistic unit testing in R
     *realtest* is a framework for unit testing
     for realistic minimalists; it aids in formalising:
 
-    * assertions
-    * current behaviour that we'd like to see changed in the future
+    * assertions,
+    * current behaviour that we'd like to see changed in the future,
     * alternative yet perfectly acceptable behaviours (e.g., when outputs
-      are platform-dependent and should remain so)
+      are platform-dependent and should remain so),
     * requested features to be implemented in due time
-      (e.g., as part of the monitoring of other software projects for changes)
+      (e.g., as part of the monitoring of third-party
+      software projects for changes).
 
     -- by `Marek Gagolewski <https://www.gagolewski.com/>`_
 
@@ -46,6 +47,8 @@ The introduced vocabulary is (and will be kept!) minimalistic:
 Some examples:
 
 .. code-block:: r
+
+    library("realtest")  # call install.packages("realtest") first
 
     # identical
     E(sqrt(4), 2.0)  # equivalent to E(sqrt(4), P(2.0))
@@ -78,6 +81,11 @@ Some examples:
     # if a test fails, the default result postprocessor
     # prints out the differences and throws an error:
     E(E(sin(pi), 7), P(error=TRUE, stdout=TRUE))  # inception: realtest tests itself
+
+
+.. COMMENT
+    s <- summary(test_dir("~/R/realtest/tests"))
+    knitr::kable(table(s[[".file"]], s[["match"]]))
 
 
 Labels `desired`, `current`, `undesired`, `good`, `better`,

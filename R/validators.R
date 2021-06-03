@@ -21,29 +21,18 @@ stopifnot_descriptor_valid <- function(d)
 {
     stopifnot(inherits(d, "realtest_descriptor"))
     stopifnot(is.list(d), !is.null(names(d)))
+
     stopifnot("value" %in% names(d))  # required field
+
     stopifnot(is.null(d[["value_comparer"]]) || is.function(d[["value_comparer"]]))
     stopifnot(is.null(d[["sides_comparer"]]) || is.function(d[["sides_comparer"]]))
+
     stopifnot(is.null(d[["expr"]]) || is.language(d[["expr"]]) ||
         is.atomic(d[["expr"]]) && length(d[["expr"]]) == 1)
 
-    NULL_TRUE_or_character <- function(v, single=FALSE) {
-        is.null(v) ||
-        isTRUE(v)  ||
-        is.character(v) && length(v) >= 1 && (!single || length(v) == 1)
-    }
-
     stopifnot(is.null(d[["sides"]]) || is.list(d[["sides"]]))
-    stopifnot(NULL_TRUE_or_character(d[["sides"]][["error"]], single=TRUE))
-    stopifnot(NULL_TRUE_or_character(d[["sides"]][["warning"]]))
-    stopifnot(NULL_TRUE_or_character(d[["sides"]][["message"]]))
-    stopifnot(NULL_TRUE_or_character(d[["sides"]][["stdout"]]))
-    stopifnot(NULL_TRUE_or_character(d[["sides"]][["stderr"]]))
-
-    if (!is.null(d[["sides"]][["error"]]) && !is.null(d[["value"]])) {
-        # both cannot be non-NULL (if an error occurs, there is no retval)
-        stop("there can either be an error or a value, not both at the same time")
-    }
+    # it is the sides_comparer that defines the semantics,
+    # hence, we do not assume any particular representation of side effects
 
     invisible(TRUE)
 }

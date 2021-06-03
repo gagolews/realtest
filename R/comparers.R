@@ -21,7 +21,7 @@
 #' Example Object and Side Effect Comparers
 #'
 #' @description
-#' Two-argument functions to compare direct or indirect effects
+#' Example two-argument functions to compare direct or indirect effects
 #' of two test descriptors (see \code{\link{P}} and \code{\link{R}}).
 #' These can be passed as \code{value_comparer} and \code{sides_comparer}
 #' to \code{\link{E}}.
@@ -31,27 +31,30 @@
 #' Notable built-in (base R) comparers include \code{\link[base]{identical}}
 #' (the strictest possible)
 #' and \code{\link[base]{all.equal}} (can ignore, amongst others,
-#' round-off errors).
+#' round-off errors; note that it is an S3 generic).
 #'
 #' \code{ignore_differences} is a dummy comparer that always returns
 #' \code{TRUE}. Hence, it does not discriminate between anything.
 #'
-#' \code{identical_or_TRUE} is useful when comparing particular side effects,
-#' where is assumed that a value \code{TRUE} represents the occurrence
-#' of a condition, but without going into any details
-#' (e.g., some warning).
+#' \code{sides_similar} is useful when comparing side effect lists.
+#' It defines the following semantic for the prototypical values:
+#' \itemize{
+#' \item non-existent, \code{NULL}, or \code{FALSE} -- side effect must
+#'     not occur,
+#' \item \code{NA} -- ignore whatsoever,
+#' \item \code{TRUE} -- side effect occurs, but the details are irrelevant
+#'    (e.g., 'some warning' as opposed to \code{"NaNs produced"})
+#' \item otherwise, a character vector with message(s) matched exactly.
+#' }
 #'
-#' \code{maps_identical_or_TRUE} propagates \code{identical_or_TRUE}
-#' on each element of a given named list (treated as an unordered set
-#' of key-value pairs) and aggregates the results.
-#'
-#' You can define any comparer of your own liking:
+#' You can define any comparers of your own liking:
 #' the possibilities are endless. For example:
 #' \itemize{
-#' \item a comparer for side effects based on regular expressions,
+#' \item a comparer for side effects based on regular expressions
+#'     or wildcards (e.g., \code{".not converged.*"}),
 #' \item a comparer that tests whether all elements in a vector are
 #'     equal to \code{TRUE},
-#' \item a comparer that verifies whether each element falls into
+#' \item a comparer that verifies whether each element in a vector falls into
 #'     a specified interval,
 #' \item a comparer that ignores all the object attributes (possibly
 #'     in combination with other comparers),
@@ -75,19 +78,6 @@ ignore_differences <- function(x, y)
 {
     TRUE  # x and y are always equal
 }
-
-
-#' @rdname comparers
-#' @export
-identical_or_TRUE <- function(x, y)
-{
-    cmp <- identical(x, y)
-    if (isTRUE(cmp)) TRUE
-    else if (isTRUE(x) && !is.null(y)) TRUE
-    else if (isTRUE(y) && !is.null(x)) TRUE
-    else cmp
-}
-
 
 
 # internal
@@ -123,10 +113,41 @@ maps_comparer <- function(x, y, comparer)
 
 #' @rdname comparers
 #' @export
-maps_identical_or_TRUE <- function(x, y)
+sides_similar <- function(x, y)
 {
-    maps_comparer(
-        x, y,
-        comparer=identical_or_TRUE
-    )
+    NULL_logical_or_character <- function(v, single_string=FALSE) {
+        is.null(v) ||
+        is.logical(v) && length(v) == 1L ||
+        is.character(v) && length(v) >= 1L && all(!is.na(v)) && (!single_string || length(v) == 1L)
+    }
+
+    stopifnot_sides_valid <- function(d) {
+        stopifnot(NULL_logical_or_character(d[["sides"]][["error"]], single_string=TRUE))
+        stopifnot(NULL_logical_or_character(d[["sides"]][["stdout"]], single_string=TRUE))
+        stopifnot(NULL_logical_or_character(d[["sides"]][["stderr"]], single_string=TRUE))
+        stopifnot(NULL_logical_or_character(d[["sides"]][["warning"]]))
+        stopifnot(NULL_logical_or_character(d[["sides"]][["message"]]))
+        # both cannot be non-NULL (if an error occurs, there is no retval)
+        if (!is.null(d[["sides"]][["error"]]) && !is.null(d[["value"]]))
+            stop("there can either be an error or a value, but not both at the same time")
+        invisible(TRUE)
+    }
+
+    stopifnot_sides_valid(x)
+    stopifnot_sides_valid(y)
+
+    isNA <- function(x) is.logical(x) && length(x) == 1L && is.na(x)
+
+    side_comparer <- function(x, y) {
+        if (isFALSE(x)) x <- NULL
+        if (isFALSE(y)) y <- NULL
+        cmp <- identical(x, y)
+        if (isTRUE(cmp)) TRUE
+        else if (isNA(x) || isNA(y)) TRUE  # ignore differences
+        else if (isTRUE(x) && !is.null(y)) TRUE
+        else if (isTRUE(y) && !is.null(x)) TRUE
+        else cmp
+    }
+
+    maps_comparer(x, y, comparer=side_comparer)
 }

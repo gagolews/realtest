@@ -2,16 +2,14 @@
 
 ## Description
 
-Two-argument functions to compare direct or indirect effects of two test descriptors (see [`P`](P.md) and [`R`](R.md)). These can be passed as `value_comparer` and `sides_comparer` to [`E`](E.md).
+Example two-argument functions to compare direct or indirect effects of two test descriptors (see [`P`](P.md) and [`R`](R.md)). These can be passed as `value_comparer` and `sides_comparer` to [`E`](E.md).
 
 ## Usage
 
 ```r
 ignore_differences(x, y)
 
-identical_or_TRUE(x, y)
-
-maps_identical_or_TRUE(x, y)
+sides_similar(x, y)
 ```
 
 ## Arguments
@@ -23,21 +21,27 @@ maps_identical_or_TRUE(x, y)
 
 ## Details
 
-Notable built-in (base R) comparers include [`identical`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/identical.html) (the strictest possible) and [`all.equal`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/all.equal.html) (can ignore, amongst others, round-off errors).
+Notable built-in (base R) comparers include [`identical`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/identical.html) (the strictest possible) and [`all.equal`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/all.equal.html) (can ignore, amongst others, round-off errors; note that it is an S3 generic).
 
 `ignore_differences` is a dummy comparer that always returns `TRUE`. Hence, it does not discriminate between anything.
 
-`identical_or_TRUE` is useful when comparing particular side effects, where is assumed that a value `TRUE` represents the occurrence of a condition, but without going into any details (e.g., some warning).
+`sides_similar` is useful when comparing side effect lists. It defines the following semantic for the prototypical values:
 
-`maps_identical_or_TRUE` propagates `identical_or_TRUE` on each element of a given named list (treated as an unordered set of key-value pairs) and aggregates the results.
+-   non-existent, `NULL`, or `FALSE` -- side effect must not occur,
 
-You can define any comparer of your own liking: the possibilities are endless. For example:
+-   `NA` -- ignore whatsoever,
 
--   a comparer for side effects based on regular expressions,
+-   `TRUE` -- side effect occurs, but the details are irrelevant (e.g., \'some warning\' as opposed to `"NaNs produced"`)
+
+-   otherwise, a character vector with message(s) matched exactly.
+
+You can define any comparers of your own liking: the possibilities are endless. For example:
+
+-   a comparer for side effects based on regular expressions or wildcards (e.g., `".not converged.*"`),
 
 -   a comparer that tests whether all elements in a vector are equal to `TRUE`,
 
--   a comparer that verifies whether each element falls into a specified interval,
+-   a comparer that verifies whether each element in a vector falls into a specified interval,
 
 -   a comparer that ignores all the object attributes (possibly in combination with other comparers),
 

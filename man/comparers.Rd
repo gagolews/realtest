@@ -2,15 +2,12 @@
 % Please edit documentation in R/comparers.R
 \name{ignore_differences}
 \alias{ignore_differences}
-\alias{identical_or_TRUE}
-\alias{maps_identical_or_TRUE}
+\alias{sides_similar}
 \title{Example Object and Side Effect Comparers}
 \usage{
 ignore_differences(x, y)
 
-identical_or_TRUE(x, y)
-
-maps_identical_or_TRUE(x, y)
+sides_similar(x, y)
 }
 \arguments{
 \item{x}{prototype or part thereof}
@@ -25,7 +22,7 @@ a single string with a short
 summary of the differences is returned, as in \code{\link[base]{all.equal}}.
 }
 \description{
-Two-argument functions to compare direct or indirect effects
+Example two-argument functions to compare direct or indirect effects
 of two test descriptors (see \code{\link{P}} and \code{\link{R}}).
 These can be passed as \code{value_comparer} and \code{sides_comparer}
 to \code{\link{E}}.
@@ -34,27 +31,30 @@ to \code{\link{E}}.
 Notable built-in (base R) comparers include \code{\link[base]{identical}}
 (the strictest possible)
 and \code{\link[base]{all.equal}} (can ignore, amongst others,
-round-off errors).
+round-off errors; note that it is an S3 generic).
 
 \code{ignore_differences} is a dummy comparer that always returns
 \code{TRUE}. Hence, it does not discriminate between anything.
 
-\code{identical_or_TRUE} is useful when comparing particular side effects,
-where is assumed that a value \code{TRUE} represents the occurrence
-of a condition, but without going into any details
-(e.g., some warning).
+\code{sides_similar} is useful when comparing side effect lists.
+It defines the following semantic for the prototypical values:
+\itemize{
+\item non-existent, \code{NULL}, or \code{FALSE} -- side effect must
+    not occur,
+\item \code{NA} -- ignore whatsoever,
+\item \code{TRUE} -- side effect occurs, but the details are irrelevant
+   (e.g., 'some warning' as opposed to \code{"NaNs produced"})
+\item otherwise, a character vector with message(s) matched exactly.
+}
 
-\code{maps_identical_or_TRUE} propagates \code{identical_or_TRUE}
-on each element of a given named list (treated as an unordered set
-of key-value pairs) and aggregates the results.
-
-You can define any comparer of your own liking:
+You can define any comparers of your own liking:
 the possibilities are endless. For example:
 \itemize{
-\item a comparer for side effects based on regular expressions,
+\item a comparer for side effects based on regular expressions
+    or wildcards (e.g., \code{".not converged.*"}),
 \item a comparer that tests whether all elements in a vector are
     equal to \code{TRUE},
-\item a comparer that verifies whether each element falls into
+\item a comparer that verifies whether each element in a vector falls into
     a specified interval,
 \item a comparer that ignores all the object attributes (possibly
     in combination with other comparers),

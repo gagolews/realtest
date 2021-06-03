@@ -32,7 +32,7 @@ html_baseurl = "https://realtest.gagolewski.com/"
 
 nitpicky = True
 smartquotes = True
-today_fmt = "%Y-%m-%d %H:%M:%S"
+today_fmt = "%Y-%m-%dT%H:%M:%S%Z"
 highlight_language = "r"
 
 extensions = [
