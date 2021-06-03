@@ -4,7 +4,7 @@ realtest: When expectations meet reality: Realistic unit testing in R
     We are all adults here. We can't always get what we want.
     Such is life. You may say we're dreamers, but we're not the only ones:
     in an ideal world, things could look different, there could be more
-    or less of this and that. Sometimes, there might be many equally correct
+    or less of this or that. Sometimes, there might be many equally correct
     outcomes. Other behaviours are good enough for now, but we shall improve
     them eventually, say, during the 2027 summer holidays. Sometimes, what we
     have is barely acceptable, but we need to live with it: it is
@@ -15,24 +15,24 @@ realtest: When expectations meet reality: Realistic unit testing in R
     *realtest* is a framework for unit testing
     for realistic minimalists; it aids in formalising:
 
-    * assertions,
-    * current behaviour that we'd like to see changed in the future,
-    * alternative yet perfectly acceptable behaviours (e.g., when outputs
-      are platform-dependent and should remain so),
-    * requested features to be implemented in due time
-      (e.g., as part of the monitoring of third-party
-      software projects for changes).
+    *   assertions,
+    *   current behaviour that we'd like to see changed in the future,
+    *   alternative yet perfectly acceptable behaviours (e.g., when outputs
+        are platform-dependent and should remain so),
+    *   requested features to be implemented in due time
+        (e.g., as part of the monitoring of third-party
+        software projects for changes).
 
     -- by `Marek Gagolewski <https://www.gagolewski.com/>`_
 
 
 The introduced vocabulary is (and will be kept!) minimalistic:
 
-*  **P** is *prototype* – you can use it to manually create a descriptor like
+*   **P** is *prototype* – you can use it to manually create a descriptor like
     "*I expect this function to return `c(1, 2, 3)`, with a warning*"
     or "*that should result in an error*";
 
-*  **R** stands for *record* – creates a descriptor by evaluating an
+*   **R** stands for *record* – creates a descriptor by evaluating an
     expression and capturing its direct and indirect effects:
 
     * values generated (together with object attributes),
@@ -40,9 +40,10 @@ The introduced vocabulary is (and will be kept!) minimalistic:
     * warnings and messages,
     * text output on `stdout` and `stderr`;
 
-*  **E** means *expect* – compares an expression under scrutiny (via `R`)
+*   **E** means *expect* – compares an expression under scrutiny (via `R`)
     with a series of descriptors (created via `P` or `R` and using
     a pairwise comparer provided) and stores the matching one (if any).
+
 
 Some examples:
 
@@ -97,24 +98,24 @@ the test outcomes are represented as ordinary R lists.
 
 Pros:
 
-* minimalistic – clean design and non-overwhelming vocabulary,
-* general and flexible – can be easily adapted to suit your needs,
-* economic – an expression under scrutiny is evaluated once and
-  all its different effects can be examined in a single unit,
-* organised – makes planning future features/improved behaviour easier,
-* analysable – introduces data science to unit testing: what story
-  can you tell based on the observed facts?
+*   minimalistic – clean design and non-overwhelming vocabulary;
+*   general and flexible – can be easily adapted to suit your needs;
+*   economic – an expression under scrutiny is evaluated once and
+    all its different effects can be examined in a single unit;
+*   organised – makes planning future features/improved behaviour easier;
+*   analysable – introduces data science to unit testing: what story
+    can you tell based on the observed facts?
 
 
 Cons:
 
-* steeper (or, should we rather say, normal) learning curve, you are
-  limited by your imagination and programming skills
-* other tools, e.g.,
-  `tinytest <https://CRAN.R-project.org/package=tinytest>`_,
-  `testthat <https://CRAN.R-project.org/package=testthat>`_,
-  `RUnit <https://CRAN.R-project.org/package=RUnit>`_,
-  might be more suitable for the more *typical* use cases.
+*   steeper (or, should we rather say, normal) learning curve, you are
+    limited by your imagination and programming skills;
+*   other tools, e.g.,
+    `tinytest <https://CRAN.R-project.org/package=tinytest>`_,
+    `testthat <https://CRAN.R-project.org/package=testthat>`_,
+    `RUnit <https://CRAN.R-project.org/package=RUnit>`_,
+    might be more suitable for the more *typical* use cases.
 
 
 *realtest*'s source code is hosted on

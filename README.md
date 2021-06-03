@@ -7,7 +7,7 @@
 > We are all adults here. We can't always get what we want.
 > Such is life. You may say we're dreamers, but we're not the only ones:
 > in an ideal world, things could look different, there could be more
-> or less of this and that. Sometimes, there might be many equally correct
+> or less of this or that. Sometimes, there might be many equally correct
 > outcomes. Other behaviours are good enough for now, but we shall improve
 > them eventually, say, during the 2027 summer holidays. Sometimes, what we
 > have is barely acceptable, but we need to live with it: it is

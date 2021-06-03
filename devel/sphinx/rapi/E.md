@@ -82,13 +82,13 @@ E(sqrt(-1), P(NaN, warning=NA))  # ignore warnings
 E(
   paste0(1:2, 1:3),                  # expression to test - concatenation
   .description="partial recycling",  # info - what behaviour are we testing?
-  desired=P(                         # what we yearn for (ideally)
+  best=P(                            # what we yearn for (ideally)
     c("11", "22", "13"),
     warning="longer object length is not a multiple of shorter object length"
   ),
-  current=c("11", "22", "13"),       # this is the behaviour we have now
-  undesired=P(error=TRUE)            # avoid regression
+  pass=c("11", "22", "13"),          # this is the behaviour we have now
+  bad=P(error=TRUE)                  # avoid regression
 )
-E(sin(pi), ideal=0.0, expected=P(0.0, value_comparer=all.equal),
+E(sin(pi), best=0.0, pass=P(0.0, value_comparer=all.equal),
   .comment="well, this is not a symbolic language after all...")
 ```
