@@ -94,25 +94,26 @@
 #' E(E(sqrt(4), P(7)), P(error=TRUE, stdout=TRUE))
 #' E(sqrt(4), 2.0)  # the same as E(sqrt(4), P(2.0))
 #' E(sin(pi), 0.0, value_comparer=all.equal)  # almost-equal
-#' E(sqrt(-1), P(NaN, warning=TRUE))  # a warning is expected
 #' E(
 #'   sample(c("head", "tail"), 1),
 #'   .description="this call has two possible outcomes",
 #'   "head",  # first prototype
 #'   "tail"   # second prototype
 #' )
+#' E(sqrt(-1), P(NaN, warning=TRUE))  # a warning is expected
 #' E(sqrt(-1), NaN, sides_comparer=ignore_differences) # do not test side effects
+#' E(sqrt(-1), P(NaN, warning=NA))  # ignore warnings
 #' E(
 #'   paste0(1:2, 1:3),                  # expression to test - concatenation
 #'   .description="partial recycling",  # info - what behaviour are we testing?
-#'   desired=P(                         # what we yearn for (ideally)
+#'   best=P(                            # what we yearn for (ideally)
 #'     c("11", "22", "13"),
 #'     warning="longer object length is not a multiple of shorter object length"
 #'   ),
-#'   current=c("11", "22", "13"),       # this is the behaviour we have now
-#'   undesired=P(error=TRUE)            # avoid regression
+#'   pass=c("11", "22", "13"),          # this is the behaviour we have now
+#'   bad=P(error=TRUE)                  # avoid regression
 #' )
-#' E(sin(pi), ideal=0.0, expected=P(0.0, value_comparer=all.equal),
+#' E(sin(pi), best=0.0, pass=P(0.0, value_comparer=all.equal),
 #'   .comment="well, this is not a symbolic language after all...")
 #'
 #' @seealso Related functions:

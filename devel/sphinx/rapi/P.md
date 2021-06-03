@@ -64,32 +64,24 @@ Related functions: [`E`](E.md), [`R`](R.md)
 
 
 ```r
-P(1:3)  # the desired outcome is c(1L, 2L, 3L)
+# the desired outcome is c(1L, 2L, 3L):
+P(1:3)
 ## $value
 ## [1] 1 2 3
 ## 
 ## attr(,"class")
 ## [1] "realtest_descriptor" "realtest"
-P(error=TRUE)  # expecting an error
-## $value
-## NULL
-## 
-## $sides
-## $sides$error
-## [1] TRUE
-## 
-## 
-## attr(,"class")
-## [1] "realtest_descriptor" "realtest"
-P(1:3, warning=TRUE)  # expecting c(1L, 2L, 3L), with a warning
+# expecting c(1L, 2L, 3L), with a specific warning:
+P(1:3, warning="longer object length is not a multiple of shorter object length")
 ## $value
 ## [1] 1 2 3
 ## 
 ## $sides
 ## $sides$warning
-## [1] TRUE
+## [1] "longer object length is not a multiple of shorter object length"
 ## 
 ## 
 ## attr(,"class")
 ## [1] "realtest_descriptor" "realtest"
+# note, however, that it is the sides_comparer that defines the semantics
 ```

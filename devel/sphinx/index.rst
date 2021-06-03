@@ -134,7 +134,7 @@ GNU General Public License, either Version 2 or Version 3, see
 
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: Reference Manual
     :glob:
 

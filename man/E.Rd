@@ -89,14 +89,15 @@ instead.
 E(E(sqrt(4), P(7)), P(error=TRUE, stdout=TRUE))
 E(sqrt(4), 2.0)  # the same as E(sqrt(4), P(2.0))
 E(sin(pi), 0.0, value_comparer=all.equal)  # almost-equal
-E(sqrt(-1), P(NaN, warning=TRUE))  # a warning is expected
 E(
   sample(c("head", "tail"), 1),
   .description="this call has two possible outcomes",
   "head",  # first prototype
   "tail"   # second prototype
 )
+E(sqrt(-1), P(NaN, warning=TRUE))  # a warning is expected
 E(sqrt(-1), NaN, sides_comparer=ignore_differences) # do not test side effects
+E(sqrt(-1), P(NaN, warning=NA))  # ignore warnings
 E(
   paste0(1:2, 1:3),                  # expression to test - concatenation
   .description="partial recycling",  # info - what behaviour are we testing?

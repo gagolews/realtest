@@ -59,9 +59,11 @@ The semantics is solely defined by the \code{sides_comparer}.
 it manually or via a global option.
 }
 \examples{
-P(1:3)  # the desired outcome is c(1L, 2L, 3L)
-P(error=TRUE)  # expecting an error
-P(1:3, warning=TRUE)  # expecting c(1L, 2L, 3L), with a warning
+# the desired outcome is c(1L, 2L, 3L):
+P(1:3)
+# expecting c(1L, 2L, 3L), with a specific warning:
+P(1:3, warning="longer object length is not a multiple of shorter object length")
+# note, however, that it is the sides_comparer that defines the semantics
 
 }
 \seealso{
