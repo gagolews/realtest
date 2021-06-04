@@ -19,11 +19,17 @@ R(expr, ...)
 
 ## Details
 
+Note that messages, warnings, and errors are typically written to [`stderr`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stderr.html), but these are considered separately here. In other words, when testing expectations with [`E`](E.md), e.g., the reference `stderr` should not include the anticipated diagnostic messages.
+
 There may be other side effects, such as changing the state of the random number generator, modifying options or environment variables, modifying the calling or global environment (e.g., creating new global variables), attaching objects onto the search part (e.g., loading package namespaces), or plotting, but these are not captured, at least, not in the current version of the package.
 
 ## Value
 
 A list of class `realtest_descriptor`, see [`P`](P.md), which this function calls. The additional named component `expr` gives the expression used to generate the `value`.
+
+If an effect of particular kind does not occur, it is not included in the resulting list. `stdout`, `stderr`, and `error` are at most single strings.
+
+When an error occurs, `value` is `NULL`.
 
 ## Author(s)
 
@@ -89,6 +95,46 @@ R(log("aaaargh"))
 ## 
 ## $expr
 ## log("aaaargh")
+## 
+## attr(,"class")
+## [1] "realtest_descriptor" "realtest"
+R({
+    cat("STDOUT"); cat("STDERR", file=stderr()); message("MESSAGE");
+    warning("WARNING"); warning("WARNING AGAIN"); cat("MORE STDOUT");
+    message("ANOTHER MESSAGE"); stop("ERROR"); "NO RETURN VALUE"
+})
+## $value
+## NULL
+## 
+## $sides
+## $sides$error
+## [1] "ERROR"
+## 
+## $sides$warning
+## [1] "WARNING"       "WARNING AGAIN"
+## 
+## $sides$message
+## [1] "MESSAGE"         "ANOTHER MESSAGE"
+## 
+## $sides$stdout
+## [1] "STDOUTMORE STDOUT"
+## 
+## $sides$stderr
+## [1] "STDERR"
+## 
+## 
+## $expr
+## {
+##     cat("STDOUT")
+##     cat("STDERR", file = stderr())
+##     message("MESSAGE")
+##     warning("WARNING")
+##     warning("WARNING AGAIN")
+##     cat("MORE STDOUT")
+##     message("ANOTHER MESSAGE")
+##     stop("ERROR")
+##     "NO RETURN VALUE"
+## }
 ## 
 ## attr(,"class")
 ## [1] "realtest_descriptor" "realtest"

@@ -305,7 +305,12 @@ summary.realtest_results <- function(object, label_pass="pass", label_fail="fail
 
         c(
             list(
-                call=deparse(r[["object"]][["expr"]][[1]]),
+                call=deparse(
+                    if (is.call(r[["object"]][["expr"]]))
+                        r[["object"]][["expr"]][[1]]
+                    else
+                        r[["object"]][["expr"]]
+                ),
                 match=match_name
             ),
             r[startsWith(names(r), ".")]

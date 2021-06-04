@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.2
+                0.1.2.9001
               </div>
             
           
@@ -228,11 +228,14 @@
 </div>
 <div class="section" id="details">
 <h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<p>Note that messages, warnings, and errors are typically written to <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/stderr.html"><code class="docutils literal notranslate"><span class="pre">stderr</span></code></a>, but these are considered separately here. In other words, when testing expectations with <a class="reference internal" href="E.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">E</span></code></span></a>, e.g., the reference <code class="docutils literal notranslate"><span class="pre">stderr</span></code> should not include the anticipated diagnostic messages.</p>
 <p>There may be other side effects, such as changing the state of the random number generator, modifying options or environment variables, modifying the calling or global environment (e.g., creating new global variables), attaching objects onto the search part (e.g., loading package namespaces), or plotting, but these are not captured, at least, not in the current version of the package.</p>
 </div>
 <div class="section" id="value">
 <h2>Value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
 <p>A list of class <code class="docutils literal notranslate"><span class="pre">realtest_descriptor</span></code>, see <a class="reference internal" href="P.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">P</span></code></span></a>, which this function calls. The additional named component <code class="docutils literal notranslate"><span class="pre">expr</span></code> gives the expression used to generate the <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+<p>If an effect of particular kind does not occur, it is not included in the resulting list. <code class="docutils literal notranslate"><span class="pre">stdout</span></code>, <code class="docutils literal notranslate"><span class="pre">stderr</span></code>, and <code class="docutils literal notranslate"><span class="pre">error</span></code> are at most single strings.</p>
+<p>When an error occurs, <code class="docutils literal notranslate"><span class="pre">value</span></code> is <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 </div>
 <div class="section" id="author-s">
 <h2>Author(s)<a class="headerlink" href="#author-s" title="Permalink to this headline">¶</a></h2>
@@ -296,6 +299,46 @@
 <span class="c1">## </span>
 <span class="c1">## attr(,&quot;class&quot;)</span>
 <span class="c1">## [1] &quot;realtest_descriptor&quot; &quot;realtest&quot;</span>
+<span class="nf">R</span><span class="p">({</span>
+    <span class="nf">cat</span><span class="p">(</span><span class="s">&quot;STDOUT&quot;</span><span class="p">);</span> <span class="nf">cat</span><span class="p">(</span><span class="s">&quot;STDERR&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="nf">stderr</span><span class="p">());</span> <span class="nf">message</span><span class="p">(</span><span class="s">&quot;MESSAGE&quot;</span><span class="p">);</span>
+    <span class="nf">warning</span><span class="p">(</span><span class="s">&quot;WARNING&quot;</span><span class="p">);</span> <span class="nf">warning</span><span class="p">(</span><span class="s">&quot;WARNING AGAIN&quot;</span><span class="p">);</span> <span class="nf">cat</span><span class="p">(</span><span class="s">&quot;MORE STDOUT&quot;</span><span class="p">);</span>
+    <span class="nf">message</span><span class="p">(</span><span class="s">&quot;ANOTHER MESSAGE&quot;</span><span class="p">);</span> <span class="nf">stop</span><span class="p">(</span><span class="s">&quot;ERROR&quot;</span><span class="p">);</span> <span class="s">&quot;NO RETURN VALUE&quot;</span>
+<span class="p">})</span>
+<span class="c1">## $value</span>
+<span class="c1">## NULL</span>
+<span class="c1">## </span>
+<span class="c1">## $sides</span>
+<span class="c1">## $sides$error</span>
+<span class="c1">## [1] &quot;ERROR&quot;</span>
+<span class="c1">## </span>
+<span class="c1">## $sides$warning</span>
+<span class="c1">## [1] &quot;WARNING&quot;       &quot;WARNING AGAIN&quot;</span>
+<span class="c1">## </span>
+<span class="c1">## $sides$message</span>
+<span class="c1">## [1] &quot;MESSAGE&quot;         &quot;ANOTHER MESSAGE&quot;</span>
+<span class="c1">## </span>
+<span class="c1">## $sides$stdout</span>
+<span class="c1">## [1] &quot;STDOUTMORE STDOUT&quot;</span>
+<span class="c1">## </span>
+<span class="c1">## $sides$stderr</span>
+<span class="c1">## [1] &quot;STDERR&quot;</span>
+<span class="c1">## </span>
+<span class="c1">## </span>
+<span class="c1">## $expr</span>
+<span class="c1">## {</span>
+<span class="c1">##     cat(&quot;STDOUT&quot;)</span>
+<span class="c1">##     cat(&quot;STDERR&quot;, file = stderr())</span>
+<span class="c1">##     message(&quot;MESSAGE&quot;)</span>
+<span class="c1">##     warning(&quot;WARNING&quot;)</span>
+<span class="c1">##     warning(&quot;WARNING AGAIN&quot;)</span>
+<span class="c1">##     cat(&quot;MORE STDOUT&quot;)</span>
+<span class="c1">##     message(&quot;ANOTHER MESSAGE&quot;)</span>
+<span class="c1">##     stop(&quot;ERROR&quot;)</span>
+<span class="c1">##     &quot;NO RETURN VALUE&quot;</span>
+<span class="c1">## }</span>
+<span class="c1">## </span>
+<span class="c1">## attr(,&quot;class&quot;)</span>
+<span class="c1">## [1] &quot;realtest_descriptor&quot; &quot;realtest&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -317,7 +360,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-06-03 13:28:29.
+        Last updated on 2021-06-04T12:45:02+1000.
       </span>
 
     </p>

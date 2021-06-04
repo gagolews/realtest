@@ -2,7 +2,7 @@
 
 ## Description
 
-Test result postprocessors are used in [`E`](E.md). `failstop` calls `str(r)` and throws an error if an expectation is not met, i.e., when `r[["matches"]]` is of length 0.
+Test result postprocessors are used in [`E`](E.md). `failstop` calls [`str(r)`](https://stat.ethz.ch/R-manual/R-devel/library/utils/help/str.html) and throws an error if an expectation is not met, i.e., when `r[["matches"]]` is of length 0.
 
 ## Usage
 

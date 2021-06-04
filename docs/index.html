@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.2
+                0.1.2.9001
               </div>
             
           
@@ -189,7 +189,7 @@
 <div><p>We are all adults here. We can’t always get what we want.
 Such is life. You may say we’re dreamers, but we’re not the only ones:
 in an ideal world, things could look different, there could be more
-or less of this and that. Sometimes, there might be many equally correct
+or less of this or that. Sometimes, there might be many equally correct
 outcomes. Other behaviours are good enough for now, but we shall improve
 them eventually, say, during the 2027 summer holidays. Sometimes, what we
 have is barely acceptable, but we need to live with it: it is
@@ -199,43 +199,38 @@ bug fixes and enhancements. Sad but true, one needs to be patient.</p>
 <p><em>realtest</em> is a framework for unit testing
 for realistic minimalists; it aids in formalising:</p>
 <ul class="simple">
-<li><p>assertions</p></li>
-<li><p>current behaviour that we’d like to see changed in the future</p></li>
+<li><p>assertions,</p></li>
+<li><p>current behaviour that we’d like to see changed in the future,</p></li>
 <li><p>alternative yet perfectly acceptable behaviours (e.g., when outputs
-are platform-dependent and should remain so)</p></li>
+are platform-dependent and should remain so),</p></li>
 <li><p>requested features to be implemented in due time
-(e.g., as part of the monitoring of other software projects for changes)</p></li>
+(e.g., as part of the monitoring of third-party
+software projects for changes).</p></li>
 </ul>
 <p class="attribution">—by <a class="reference external" href="https://www.gagolewski.com/">Marek Gagolewski</a></p>
 </div></blockquote>
 <p>The introduced vocabulary is (and will be kept!) minimalistic:</p>
 <ul class="simple">
-<li><dl class="simple">
-<dt><strong>P</strong> is <em>prototype</em> – you can use it to manually create a descriptor like</dt><dd><p>“<em>I expect this function to return `c(1, 2, 3)`, with a warning</em>”
-or “<em>that should result in an error</em>”;</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><strong>R</strong> stands for <em>record</em> – creates a descriptor by evaluating an</dt><dd><p>expression and capturing its direct and indirect effects:</p>
+<li><p><strong>P</strong> is <em>prototype</em> – you can use it to manually create a descriptor like
+“<em>I expect this function to return `c(1, 2, 3)`, with a warning</em>”
+or “<em>that should result in an error</em>”;</p></li>
+<li><p><strong>R</strong> stands for <em>record</em> – creates a descriptor by evaluating an
+expression and capturing its direct and indirect effects:</p>
 <ul>
 <li><p>values generated (together with object attributes),</p></li>
 <li><p>errors,</p></li>
 <li><p>warnings and messages,</p></li>
 <li><p>text output on <cite>stdout</cite> and <cite>stderr</cite>;</p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><dl class="simple">
-<dt><strong>E</strong> means <em>expect</em> – compares an expression under scrutiny (via <cite>R</cite>)</dt><dd><p>with a series of descriptors (created via <cite>P</cite> or <cite>R</cite> and using
-a pairwise comparer provided) and stores the matching one (if any).</p>
-</dd>
-</dl>
-</li>
+<li><p><strong>E</strong> means <em>expect</em> – compares an expression under scrutiny (via <cite>R</cite>)
+with a series of descriptors (created via <cite>P</cite> or <cite>R</cite> and using
+a pairwise comparer provided) and stores the matching one (if any).</p></li>
 </ul>
 <p>Some examples:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># identical</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;realtest&quot;</span><span class="p">)</span>  <span class="c1"># call install.packages(&quot;realtest&quot;) first</span>
+
+<span class="c1"># identical</span>
 <span class="nf">E</span><span class="p">(</span><span class="nf">sqrt</span><span class="p">(</span><span class="m">4</span><span class="p">),</span> <span class="m">2.0</span><span class="p">)</span>  <span class="c1"># equivalent to E(sqrt(4), P(2.0))</span>
 
 <span class="c1"># almost-equal (round-off errors)</span>
@@ -275,18 +270,18 @@ You can then summarise/visualise/analyse/customise the results to your liking
 the test outcomes are represented as ordinary R lists.</p>
 <p>Pros:</p>
 <ul class="simple">
-<li><p>minimalistic – clean design and non-overwhelming vocabulary,</p></li>
-<li><p>general and flexible – can be easily adapted to suit your needs,</p></li>
+<li><p>minimalistic – clean design and non-overwhelming vocabulary;</p></li>
+<li><p>general and flexible – can be easily adapted to suit your needs;</p></li>
 <li><p>economic – an expression under scrutiny is evaluated once and
-all its different effects can be examined in a single unit,</p></li>
-<li><p>organised – makes planning future features/improved behaviour easier,</p></li>
+all its different effects can be examined in a single unit;</p></li>
+<li><p>organised – makes planning future features/improved behaviour easier;</p></li>
 <li><p>analysable – introduces data science to unit testing: what story
 can you tell based on the observed facts?</p></li>
 </ul>
 <p>Cons:</p>
 <ul class="simple">
 <li><p>steeper (or, should we rather say, normal) learning curve, you are
-limited by your imagination and programming skills</p></li>
+limited by your imagination and programming skills;</p></li>
 <li><p>other tools, e.g.,
 <a class="reference external" href="https://CRAN.R-project.org/package=tinytest">tinytest</a>,
 <a class="reference external" href="https://CRAN.R-project.org/package=testthat">testthat</a>,
@@ -307,96 +302,15 @@ GNU General Public License, either Version 2 or Version 3, see
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Reference Manual</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="rapi/E.html">E: Test Which Expectations are Met</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rapi/E.html#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/E.html#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/E.html#arguments">Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/E.html#details">Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/E.html#value">Value</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/E.html#author-s">Author(s)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/E.html#see-also">See Also</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/E.html#examples">Examples</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="rapi/P.html">P: Manually Create a Test Descriptor Prototype</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rapi/P.html#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/P.html#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/P.html#arguments">Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/P.html#details">Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/P.html#value">Value</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/P.html#author-s">Author(s)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/P.html#see-also">See Also</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/P.html#examples">Examples</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="rapi/R.html">R: Create a Result Descriptor by Recording Effects of an Expression Evaluation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rapi/R.html#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/R.html#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/R.html#arguments">Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/R.html#details">Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/R.html#value">Value</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/R.html#author-s">Author(s)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/R.html#see-also">See Also</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/R.html#examples">Examples</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="rapi/about_realtest.html">about_realtest: Where Expectations Meet Reality: Realistic Unit Testing in R</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rapi/about_realtest.html#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/about_realtest.html#author-s">Author(s)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/about_realtest.html#see-also">See Also</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="rapi/comparers.html">comparers: Example Object and Side Effect Comparers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rapi/comparers.html#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/comparers.html#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/comparers.html#arguments">Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/comparers.html#details">Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/comparers.html#value">Value</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/comparers.html#author-s">Author(s)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/comparers.html#see-also">See Also</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="rapi/postprocessors.html">postprocessors: Example Test Result Postprocessors</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rapi/postprocessors.html#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/postprocessors.html#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/postprocessors.html#arguments">Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/postprocessors.html#details">Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/postprocessors.html#value">Value</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/postprocessors.html#author-s">Author(s)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/postprocessors.html#see-also">See Also</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="rapi/source2.html">source2: Read and Evaluate Code from an R Script</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rapi/source2.html#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/source2.html#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/source2.html#arguments">Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/source2.html#details">Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/source2.html#value">Value</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/source2.html#author-s">Author(s)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/source2.html#see-also">See Also</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/source2.html#examples">Examples</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="rapi/summary.realtest_results.html">summary.realtest_results: Summarise and Display Test Results</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rapi/summary.realtest_results.html#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/summary.realtest_results.html#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/summary.realtest_results.html#arguments">Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/summary.realtest_results.html#value">Value</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/summary.realtest_results.html#author-s">Author(s)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/summary.realtest_results.html#see-also">See Also</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/summary.realtest_results.html#examples">Examples</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="rapi/test_dir.html">test_dir: Gather All Test Results From R Scripts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rapi/test_dir.html#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/test_dir.html#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/test_dir.html#arguments">Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/test_dir.html#value">Value</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/test_dir.html#author-s">Author(s)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/test_dir.html#see-also">See Also</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/test_dir.html#examples">Examples</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/E.html">E: Test Which Expectations are Met</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/P.html">P: Manually Create a Test Descriptor Prototype</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/R.html">R: Create a Result Descriptor by Recording Effects of an Expression Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/about_realtest.html">about_realtest: Where Expectations Meet Reality: Realistic Unit Testing in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/comparers.html">comparers: Example Object and Side Effect Comparers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/postprocessors.html">postprocessors: Example Test Result Postprocessors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/source2.html">source2: Read and Evaluate Code from an R Script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/summary.realtest_results.html">summary.realtest_results: Summarise and Display Test Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/test_dir.html">test_dir: Gather All Test Results From R Scripts</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -425,7 +339,7 @@ GNU General Public License, either Version 2 or Version 3, see
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-06-03 13:28:29.
+        Last updated on 2021-06-04T12:45:02+1000.
       </span>
 
     </p>

@@ -15,6 +15,8 @@
   `sides_similar` and now has an option to ignore the consideration
   of indicated side effects.
 
+* [BUGFIX] `summary.realtest_results` no longer tries to subset symbols.
+
 
 ## 0.1.2 (2021-06-03)
 

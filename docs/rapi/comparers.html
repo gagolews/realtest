@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.2
+                0.1.2.9001
               </div>
             
           
@@ -199,15 +199,13 @@
 <h1>comparers: Example Object and Side Effect Comparers<a class="headerlink" href="#comparers-example-object-and-side-effect-comparers" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>Two-argument functions to compare direct or indirect effects of two test descriptors (see <a class="reference internal" href="P.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">P</span></code></span></a> and <a class="reference internal" href="R.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">R</span></code></span></a>). These can be passed as <code class="docutils literal notranslate"><span class="pre">value_comparer</span></code> and <code class="docutils literal notranslate"><span class="pre">sides_comparer</span></code> to <a class="reference internal" href="E.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">E</span></code></span></a>.</p>
+<p>Example two-argument functions to compare direct or indirect effects of two test descriptors (see <a class="reference internal" href="P.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">P</span></code></span></a> and <a class="reference internal" href="R.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">R</span></code></span></a>). These can be passed as <code class="docutils literal notranslate"><span class="pre">value_comparer</span></code> and <code class="docutils literal notranslate"><span class="pre">sides_comparer</span></code> to <a class="reference internal" href="E.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">E</span></code></span></a>.</p>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ignore_differences</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="nf">identical_or_TRUE</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-<span class="nf">maps_identical_or_TRUE</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nf">sides_similar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -231,15 +229,20 @@
 </div>
 <div class="section" id="details">
 <h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
-<p>Notable built-in (base R) comparers include <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/identical.html"><code class="docutils literal notranslate"><span class="pre">identical</span></code></a> (the strictest possible) and <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/all.equal.html"><code class="docutils literal notranslate"><span class="pre">all.equal</span></code></a> (can ignore, amongst others, round-off errors).</p>
+<p>Notable built-in (base R) comparers include <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/identical.html"><code class="docutils literal notranslate"><span class="pre">identical</span></code></a> (the strictest possible) and <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/all.equal.html"><code class="docutils literal notranslate"><span class="pre">all.equal</span></code></a> (can ignore, amongst others, round-off errors; note that it is an S3 generic).</p>
 <p><code class="docutils literal notranslate"><span class="pre">ignore_differences</span></code> is a dummy comparer that always returns <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>. Hence, it does not discriminate between anything.</p>
-<p><code class="docutils literal notranslate"><span class="pre">identical_or_TRUE</span></code> is useful when comparing particular side effects, where is assumed that a value <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> represents the occurrence of a condition, but without going into any details (e.g., some warning).</p>
-<p><code class="docutils literal notranslate"><span class="pre">maps_identical_or_TRUE</span></code> propagates <code class="docutils literal notranslate"><span class="pre">identical_or_TRUE</span></code> on each element of a given named list (treated as an unordered set of key-value pairs) and aggregates the results.</p>
-<p>You can define any comparer of your own liking: the possibilities are endless. For example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sides_similar</span></code> is useful when comparing side effect lists. It defines the following semantic for the prototypical values:</p>
 <ul class="simple">
-<li><p>a comparer for side effects based on regular expressions,</p></li>
+<li><p>non-existent, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, or <code class="docutils literal notranslate"><span class="pre">FALSE</span></code> – side effect must not occur,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NA</span></code> – ignore whatsoever,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> – side effect occurs, but the details are irrelevant (e.g., ‘some warning’ as opposed to <code class="docutils literal notranslate"><span class="pre">&quot;NaNs</span> <span class="pre">produced&quot;</span></code>)</p></li>
+<li><p>otherwise, a character vector with message(s) matched exactly.</p></li>
+</ul>
+<p>You can define any comparers of your own liking: the possibilities are endless. For example:</p>
+<ul class="simple">
+<li><p>a comparer for side effects based on regular expressions or wildcards (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;.not</span> <span class="pre">converged.*&quot;</span></code>),</p></li>
 <li><p>a comparer that tests whether all elements in a vector are equal to <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>,</p></li>
-<li><p>a comparer that verifies whether each element falls into a specified interval,</p></li>
+<li><p>a comparer that verifies whether each element in a vector falls into a specified interval,</p></li>
 <li><p>a comparer that ignores all the object attributes (possibly in combination with other comparers),</p></li>
 </ul>
 <p>and so forth.</p>
@@ -274,7 +277,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-06-03 13:28:29.
+        Last updated on 2021-06-04T12:45:02+1000.
       </span>
 
     </p>
