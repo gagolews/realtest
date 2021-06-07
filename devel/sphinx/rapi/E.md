@@ -89,6 +89,51 @@ E(
   pass=c("11", "22", "13"),          # this is the behaviour we have now
   bad=P(error=TRUE)                  # avoid regression
 )
-E(sin(pi), best=0.0, pass=P(0.0, value_comparer=all.equal),
+e <- E(sin(pi), best=0.0, pass=P(0.0, value_comparer=all.equal),
   .comment="well, this is not a symbolic language after all...")
+print(e)
+## $object
+## $value
+## [1] 1.224647e-16
+## 
+## $expr
+## sin(pi)
+## 
+## attr(,"class")
+## [1] "realtest_descriptor" "realtest"           
+## 
+## $prototypes
+## $prototypes$best
+## $value
+## [1] 0
+## 
+## $differences
+## [1] "objects are different"
+## 
+## attr(,"class")
+## [1] "realtest_descriptor" "realtest"           
+## 
+## $prototypes$pass
+## $value
+## [1] 0
+## 
+## $value_comparer
+## function (target, current, ...) 
+## UseMethod("all.equal")
+## <bytecode: 0x5647829cc9e8>
+## <environment: namespace:base>
+## 
+## attr(,"class")
+## [1] "realtest_descriptor" "realtest"           
+## 
+## 
+## $matches
+## pass 
+##    2 
+## 
+## $.comment
+## [1] "well, this is not a symbolic language after all..."
+## 
+## attr(,"class")
+## [1] "realtest_result" "realtest"
 ```

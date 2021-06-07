@@ -37,7 +37,7 @@
 #' \code{TRUE}. Hence, it does not discriminate between anything.
 #'
 #' \code{sides_similar} is useful when comparing side effect lists.
-#' It defines the following semantic for the prototypical values:
+#' It defines the following semantics for the prototypical values:
 #' \itemize{
 #' \item non-existent, \code{NULL}, or \code{FALSE} -- side effect must
 #'     not occur,

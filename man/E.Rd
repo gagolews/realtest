@@ -108,8 +108,9 @@ E(
   pass=c("11", "22", "13"),          # this is the behaviour we have now
   bad=P(error=TRUE)                  # avoid regression
 )
-E(sin(pi), best=0.0, pass=P(0.0, value_comparer=all.equal),
+e <- E(sin(pi), best=0.0, pass=P(0.0, value_comparer=all.equal),
   .comment="well, this is not a symbolic language after all...")
+print(e)
 
 }
 \seealso{

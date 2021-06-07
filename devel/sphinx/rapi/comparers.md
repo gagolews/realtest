@@ -25,7 +25,7 @@ Notable built-in (base R) comparers include [`identical`](https://stat.ethz.ch/R
 
 `ignore_differences` is a dummy comparer that always returns `TRUE`. Hence, it does not discriminate between anything.
 
-`sides_similar` is useful when comparing side effect lists. It defines the following semantic for the prototypical values:
+`sides_similar` is useful when comparing side effect lists. It defines the following semantics for the prototypical values:
 
 -   non-existent, `NULL`, or `FALSE` -- side effect must not occur,
 

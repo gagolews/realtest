@@ -92,7 +92,7 @@ to learn more about programming in R.
 
 **Homepage**: https://realtest.gagolewski.com
 
-**CRAN Entry**: TODO
+**CRAN Entry**: https://CRAN.R-project.org/package=realtest
 
 **License**:
 *realtest* is distributed under the terms of the GNU General Public License,
