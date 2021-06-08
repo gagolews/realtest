@@ -38,4 +38,3 @@ e <- E(1, best=1, 1)
 
 E(inherits(e, "realtest_result"), TRUE)
 E(names(e[["matches"]]), c("best", ""))
-

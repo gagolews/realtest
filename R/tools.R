@@ -261,7 +261,7 @@ print.realtest_results_summary <- function(x, label_fail="fail", ...)
 
     cat("*** realtest: test summary:\n")
     if (!is.null(x[[".file"]]))
-        print(table(x[[".file"]], x[["match"]]))
+        print(table(basename(x[[".file"]]), x[["match"]]))
     else
         print(table(x[["match"]]))
     cat("\n")

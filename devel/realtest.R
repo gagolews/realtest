@@ -1,9 +1,12 @@
+# This file is part of the 'realtest' project.
+# Copyleft (c) 2021, Marek Gagolewski <https://www.gagolewski.com>
+
 # runs all scripts named like ./tests/realtest-*.R
 
 library("realtest")
 # Sys.setenv("__REALTEST_TEST_FAILURES"="1")
 
-r <- test_dir("tests")
+r <- test_dir("inst/realtest")
 s <- summary(r)
 print(s)
-stopifnot(sum(s[["match"]]=="fail") == 0)  # halt if there are failed tests
+stopifnot(all(s[["match"]] != "fail"))  # halt if there are failed tests
