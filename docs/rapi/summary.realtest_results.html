@@ -119,6 +119,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/realtest">Source Code (GitHub)</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/realtest/issues">Bug Tracker and Feature Suggestions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://CRAN.R-project.org/package=realtest">CRAN Entry</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.gagolewski.com/">Author's Homepage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../news.html">What Is New in <em>realtest</em></a></li>
 </ul>
@@ -261,17 +262,17 @@
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">&lt;-</span> <span class="nf">test_dir</span><span class="p">(</span><span class="s">&quot;~/R/realtest/tests&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">&lt;-</span> <span class="nf">test_dir</span><span class="p">(</span><span class="s">&quot;~/R/realtest/inst/realtest&quot;</span><span class="p">)</span>
 <span class="n">s</span> <span class="o">&lt;-</span> <span class="nf">summary</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>  <span class="c1"># summary.realtest_results</span>
 <span class="nf">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="c1"># print.realtest_results_summary</span>
 <span class="c1">## *** realtest: test summary:</span>
-<span class="c1">##                                                   </span>
-<span class="c1">##                                                    good best pass fail</span>
-<span class="c1">##   /home/gagolews/R/realtest/tests/realtest-basic.R    0    0   12    0</span>
-<span class="c1">##   /home/gagolews/R/realtest/tests/realtest-named.R    1    1   12    0</span>
+<span class="c1">##                   </span>
+<span class="c1">##                    good best pass fail</span>
+<span class="c1">##   realtest-basic.R    0    0   12    0</span>
+<span class="c1">##   realtest-named.R    1    1   12    0</span>
 <span class="c1">## </span>
 <span class="c1">## *** realtest: all tests succeeded</span>
-<span class="nf">stopifnot</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">s</span><span class="p">[[</span><span class="s">&quot;match&quot;</span><span class="p">]]</span><span class="o">==</span><span class="s">&quot;fail&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="m">0</span><span class="p">)</span>  <span class="c1"># halt if there are failed tests</span>
+<span class="nf">stopifnot</span><span class="p">(</span><span class="o">!</span><span class="nf">any</span><span class="p">(</span><span class="n">s</span><span class="p">[[</span><span class="s">&quot;match&quot;</span><span class="p">]]</span><span class="o">==</span><span class="s">&quot;fail&quot;</span><span class="p">))</span>  <span class="c1"># halt if there are failed tests</span>
 </pre></div>
 </div>
 </div>
@@ -293,7 +294,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-06-04T12:45:02+1000.
+        Last updated on 2021-06-11T17:56:28+1000.
       </span>
 
     </p>

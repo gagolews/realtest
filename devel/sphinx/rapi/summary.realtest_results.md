@@ -56,15 +56,15 @@ Related functions: [`test_dir`](test_dir.md)
 
 
 ```r
-r <- test_dir("~/R/realtest/tests")
+r <- test_dir("~/R/realtest/inst/realtest")
 s <- summary(r)  # summary.realtest_results
 print(s)  # print.realtest_results_summary
 ## *** realtest: test summary:
-##                                                   
-##                                                    good best pass fail
-##   /home/gagolews/R/realtest/tests/realtest-basic.R    0    0   12    0
-##   /home/gagolews/R/realtest/tests/realtest-named.R    1    1   12    0
+##                   
+##                    good best pass fail
+##   realtest-basic.R    0    0   12    0
+##   realtest-named.R    1    1   12    0
 ## 
 ## *** realtest: all tests succeeded
-stopifnot(sum(s[["match"]]=="fail") == 0)  # halt if there are failed tests
+stopifnot(!any(s[["match"]]=="fail"))  # halt if there are failed tests
 ```

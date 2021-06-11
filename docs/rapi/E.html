@@ -120,6 +120,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/realtest">Source Code (GitHub)</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/realtest/issues">Bug Tracker and Feature Suggestions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://CRAN.R-project.org/package=realtest">CRAN Entry</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.gagolewski.com/">Author's Homepage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../news.html">What Is New in <em>realtest</em></a></li>
 </ul>
@@ -293,8 +294,53 @@
   <span class="n">pass</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;11&quot;</span><span class="p">,</span> <span class="s">&quot;22&quot;</span><span class="p">,</span> <span class="s">&quot;13&quot;</span><span class="p">),</span>          <span class="c1"># this is the behaviour we have now</span>
   <span class="n">bad</span><span class="o">=</span><span class="nf">P</span><span class="p">(</span><span class="n">error</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>                  <span class="c1"># avoid regression</span>
 <span class="p">)</span>
-<span class="nf">E</span><span class="p">(</span><span class="nf">sin</span><span class="p">(</span><span class="kc">pi</span><span class="p">),</span> <span class="n">best</span><span class="o">=</span><span class="m">0.0</span><span class="p">,</span> <span class="n">pass</span><span class="o">=</span><span class="nf">P</span><span class="p">(</span><span class="m">0.0</span><span class="p">,</span> <span class="n">value_comparer</span><span class="o">=</span><span class="n">all.equal</span><span class="p">),</span>
+<span class="n">e</span> <span class="o">&lt;-</span> <span class="nf">E</span><span class="p">(</span><span class="nf">sin</span><span class="p">(</span><span class="kc">pi</span><span class="p">),</span> <span class="n">best</span><span class="o">=</span><span class="m">0.0</span><span class="p">,</span> <span class="n">pass</span><span class="o">=</span><span class="nf">P</span><span class="p">(</span><span class="m">0.0</span><span class="p">,</span> <span class="n">value_comparer</span><span class="o">=</span><span class="n">all.equal</span><span class="p">),</span>
   <span class="n">.comment</span><span class="o">=</span><span class="s">&quot;well, this is not a symbolic language after all...&quot;</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="c1">## $object</span>
+<span class="c1">## $value</span>
+<span class="c1">## [1] 1.224647e-16</span>
+<span class="c1">## </span>
+<span class="c1">## $expr</span>
+<span class="c1">## sin(pi)</span>
+<span class="c1">## </span>
+<span class="c1">## attr(,&quot;class&quot;)</span>
+<span class="c1">## [1] &quot;realtest_descriptor&quot; &quot;realtest&quot;           </span>
+<span class="c1">## </span>
+<span class="c1">## $prototypes</span>
+<span class="c1">## $prototypes$best</span>
+<span class="c1">## $value</span>
+<span class="c1">## [1] 0</span>
+<span class="c1">## </span>
+<span class="c1">## $differences</span>
+<span class="c1">## [1] &quot;objects are different&quot;</span>
+<span class="c1">## </span>
+<span class="c1">## attr(,&quot;class&quot;)</span>
+<span class="c1">## [1] &quot;realtest_descriptor&quot; &quot;realtest&quot;           </span>
+<span class="c1">## </span>
+<span class="c1">## $prototypes$pass</span>
+<span class="c1">## $value</span>
+<span class="c1">## [1] 0</span>
+<span class="c1">## </span>
+<span class="c1">## $value_comparer</span>
+<span class="c1">## function (target, current, ...) </span>
+<span class="c1">## UseMethod(&quot;all.equal&quot;)</span>
+<span class="c1">## &lt;bytecode: 0x55648ccc6910&gt;</span>
+<span class="c1">## &lt;environment: namespace:base&gt;</span>
+<span class="c1">## </span>
+<span class="c1">## attr(,&quot;class&quot;)</span>
+<span class="c1">## [1] &quot;realtest_descriptor&quot; &quot;realtest&quot;           </span>
+<span class="c1">## </span>
+<span class="c1">## </span>
+<span class="c1">## $matches</span>
+<span class="c1">## pass </span>
+<span class="c1">##    2 </span>
+<span class="c1">## </span>
+<span class="c1">## $.comment</span>
+<span class="c1">## [1] &quot;well, this is not a symbolic language after all...&quot;</span>
+<span class="c1">## </span>
+<span class="c1">## attr(,&quot;class&quot;)</span>
+<span class="c1">## [1] &quot;realtest_result&quot; &quot;realtest&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -316,7 +362,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-06-04T12:45:02+1000.
+        Last updated on 2021-06-11T17:56:28+1000.
       </span>
 
     </p>

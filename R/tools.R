@@ -143,10 +143,10 @@ source2 <- function(file, local=FALSE)
 #'
 #' @examples
 #' \donttest{
-#' r <- test_dir("~/R/realtest/tests")
+#' r <- test_dir("~/R/realtest/inst/realtest")
 #' s <- summary(r)  # summary.realtest_results
 #' print(s)  # print.realtest_results_summary
-#' stopifnot(sum(s[["match"]]=="fail") == 0)  # halt if there are failed tests
+#' stopifnot(!any(s[["match"]]=="fail"))  # halt if there are failed tests
 #' }
 #'
 #' @seealso Related functions:
@@ -242,10 +242,10 @@ test_dir <- function(
 #'
 #' @examples
 #' \donttest{
-#' r <- test_dir("~/R/realtest/tests")
+#' r <- test_dir("~/R/realtest/inst/realtest")
 #' s <- summary(r)  # summary.realtest_results
 #' print(s)  # print.realtest_results_summary
-#' stopifnot(sum(s[["match"]]=="fail") == 0)  # halt if there are failed tests
+#' stopifnot(!any(s[["match"]]=="fail"))  # halt if there are failed tests
 #' }
 #'
 #' @seealso Related functions:
