@@ -126,12 +126,12 @@ GNU General Public License, either Version 2 or Version 3, see
 
 
 
-
 .. toctree::
     :maxdepth: 2
     :caption: realtest
+    :hidden:
 
-    About  <https://realtest.gagolewski.com/>
+    About <self>
 
 
 .. toctree::
