@@ -6,6 +6,11 @@
 > The online reference manual is available at https://realtest.gagolewski.com.
 
 
+## 0.2.1.9001 (to-be >= 0.2.2)
+
+* ...
+
+
 ## 0.2.1 (2021-06-17)
 
 * [NEW FEATURE] `sides_comparer` is now solely responsible for
