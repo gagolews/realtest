@@ -136,8 +136,10 @@ E <- function(
     stopifnot(is.function(postprocessor))
 
     # if (!inherits(expr, "realtest_descriptor"))  # we don't want to force eval here!
-    object <- R(expr)  # will force eval inside
-    object[["expr"]] <- this_call[["expr"]]
+#     object <- R(expr, envir=parent.frame())  # will force eval inside
+#     object[["expr"]] <- this_call[["expr"]]
+
+    object <- eval(call("R", this_call[["expr"]], envir=parent.frame()))
 
     prototypes <- list(...)
     which_metadata <- if (is.null(names(prototypes))) rep(FALSE, length(prototypes))

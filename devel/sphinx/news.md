@@ -8,6 +8,11 @@
 
 ## 0.2.1.9001 (to-be >= 0.2.2)
 
+* [NEW FEATURE] `R` (and hence `E` too) now returns
+  a named list of objects passed thereto as arguments,
+  e.g., `R(y^2)` extracts `y` together with its value from the
+  parent environment.
+
 * ...
 
 

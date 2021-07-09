@@ -7,15 +7,16 @@ Evaluates an expression and records its direct and indirect effects: the resulti
 ## Usage
 
 ```r
-R(expr, ...)
+R(expr, ..., envir = parent.frame())
 ```
 
 ## Arguments
 
-|        |                                               |
-|--------|-----------------------------------------------|
-| `expr` | a formal argument to be evaluated             |
-| `...`  | further arguments to be passed to [`P`](P.md) |
+|         |                                               |
+|---------|-----------------------------------------------|
+| `expr`  | expression to be evaluated                    |
+| `...`   | further arguments to be passed to [`P`](P.md) |
+| `envir` | environment where `expr` is to be evaluated   |
 
 ## Details
 
@@ -25,7 +26,7 @@ There may be other side effects, such as changing the state of the random number
 
 ## Value
 
-A list of class `realtest_descriptor`, see [`P`](P.md), which this function calls. The additional named component `expr` gives the expression used to generate the `value`.
+A list of class `realtest_descriptor`, see [`P`](P.md), which this function calls. The additional named component `expr` gives the expression used to generate the `value`. Moreover, `args` gives a named list of objects that appeared in `expr` (not including functions called).
 
 If an effect of particular kind does not occur, it is not included in the resulting list. `stdout`, `stderr`, and `error` are at most single strings.
 
@@ -47,12 +48,17 @@ Related functions: [`E`](E.md), [`P`](P.md)
 
 
 ```r
-R(sum(1:10))
+y <- 1:10; R(sum(y^2))
 ## $value
-## [1] 55
+## [1] 385
 ## 
 ## $expr
-## sum(1:10)
+## sum(y^2)
+## 
+## $args
+## $args$y
+##  [1]  1  2  3  4  5  6  7  8  9 10
+## 
 ## 
 ## attr(,"class")
 ## [1] "realtest_descriptor" "realtest"
@@ -101,7 +107,7 @@ R(log("aaaargh"))
 R({
     cat("STDOUT"); cat("STDERR", file=stderr()); message("MESSAGE");
     warning("WARNING"); warning("WARNING AGAIN"); cat("MORE STDOUT");
-    message("ANOTHER MESSAGE"); stop("ERROR"); "NO RETURN VALUE"
+    message("ANOTHER MESSAGE"); stop("ERROR"); y; "NO RETURN VALUE"
 })
 ## $value
 ## NULL
@@ -133,8 +139,14 @@ R({
 ##     cat("MORE STDOUT")
 ##     message("ANOTHER MESSAGE")
 ##     stop("ERROR")
+##     y
 ##     "NO RETURN VALUE"
 ## }
+## 
+## $args
+## $args$y
+##  [1]  1  2  3  4  5  6  7  8  9 10
+## 
 ## 
 ## attr(,"class")
 ## [1] "realtest_descriptor" "realtest"

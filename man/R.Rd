@@ -4,18 +4,22 @@
 \alias{R}
 \title{Create a Result Descriptor by Recording Effects of an Expression Evaluation}
 \usage{
-R(expr, ...)
+R(expr, ..., envir = parent.frame())
 }
 \arguments{
-\item{expr}{a formal argument to be evaluated}
+\item{expr}{expression to be evaluated}
 
 \item{...}{further arguments to be passed to \code{\link{P}}}
+
+\item{envir}{environment where \code{expr} is to be evaluated}
 }
 \value{
 A list of class \code{realtest_descriptor},
 see \code{\link{P}}, which this function calls.
 The additional named component \code{expr} gives the
 expression used to generate the \code{value}.
+Moreover, \code{args} gives a named list of objects
+that appeared in \code{expr} (not including functions called).
 
 If an effect of particular kind does not occur,
 it is not included in the resulting list.
@@ -44,14 +48,14 @@ package namespaces), or plotting, but these are not captured,
 at least, not in the current version of the package.
 }
 \examples{
-R(sum(1:10))
+y <- 1:10; R(sum(y^2))
 R(cat("a bit talkative, innit?"))
 R(sqrt(c(-1, 0, 1, 2, 4)))
 R(log("aaaargh"))
 R({
     cat("STDOUT"); cat("STDERR", file=stderr()); message("MESSAGE");
     warning("WARNING"); warning("WARNING AGAIN"); cat("MORE STDOUT");
-    message("ANOTHER MESSAGE"); stop("ERROR"); "NO RETURN VALUE"
+    message("ANOTHER MESSAGE"); stop("ERROR"); y; "NO RETURN VALUE"
 })
 
 }

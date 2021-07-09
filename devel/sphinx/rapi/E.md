@@ -99,6 +99,11 @@ print(e)
 ## $expr
 ## sin(pi)
 ## 
+## $args
+## $args$pi
+## [1] 3.141593
+## 
+## 
 ## attr(,"class")
 ## [1] "realtest_descriptor" "realtest"           
 ## 
@@ -120,7 +125,7 @@ print(e)
 ## $value_comparer
 ## function (target, current, ...) 
 ## UseMethod("all.equal")
-## <bytecode: 0x559d687c5a28>
+## <bytecode: 0x565042dcd118>
 ## <environment: namespace:base>
 ## 
 ## attr(,"class")

@@ -40,8 +40,11 @@
 #' package namespaces), or plotting, but these are not captured,
 #' at least, not in the current version of the package.
 #'
-#' @param expr a formal argument to be evaluated
+#' @param expr expression to be evaluated
+#'
 #' @param ... further arguments to be passed to \code{\link{P}}
+#'
+#' @param envir environment where \code{expr} is to be evaluated
 #'
 #'
 #' @return
@@ -49,6 +52,8 @@
 #' see \code{\link{P}}, which this function calls.
 #' The additional named component \code{expr} gives the
 #' expression used to generate the \code{value}.
+#' Moreover, \code{args} gives a named list of objects
+#' that appeared in \code{expr} (not including functions called).
 #'
 #' If an effect of particular kind does not occur,
 #' it is not included in the resulting list.
@@ -61,20 +66,20 @@
 #' \code{\link{E}}, \code{\link{P}}
 #'
 #' @examples
-#' R(sum(1:10))
+#' y <- 1:10; R(sum(y^2))
 #' R(cat("a bit talkative, innit?"))
 #' R(sqrt(c(-1, 0, 1, 2, 4)))
 #' R(log("aaaargh"))
 #' R({
 #'     cat("STDOUT"); cat("STDERR", file=stderr()); message("MESSAGE");
 #'     warning("WARNING"); warning("WARNING AGAIN"); cat("MORE STDOUT");
-#'     message("ANOTHER MESSAGE"); stop("ERROR"); "NO RETURN VALUE"
+#'     message("ANOTHER MESSAGE"); stop("ERROR"); y; "NO RETURN VALUE"
 #' })
 #'
 #' @importFrom utils capture.output
 #' @export
 #' @rdname R
-R <- function(expr, ...)
+R <- function(expr, ..., envir=parent.frame())
 {
     this_call <- match.call()
 
@@ -85,28 +90,29 @@ R <- function(expr, ...)
         .stdout <- capture.output(type="output",
             .value <- tryCatch(
                 withCallingHandlers(
-                expr,  # force eval
-                warning = function(cond) {
-                    if (inherits(cond, "warning")) {
-                        .warning <<- c(.warning, trimws(cond$message))
-                        tryInvokeRestart("muffleWarning")
+                    eval(this_call[["expr"]], envir=envir), # force eval
+                    warning = function(cond) {
+                        if (inherits(cond, "warning")) {
+                            .warning <<- c(.warning, trimws(cond$message))
+                            tryInvokeRestart("muffleWarning")
+                        }
+                        invisible(NULL)
+                    },
+                    message = function(cond) {
+                        if (inherits(cond, "message")) {
+                            .message <<- c(.message, trimws(cond$message))
+                            tryInvokeRestart("muffleMessage")
+                        }
+                        invisible(NULL)
                     }
-                    invisible(NULL)
-                },
-                message = function(cond) {
-                    if (inherits(cond, "message")) {
-                        .message <<- c(.message, trimws(cond$message))
-                        tryInvokeRestart("muffleMessage")
+                ),
+                error = function(cond) {
+                    if (inherits(cond, "error")) {
+                        .error <<- cond$message
                     }
                     invisible(NULL)
                 }
-            ),
-            error = function(cond) {
-                if (inherits(cond, "error")) {
-                    .error <<- cond$message
-                }
-                invisible(NULL)
-            })
+            )
         )
     )
 
@@ -124,6 +130,29 @@ R <- function(expr, ...)
     )
 
     ret[["expr"]] <- this_call[["expr"]]
+
+
+    get_vars <- function(e) {
+        # all.vars(e) would also return `stringx` and `test` in:
+        # e <- expression(f(2+3, stringx::test, 3*5+f(2, y^2)-z))[[1]]
+
+        all_names <- character(0)
+        .get_vars_rec <- function(e) {
+            if (is.call(e)) {
+                e <- as.list(e)
+                if (e[[1]] != "::")
+                    for (ei in e[-1]) .get_vars_rec(ei)
+            }
+            else if (is.symbol(e)) {
+                all_names[length(all_names) + 1] <<- as.character(e)
+            }
+        }
+        .get_vars_rec(e)
+        unique(all_names)
+    }
+
+    args <- get_vars(ret[["expr"]])
+    ret[["args"]] <- if (length(args) == 0) NULL else mget(args, envir=envir, inherits=TRUE)
 
     ret
 }

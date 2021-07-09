@@ -333,5 +333,3 @@ summary.realtest_results <- function(object, label_pass="pass", label_fail="fail
         class=c("realtest_results_summary", "realtest", "data.frame")
     )
 }
-
-
