@@ -46,6 +46,7 @@ Related functions: [`source2`](source2.md), [`summary.realtest_results`](summary
 
 
 ```r
+## Not run: 
 r <- test_dir("~/R/realtest/inst/realtest")
 s <- summary(r)  # summary.realtest_results
 print(s)  # print.realtest_results_summary
@@ -57,4 +58,6 @@ print(s)  # print.realtest_results_summary
 ## 
 ## *** realtest: all tests succeeded
 stopifnot(!any(s[["match"]]=="fail"))  # halt if there are failed tests
+
+## End(Not run)
 ```
