@@ -36,7 +36,7 @@ The function does not fail if some tests are not met -- you need
 to detect this yourself.
 }
 \examples{
-\donttest{
+\dontrun{
 r <- test_dir("~/R/realtest/inst/realtest")
 s <- summary(r)  # summary.realtest_results
 print(s)  # print.realtest_results_summary

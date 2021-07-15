@@ -44,7 +44,7 @@ An example (write your own which will better suit your needs)
 way to summarise the results returned by \code{test_dir}.
 }
 \examples{
-\donttest{
+\dontrun{
 r <- test_dir("~/R/realtest/inst/realtest")
 s <- summary(r)  # summary.realtest_results
 print(s)  # print.realtest_results_summary

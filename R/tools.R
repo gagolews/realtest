@@ -142,7 +142,7 @@ source2 <- function(file, local=FALSE)
 #' giving the location and the source code of the test instance.
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' r <- test_dir("~/R/realtest/inst/realtest")
 #' s <- summary(r)  # summary.realtest_results
 #' print(s)  # print.realtest_results_summary
@@ -241,7 +241,7 @@ test_dir <- function(
 #'
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' r <- test_dir("~/R/realtest/inst/realtest")
 #' s <- summary(r)  # summary.realtest_results
 #' print(s)  # print.realtest_results_summary
