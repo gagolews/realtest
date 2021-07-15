@@ -1,0 +1,26 @@
+name: realtest for R
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get -y upgrade
+    - name: Install realtest
+      run: |
+        LC_ALL="pl_PL.UTF-8" sudo R CMD INSTALL .
+    - name: Test realtest
+      run: |
+        LC_ALL="pl_PL.UTF-8" sudo Rscript -e 'source("devel/realtest.R")'
+    - name: Check realtest
+      run: |
+        LC_ALL="pl_PL.UTF-8" sudo make check

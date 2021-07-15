@@ -2,7 +2,7 @@
 library("realtest")
 
 # prototype must be provided:
-E(E(sqrt(4)), P(error="provide at least one prototype"))
+E(E(sqrt(4)), P(error=TRUE))
 
 E(sqrt(4), P(2.0))
 E(sqrt(4), 2.0)  # equivalent to the above
