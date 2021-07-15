@@ -6,7 +6,7 @@ e <- E(
     .description="partial recycling",
     best=P(
         c("11", "22", "13"),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     ),
     pass=c("11", "22", "13"),
     bad=P(error=TRUE)

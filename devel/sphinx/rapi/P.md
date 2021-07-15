@@ -71,14 +71,14 @@ P(1:3)
 ## 
 ## attr(,"class")
 ## [1] "realtest_descriptor" "realtest"
-# expecting c(1L, 2L, 3L), with a specific warning:
-P(1:3, warning="longer object length is not a multiple of shorter object length")
+# expecting c(1L, 2L, 3L), with a warning:
+P(1:3, warning=TRUE)
 ## $value
 ## [1] 1 2 3
 ## 
 ## $sides
 ## $sides$warning
-## [1] "longer object length is not a multiple of shorter object length"
+## [1] TRUE
 ## 
 ## 
 ## attr(,"class")

@@ -66,8 +66,8 @@
 #' @examples
 #' # the desired outcome is c(1L, 2L, 3L):
 #' P(1:3)
-#' # expecting c(1L, 2L, 3L), with a specific warning:
-#' P(1:3, warning="longer object length is not a multiple of shorter object length")
+#' # expecting c(1L, 2L, 3L), with a warning:
+#' P(1:3, warning=TRUE)
 #' # note, however, that it is the sides_comparer that defines the semantics
 #'
 #' @export

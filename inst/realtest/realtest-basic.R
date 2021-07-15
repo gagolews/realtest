@@ -17,10 +17,10 @@ E(sample(c("head", "tail"), 1), "head", "tail")
 E(sqrt(-1), P(NaN, warning=TRUE))
 E(1:2 * c(1, 10, 100), P(c(1, 20, 100), warning=TRUE))
 
-# a warning is not expected
+# no warning is expected
 E(sqrt(0), P(0, warning=FALSE))
 
-# a warning is not paid attention to
+# any warning is not paid attention to
 E(sqrt(0), P(0, warning=NA))
 E(sqrt(-1), P(NaN, warning=NA))
 

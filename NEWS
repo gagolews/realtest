@@ -13,6 +13,8 @@
   e.g., `R(y^2)` extracts `y` together with its value from the
   parent environment.
 
+* [BUGFIX] Self-unit tests no longer depend on `LC_LANGUAGE`.
+
 * ...
 
 

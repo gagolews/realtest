@@ -71,7 +71,7 @@ E(
     paste0(1:2, 1:3),                  # expression to test - concatenation
     best=P(                            # what we yearn for (ideally)
         c("11", "22", "13"),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     ),
     current=c("11", "22", "13"),       # this is the behaviour we have now
     bad=P(error=TRUE)                  # avoid regression
