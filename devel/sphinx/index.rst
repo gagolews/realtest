@@ -49,7 +49,8 @@ Some examples:
 
 .. code-block:: r
 
-    library("realtest")  # call install.packages("realtest") first
+    install.packages("realtest")  # install from CRAN
+    library("realtest")
 
     # identical
     E(sqrt(4), 2.0)  # equivalent to E(sqrt(4), P(2.0))
@@ -119,7 +120,8 @@ Cons:
 
 
 *realtest*'s source code is hosted on
-`GitHub <https://github.com/gagolews/realtest>`_.
+`GitHub <https://github.com/gagolews/realtest>`_ and official releases
+are available on `CRAN <https://cran.r-project.org/package=realtest>`_.
 It is a free software project distributed under the terms of the
 GNU General Public License, either Version 2 or Version 3, see
 `license <https://raw.githubusercontent.com/gagolews/realtest/master/LICENSE>`_.
