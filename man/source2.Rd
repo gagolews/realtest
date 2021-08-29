@@ -24,7 +24,7 @@ executing a series of expressions to ease debugging.
 The function sets/updates the following environment variables while
 evaluating consecutive expressions:
 \itemize{
-   \item \code{__FILE__} -- path to current file,
+   \item \code{__FILE__} -- path to the current file,
    \item \code{__LINE__} -- line number where the currently executed
        expression begins,
    \item \code{__EXPR__} -- source code defining the expression.

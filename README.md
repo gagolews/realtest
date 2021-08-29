@@ -1,6 +1,6 @@
 # **realtest**
 
-## When Expectations Meet Reality: Realistic Unit Testing in [R](https://www.r-project.org/)
+## Where Expectations Meet Reality: Realistic Unit Testing in [R](https://www.r-project.org/)
 
 --------------------------------------------------------------------------------
 
@@ -10,10 +10,10 @@
 > or less of this or that. Sometimes, there might be many equally correct
 > outcomes. Other behaviours are good enough for now, but we shall improve
 > them eventually, say, during the 2027 summer holidays. Sometimes, what we
-> have is barely acceptable, but we need to live with it: it is
-> scheduled to be fixed when we have time. Or when other dependencies
-> will finally take our feedback into account and accept that series of
-> bug fixes and enhancements. Sad but true, one needs to be patient.
+> have is barely acceptable, but we'll fix it when we have time.
+> Or when other dependencies will finally take our feedback into account and
+> accept that series of bug fixes and enhancements. Sad but true,
+> one needs to be patient.
 >
 > [*realtest*](https://realtest.gagolewski.com) is a framework for unit testing
 > for realistic minimalists; it aids in formalising:

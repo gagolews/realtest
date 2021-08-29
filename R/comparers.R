@@ -39,12 +39,12 @@
 #' \code{sides_similar} is useful when comparing side effect lists.
 #' It defines the following semantics for the prototypical values:
 #' \itemize{
-#' \item non-existent, \code{NULL}, or \code{FALSE} -- side effect must
+#' \item non-existent, \code{NULL}, or \code{FALSE} -- a side effect must
 #'     not occur,
 #' \item \code{NA} -- ignore whatsoever,
-#' \item \code{TRUE} -- side effect occurs, but the details are irrelevant
+#' \item \code{TRUE} -- a side effect occurs, but the details are irrelevant
 #'    (e.g., 'some warning' as opposed to \code{"NaNs produced"})
-#' \item otherwise, a character vector with message(s) matched exactly.
+#' \item otherwise -- a character vector with message(s) matched exactly.
 #' }
 #'
 #' You can define any comparers of your own liking:
@@ -70,7 +70,7 @@
 #' is considered met or anything else otherwise.
 #' However, it is highly recommended that in the latter case,
 #' a single string with a short
-#' summary of the differences is returned, as in \code{\link[base]{all.equal}}.
+#' summary of the differences be returned, as in \code{\link[base]{all.equal}}.
 #'
 #' @rdname comparers
 #' @export

@@ -13,8 +13,8 @@ failstop(r)
 Returns \code{r}, invisibly.
 }
 \description{
-Test result postprocessors are used in \code{\link{E}}.
-\code{failstop} calls \code{\link[utils]{str}(r)}
+Generally, test result postprocessors are used by the \code{\link{E}}
+function. \code{failstop} calls \code{\link[utils]{str}(r)}
 and throws an error if an expectation is not met, i.e.,
 when \code{r[["matches"]]} is of length 0.
 }

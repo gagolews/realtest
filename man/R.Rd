@@ -17,7 +17,7 @@ R(expr, ..., envir = parent.frame())
 A list of class \code{realtest_descriptor},
 see \code{\link{P}}, which this function calls.
 The additional named component \code{expr} gives the
-expression used to generate the \code{value}.
+expression that generated the \code{value}.
 Moreover, \code{args} gives a named list of objects
 that appeared in \code{expr} (not including functions called).
 
@@ -30,8 +30,8 @@ When an error occurs, \code{value} is \code{NULL}.
 \description{
 Evaluates an expression and records its direct and indirect effects:
 the resulting value as well as the information whether any errors,
-warnings, or messages are generated and if anything on
-\code{\link[base]{stdout}} or \code{\link[base]{stderr}} is printed.
+warnings, or messages are generated and if anything is printed on
+\code{\link[base]{stdout}} or \code{\link[base]{stderr}}.
 }
 \details{
 Note that messages, warnings, and errors are typically written to
@@ -44,8 +44,8 @@ There may be other side effects, such as changing the state of
 the random number generator, modifying options or environment variables,
 modifying the calling or global environment (e.g., creating new global
 variables), attaching objects onto the search part (e.g., loading
-package namespaces), or plotting, but these are not captured,
-at least, not in the current version of the package.
+package namespaces), or plotting, but these will not be captured,
+at least, not by the current version of the \pkg{realtest} package.
 }
 \examples{
 y <- 1:10; R(sum(y^2))

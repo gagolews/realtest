@@ -24,8 +24,8 @@
 #'
 #' @details
 #' If \code{error}, \code{warning}, \code{message}, \code{stdout}, or
-#' \code{stderr} is \code{NULL}, then no side effect of a particular
-#' kind is included in the output.
+#' \code{stderr} are \code{NULL}, then no side effects of particular
+#' kinds are included in the output.
 #'
 #' The semantics is solely defined by the \code{sides_comparer}.
 #' \code{\link{E}} by default uses \code{\link{sides_similar}}
@@ -42,7 +42,8 @@
 #'    \code{\link[base]{stdout}}
 #'    and \code{\link[base]{stderr}}, respectively
 #' @param value_comparer,sides_comparer optional two-argument functions
-#'    which may be used to override the default comparers used by \code{\link{E}}
+#'    which may be used to override the default comparers
+#'    used by \code{\link{E}}
 #'
 #' @return
 #' A list of class \code{realtest_descriptor}
