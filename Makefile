@@ -1,4 +1,4 @@
-# Copyright (c) 2021, Marek Gagolewski <https://www.gagolewski.com>
+# Copyright (c) 2021-2022, Marek Gagolewski <https://www.gagolewski.com>
 
 
 .PHONY:  r check build clean purge sphinx docs test
@@ -19,11 +19,11 @@ autoconf:
 r: autoconf
 	R CMD INSTALL . --html
 
-reload: r
-	# https://github.com/gagolews/home_bin
-	if [ `whoami` = "gagolews" ]; then \
-		jupyter-qtconsole-sender --silent "reload('${PKGNAME}')"; \
-	fi
+# reload: r
+# 	# https://github.com/gagolews/home_bin
+# 	if [ `whoami` = "gagolews" ]; then \
+# 		jupyter-qtconsole-sender --silent "reload('${PKGNAME}')"; \
+# 	fi
 
 realtest:
 	Rscript -e "\
