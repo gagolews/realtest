@@ -134,6 +134,7 @@ GNU General Public License, either Version 2 or Version 3, see
     :hidden:
 
     About <self>
+    Author <https://www.gagolewski.com/>
 
 
 .. toctree::
@@ -151,7 +152,4 @@ GNU General Public License, either Version 2 or Version 3, see
     Source Code (GitHub) <https://github.com/gagolews/realtest>
     Bug Tracker and Feature Suggestions <https://github.com/gagolews/realtest/issues>
     CRAN Entry <https://CRAN.R-project.org/package=realtest>
-    Author's Homepage <https://www.gagolewski.com/>
     news.md
-
-
