@@ -1,6 +1,7 @@
 realtest: Where expectations meet reality: Realistic unit testing in R
 ============================================================================
 
+.. epigraph::
     We are all adults here. We can't always get what we want.
     Such is life. You may say we're dreamers, but we're not the only ones:
     in an ideal world, things could look different, there could be more
@@ -12,18 +13,17 @@ realtest: Where expectations meet reality: Realistic unit testing in R
     and accept that series of bug fixes and enhancements.
     Sad but true, one needs to be patient.
 
-    *realtest* is a framework for unit testing
-    for realistic minimalists; it aids in formalising:
+*realtest* is a framework for unit testing
+for realistic minimalists; it aids in formalising:
 
-    *   assertions,
-    *   current behaviour that we'd like to see changed in the future,
-    *   alternative yet perfectly acceptable behaviours (e.g., when outputs
-        are platform-dependent and should remain so),
-    *   requested features to be implemented in due time
-        (e.g., as part of the monitoring of third-party
-        software projects for changes).
+*   assertions,
+*   current behaviour that we'd like to see changed in the future,
+*   alternative yet perfectly acceptable behaviours (e.g., when outputs
+    are platform-dependent and should remain so),
+*   requested features to be implemented in due time
+    (e.g., as part of the monitoring of third-party
+    software projects for changes).
 
-    -- by `Marek Gagolewski <https://www.gagolewski.com/>`_
 
 
 The introduced vocabulary is (and will be kept!) minimalistic:
@@ -138,7 +138,7 @@ GNU General Public License, either Version 2 or Version 3, see
 
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
     :caption: Reference Manual
     :glob:
 
