@@ -6,7 +6,7 @@ Example two-argument functions to compare direct or indirect effects of two test
 
 ## Usage
 
-```r
+``` r
 ignore_differences(x, y)
 
 sides_similar(x, y)
@@ -27,13 +27,13 @@ Notable built-in (base R) comparers include [`identical`](https://stat.ethz.ch/R
 
 `sides_similar` is useful when comparing side effect lists. It defines the following semantics for the prototypical values:
 
--   non-existent, `NULL`, or `FALSE` -- side effect must not occur,
+-   non-existent, `NULL`, or `FALSE` -- a side effect must not occur,
 
 -   `NA` -- ignore whatsoever,
 
--   `TRUE` -- side effect occurs, but the details are irrelevant (e.g., \'some warning\' as opposed to `"NaNs produced"`)
+-   `TRUE` -- a side effect occurs, but the details are irrelevant (e.g., \'some warning\' as opposed to `"NaNs produced"`)
 
--   otherwise, a character vector with message(s) matched exactly.
+-   otherwise -- a character vector with message(s) matched exactly.
 
 You can define any comparers of your own liking: the possibilities are endless. For example:
 
@@ -49,7 +49,7 @@ and so forth.
 
 ## Value
 
-Each comparer should yield `TRUE` if the test condition is considered met or anything else otherwise. However, it is highly recommended that in the latter case, a single string with a short summary of the differences is returned, as in [`all.equal`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/all.equal.html).
+Each comparer should yield `TRUE` if the test condition is considered met or anything else otherwise. However, it is highly recommended that in the latter case, a single string with a short summary of the differences be returned, as in [`all.equal`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/all.equal.html).
 
 ## Author(s)
 

@@ -1,4 +1,4 @@
-# summary.realtest\_results: Summarise and Display Test Results
+# summary.realtest_results: Summarise and Display Test Results
 
 ## Description
 
@@ -6,7 +6,7 @@ An example (write your own which will better suit your needs) way to summarise t
 
 ## Usage
 
-```r
+``` r
 ## S3 method for class 'realtest_results_summary'
 print(x, label_fail = "fail", ...)
 
@@ -30,11 +30,11 @@ summary(object, label_pass = "pass", label_fail = "fail", ...)
 
 `summary.realtest_results` returns an object of class `realtest_results_summary` which is a data frame summarising the test results, featuring the following columns:
 
--   `call` -- name of the function tested,
+-   `call` -- the name of the function tested,
 
 -   `match` -- the name of the first matching prototype, `label_pass` if it is unnamed or `label_fail` if there is no match,
 
--   `.file` (optional) -- name of the source file which defined the expectation,
+-   `.file` (optional) -- the name of the source file which defined the expectation,
 
 -   `.line` (optional) -- line number,
 

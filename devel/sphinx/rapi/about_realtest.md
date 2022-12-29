@@ -1,4 +1,4 @@
-# about\_realtest: Where Expectations Meet Reality: Realistic Unit Testing in R
+# about_realtest: Where Expectations Meet Reality: Realistic Unit Testing in R
 
 ## Description
 

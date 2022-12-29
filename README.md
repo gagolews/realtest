@@ -79,10 +79,12 @@ E(
 )
 ```
 
-Refer to the on-line documentation at https://realtest.gagolewski.com
-for more details and to
-https://cran.r-project.org/doc/manuals/r-release/R-intro.html
-to learn more about programming in R.
+Refer to the on-line documentation at <https://realtest.gagolewski.com>
+for more details.
+
+To learn more about R, check out Marek's recent open-access (free!) textbook
+[*Deep R Programming*](https://deepr.gagolewski.com/).
+
 
 
 --------------------------------------------------------------------------------

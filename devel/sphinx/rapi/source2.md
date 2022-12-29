@@ -6,7 +6,7 @@ A simplified alternative to [`source`](https://stat.ethz.ch/R-manual/R-devel/lib
 
 ## Usage
 
-```r
+``` r
 source2(file, local = FALSE)
 ```
 
@@ -21,7 +21,7 @@ source2(file, local = FALSE)
 
 The function sets/updates the following environment variables while evaluating consecutive expressions:
 
--   `__FILE__` -- path to current file,
+-   `__FILE__` -- path to the current file,
 
 -   `__LINE__` -- line number where the currently executed expression begins,
 

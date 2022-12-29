@@ -6,7 +6,7 @@ Allows for formulating expectations like \'the desired outcome is `c(1, 2, 3)`, 
 
 ## Usage
 
-```r
+``` r
 P(
   value = NULL,
   error = NULL,
@@ -30,7 +30,7 @@ P(
 
 ## Details
 
-If `error`, `warning`, `message`, `stdout`, or `stderr` is `NULL`, then no side effect of a particular kind is included in the output.
+If `error`, `warning`, `message`, `stdout`, or `stderr` are `NULL`, then no side effects of particular kinds are included in the output.
 
 The semantics is solely defined by the `sides_comparer`. [`E`](E.md) by default uses [`sides_similar`](comparers.md) (see its description therein), although you are free to override it manually or via a global option.
 

@@ -1,4 +1,4 @@
-# test\_dir: Gather All Test Results From R Scripts
+# test_dir: Gather All Test Results From R Scripts
 
 ## Description
 
@@ -8,7 +8,7 @@ The function does not fail if some tests are not met -- you need to detect this 
 
 ## Usage
 
-```r
+``` r
 test_dir(
   path = "tests",
   pattern = "^realtest-.*\\.R$",

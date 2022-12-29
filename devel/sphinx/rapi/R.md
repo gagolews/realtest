@@ -2,11 +2,11 @@
 
 ## Description
 
-Evaluates an expression and records its direct and indirect effects: the resulting value as well as the information whether any errors, warnings, or messages are generated and if anything on [`stdout`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stdout.html) or [`stderr`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stderr.html) is printed.
+Evaluates an expression and records its direct and indirect effects: the resulting value as well as the information whether any errors, warnings, or messages are generated and if anything is printed on [`stdout`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stdout.html) or [`stderr`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stderr.html).
 
 ## Usage
 
-```r
+``` r
 R(expr, ..., envir = parent.frame())
 ```
 
@@ -22,11 +22,11 @@ R(expr, ..., envir = parent.frame())
 
 Note that messages, warnings, and errors are typically written to [`stderr`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stderr.html), but these are considered separately here. In other words, when testing expectations with [`E`](E.md), e.g., the reference `stderr` should not include the anticipated diagnostic messages.
 
-There may be other side effects, such as changing the state of the random number generator, modifying options or environment variables, modifying the calling or global environment (e.g., creating new global variables), attaching objects onto the search part (e.g., loading package namespaces), or plotting, but these are not captured, at least, not in the current version of the package.
+There may be other side effects, such as changing the state of the random number generator, modifying options or environment variables, modifying the calling or global environment (e.g., creating new global variables), attaching objects onto the search part (e.g., loading package namespaces), or plotting, but these will not be captured, at least, not by the current version of the <span class="pkg">realtest</span> package.
 
 ## Value
 
-A list of class `realtest_descriptor`, see [`P`](P.md), which this function calls. The additional named component `expr` gives the expression used to generate the `value`. Moreover, `args` gives a named list of objects that appeared in `expr` (not including functions called).
+A list of class `realtest_descriptor`, see [`P`](P.md), which this function calls. The additional named component `expr` gives the expression that generated the `value`. Moreover, `args` gives a named list of objects that appeared in `expr` (not including functions called).
 
 If an effect of particular kind does not occur, it is not included in the resulting list. `stdout`, `stderr`, and `error` are at most single strings.
 

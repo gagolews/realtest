@@ -127,6 +127,12 @@ GNU General Public License, either Version 2 or Version 3, see
 `license <https://raw.githubusercontent.com/gagolews/realtest/master/LICENSE>`_.
 
 
+.. note::
+    To learn more about R, check out Marek's open-access (free!) textbook
+    `Deep R Programming <https://deepr.gagolewski.com/>`_\ .
+
+
+
 
 .. toctree::
     :maxdepth: 2
@@ -135,6 +141,9 @@ GNU General Public License, either Version 2 or Version 3, see
 
     About <self>
     Author <https://www.gagolewski.com/>
+    Source Code (GitHub) <https://github.com/gagolews/realtest>
+    Bug Tracker and Feature Suggestions <https://github.com/gagolews/realtest/issues>
+    CRAN Entry <https://CRAN.R-project.org/package=realtest>
 
 
 .. toctree::
@@ -149,7 +158,5 @@ GNU General Public License, either Version 2 or Version 3, see
     :maxdepth: 1
     :caption: Other
 
-    Source Code (GitHub) <https://github.com/gagolews/realtest>
-    Bug Tracker and Feature Suggestions <https://github.com/gagolews/realtest/issues>
-    CRAN Entry <https://CRAN.R-project.org/package=realtest>
+    Deep R Programming <https://deepr.gagolewski.com>
     news.md
