@@ -1,3 +1,4 @@
+# Copyleft (C) 2021-2023, Marek Gagolewski <https://www.gagolewski.com>
 # Configuration file for the Sphinx documentation builder
 
 #import sys
@@ -16,7 +17,7 @@ def get_package_version():
 # -- Project information -----------------------------------------------------
 
 project = 'realtest'
-copyright = '2021-2022, Marek Gagolewski'
+copyright = '2021-2023, Marek Gagolewski'
 author = 'Marek Gagolewski'
 html_title = project
 html_short_title = project

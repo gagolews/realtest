@@ -1,7 +1,7 @@
 # kate: default-dictionary en_AU
 
 ## realtest package for R
-## Copyleft (C) 2021-2022, Marek Gagolewski <https://www.gagolewski.com>
+## Copyleft (C) 2021-2023, Marek Gagolewski <https://www.gagolewski.com>
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -18,13 +18,11 @@
 #' @title
 #' Create a Result Descriptor by Recording Effects of an Expression Evaluation
 #'
-#'
 #' @description
 #' Evaluates an expression and records its direct and indirect effects:
 #' the resulting value as well as the information whether any errors,
 #' warnings, or messages are generated and if anything is printed on
 #' \code{\link[base]{stdout}} or \code{\link[base]{stderr}}.
-#'
 #'
 #' @details
 #' Note that messages, warnings, and errors are typically written to

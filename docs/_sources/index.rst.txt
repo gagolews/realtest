@@ -1,29 +1,29 @@
-realtest: When expectations meet reality: Realistic unit testing in R
+realtest: Where expectations meet reality: Realistic unit testing in R
 ============================================================================
 
+.. epigraph::
     We are all adults here. We can't always get what we want.
     Such is life. You may say we're dreamers, but we're not the only ones:
     in an ideal world, things could look different, there could be more
     or less of this or that. Sometimes, there might be many equally correct
     outcomes. Other behaviours are good enough for now, but we shall improve
     them eventually, say, during the 2027 summer holidays. Sometimes, what we
-    have is barely acceptable, but we need to live with it: it is
-    scheduled to be fixed when we have time. Or when other dependencies
-    will finally take our feedback into account and accept that series of
-    bug fixes and enhancements. Sad but true, one needs to be patient.
+    have is barely acceptable, but we'll fix it when we have time.
+    Or when other dependencies will finally take our feedback into account
+    and accept that series of bug fixes and enhancements.
+    Sad but true, one needs to be patient.
 
-    *realtest* is a framework for unit testing
-    for realistic minimalists; it aids in formalising:
+*realtest* is a framework for unit testing
+for realistic minimalists; it aids in formalising:
 
-    *   assertions,
-    *   current behaviour that we'd like to see changed in the future,
-    *   alternative yet perfectly acceptable behaviours (e.g., when outputs
-        are platform-dependent and should remain so),
-    *   requested features to be implemented in due time
-        (e.g., as part of the monitoring of third-party
-        software projects for changes).
+*   assertions,
+*   current behaviour that we'd like to see changed in the future,
+*   alternative yet perfectly acceptable behaviours (e.g., when outputs
+    are platform-dependent and should remain so),
+*   requested features to be implemented in due time
+    (e.g., as part of the monitoring of third-party
+    software projects for changes).
 
-    -- by `Marek Gagolewski <https://www.gagolewski.com/>`_
 
 
 The introduced vocabulary is (and will be kept!) minimalistic:
@@ -49,7 +49,8 @@ Some examples:
 
 .. code-block:: r
 
-    library("realtest")  # call install.packages("realtest") first
+    install.packages("realtest")  # install from CRAN
+    library("realtest")
 
     # identical
     E(sqrt(4), 2.0)  # equivalent to E(sqrt(4), P(2.0))
@@ -72,7 +73,7 @@ Some examples:
         .description="partial recycling",  # info - what behaviour are we testing?
         best=P(                            # what we yearn for (ideally)
             c("11", "22", "13"),
-            warning="longer object length is not a multiple of shorter object length"
+            warning=TRUE
         ),
         current=c("11", "22", "13"),       # this is the behaviour we have now
         bad=P(error=TRUE)                  # avoid regression
@@ -119,10 +120,17 @@ Cons:
 
 
 *realtest*'s source code is hosted on
-`GitHub <https://github.com/gagolews/realtest>`_.
+`GitHub <https://github.com/gagolews/realtest>`_ and official releases
+are available on `CRAN <https://cran.r-project.org/package=realtest>`_.
 It is a free software project distributed under the terms of the
 GNU General Public License, either Version 2 or Version 3, see
 `license <https://raw.githubusercontent.com/gagolews/realtest/master/LICENSE>`_.
+
+
+.. note::
+    To learn more about R, check out Marek's open-access (free!) textbook
+    `Deep R Programming <https://deepr.gagolewski.com/>`_\ .
+
 
 
 
@@ -132,10 +140,14 @@ GNU General Public License, either Version 2 or Version 3, see
     :hidden:
 
     About <self>
+    Author <https://www.gagolewski.com/>
+    Source Code (GitHub) <https://github.com/gagolews/realtest>
+    Bug Tracker and Feature Suggestions <https://github.com/gagolews/realtest/issues>
+    CRAN Entry <https://CRAN.R-project.org/package=realtest>
 
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
     :caption: Reference Manual
     :glob:
 
@@ -146,10 +158,5 @@ GNU General Public License, either Version 2 or Version 3, see
     :maxdepth: 1
     :caption: Other
 
-    Source Code (GitHub) <https://github.com/gagolews/realtest>
-    Bug Tracker and Feature Suggestions <https://github.com/gagolews/realtest/issues>
-    CRAN Entry <https://CRAN.R-project.org/package=realtest>
-    Author's Homepage <https://www.gagolewski.com/>
+    Deep R Programming <https://deepr.gagolewski.com>
     news.md
-
-

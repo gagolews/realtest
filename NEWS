@@ -1,12 +1,9 @@
-# What Is New in *realtest*
+# Changelog
 
-> Note that the package API is still in its infancy and hence subject to change.
-> Comments and suggestions are welcome.
-
-> The online reference manual is available at https://realtest.gagolewski.com.
+> The reference manual is available at <https://realtest.gagolewski.com>.
 
 
-## 0.2.1.9xxx (to-be >= 0.2.2)
+## 0.2.2 (2023-05-15)
 
 * [NEW FEATURE] `R` (and hence `E` too) now returns
   a named list of objects passed thereto as arguments,
@@ -15,9 +12,7 @@
 
 * [BUGFIX] Self-unit tests no longer depend on `LC_LANGUAGE`.
 
-* [BUGFIX] It has now been formally stated that the package requires R >= 4.0.
-
-* ...
+* [BUGFIX] The package requires R >= 4.0.
 
 
 ## 0.2.1 (2021-06-17)

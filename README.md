@@ -9,7 +9,7 @@
 > in an ideal world, things could look different, there could be more
 > or less of this or that. Sometimes, there might be many equally correct
 > outcomes. Other behaviours are good enough for now, but we shall improve
-> them eventually, say, during the 2027 summer holidays. Sometimes, what we
+> them eventually, say, during the 2029 summer holidays. Sometimes, what we
 > have is barely acceptable, but we'll fix it when we have time.
 > Or when other dependencies will finally take our feedback into account and
 > accept that series of bug fixes and enhancements. Sad but true,

@@ -1,7 +1,7 @@
 # kate: default-dictionary en_AU
 
 ## realtest package for R
-## Copyleft (C) 2021-2022, Marek Gagolewski <https://www.gagolewski.com>
+## Copyleft (C) 2021-2023, Marek Gagolewski <https://www.gagolewski.com>
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -25,7 +25,6 @@
 #' of two test descriptors (see \code{\link{P}} and \code{\link{R}}).
 #' These can be passed as \code{value_comparer} and \code{sides_comparer}
 #' to \code{\link{E}}.
-#'
 #'
 #' @details
 #' Notable built-in (base R) comparers include \code{\link[base]{identical}}
