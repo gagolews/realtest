@@ -3,7 +3,7 @@
 > The reference manual is available at <https://realtest.gagolewski.com>.
 
 
-## 0.2.2 (2023-05-15)
+## 0.2.3 (2023-05-15)
 
 * [NEW FEATURE] `R` (and hence `E` too) now returns
   a named list of objects passed thereto as arguments,

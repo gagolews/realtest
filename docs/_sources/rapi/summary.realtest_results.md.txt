@@ -56,18 +56,8 @@ Related functions: [`test_dir`](test_dir.md)
 
 
 ```r
-## Not run: 
-r <- test_dir("~/R/realtest/inst/realtest")
-s <- summary(r)  # summary.realtest_results
-print(s)  # print.realtest_results_summary
-## *** realtest: test summary:
-##                   
-##                    good best pass fail
-##   realtest-basic.R    0    0   12    0
-##   realtest-named.R    1    1   12    0
-## 
-## *** realtest: all tests succeeded
-stopifnot(!any(s[["match"]]=="fail"))  # halt if there are failed tests
-
-## End(Not run)
+# r <- test_dir("~/R/realtest/inst/realtest")  # some path
+# s <- summary(r)  # summary.realtest_results
+# print(s)  # print.realtest_results_summary
+# stopifnot(!any(s[["match"]]=="fail"))  # halt if there are failed tests
 ```

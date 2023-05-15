@@ -142,12 +142,10 @@ source2 <- function(file, local=FALSE)
 #' giving the location and the source code of the test instance.
 #'
 #' @examples
-#' \dontrun{
-#' r <- test_dir("~/R/realtest/inst/realtest")
-#' s <- summary(r)  # summary.realtest_results
-#' print(s)  # print.realtest_results_summary
-#' stopifnot(!any(s[["match"]]=="fail"))  # halt if there are failed tests
-#' }
+#' # r <- test_dir("~/R/realtest/inst/realtest")  # some path
+#' # s <- summary(r)  # summary.realtest_results
+#' # print(s)  # print.realtest_results_summary
+#' # stopifnot(!any(s[["match"]]=="fail"))  # halt if there are failed tests
 #'
 #' @seealso Related functions:
 #' \code{\link{source2}}, \code{\link{summary.realtest_results}}
@@ -241,12 +239,10 @@ test_dir <- function(
 #'
 #'
 #' @examples
-#' \dontrun{
-#' r <- test_dir("~/R/realtest/inst/realtest")
-#' s <- summary(r)  # summary.realtest_results
-#' print(s)  # print.realtest_results_summary
-#' stopifnot(!any(s[["match"]]=="fail"))  # halt if there are failed tests
-#' }
+#' # r <- test_dir("~/R/realtest/inst/realtest")  # some path
+#' # s <- summary(r)  # summary.realtest_results
+#' # print(s)  # print.realtest_results_summary
+#' # stopifnot(!any(s[["match"]]=="fail"))  # halt if there are failed tests
 #'
 #' @seealso Related functions:
 #' \code{\link{test_dir}}

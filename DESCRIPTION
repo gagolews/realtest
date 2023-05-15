@@ -1,6 +1,6 @@
 Package: realtest
 Type: Package
-Version: 0.2.2
+Version: 0.2.3
 Date: 2023-05-15
 Title: Where Expectations Meet Reality: Realistic Unit Testing
 Description:
