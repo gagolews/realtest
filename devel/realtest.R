@@ -1,5 +1,5 @@
 # This file is part of the 'realtest' project.
-# Copyleft (c) 2021-2022, Marek Gagolewski <https://www.gagolewski.com>
+# Copyleft (c) 2021-2023, Marek Gagolewski <https://www.gagolewski.com>
 
 # runs all scripts named like ./tests/realtest-*.R
 

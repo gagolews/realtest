@@ -1,5 +1,3 @@
-# based on https://raw.githubusercontent.com/tidyverse/dplyr/master/.github/workflows/R-CMD-check.yaml
-on: workflow_dispatch
 name: realtest for R (check on other platforms)
 
 jobs:
