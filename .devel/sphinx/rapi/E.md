@@ -128,7 +128,7 @@ print(e)
 ## $value_comparer
 ## function (target, current, ...) 
 ## UseMethod("all.equal")
-## <bytecode: 0x5627560b82c8>
+## <bytecode: 0x55ee5979b2c8>
 ## <environment: namespace:base>
 ## 
 ## attr(,"class")

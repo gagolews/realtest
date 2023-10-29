@@ -1,8 +1,8 @@
 # Copyright (c) 2021-2023, Marek Gagolewski <https://www.gagolewski.com/>
 
-.PHONY:  r check build clean purge sphinx docs test
+.PHONY:  r check build clean purge html docs test
 
-.NOTPARALLEL: r check build clean purge sphinx docs test
+.NOTPARALLEL: r check build clean purge html docs test
 
 PKGNAME="realtest"
 
@@ -36,7 +36,7 @@ check: stop-on-utf8 build
 	cd .. && R_DEFAULT_INTERNET_TIMEOUT=240 \
 	    _R_CHECK_CRAN_INCOMING_REMOTE_=FALSE \
 	    _R_CHECK_FORCE_SUGGESTS_=0 \
-	    R CMD check `ls -t ${PKGNAME}*.tar.gz | head -1` --as-cran
+	    R CMD check `ls -t ${PKGNAME}*.tar.gz | head -1` --as-cran --no-manual
 
 ################################################################################
 
