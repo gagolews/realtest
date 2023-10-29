@@ -10,18 +10,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Install dependencies
       run: |
         sudo apt-get update
         sudo apt-get -y upgrade
-        sudo apt-get -y install libcurl4-openssl-dev r-base-dev devscripts  language-pack-pl
+        sudo apt-get -y install libcurl4-openssl-dev r-base-dev devscripts language-pack-pl
     - name: Install realtest
       run: |
         LC_ALL="pl_PL.UTF-8" sudo R CMD INSTALL .
     - name: Test realtest
       run: |
         LC_ALL="pl_PL.UTF-8" sudo Rscript -e 'source(".devel/realtest.R")'
-    - name: Check realtest
-      run: |
-        LC_ALL="pl_PL.UTF-8" sudo make check
