@@ -1,7 +1,7 @@
 Package: realtest
 Type: Package
 Version: 0.2.3
-Date: 2023-05-15
+Date: 2023-10-29
 Title: Where Expectations Meet Reality: Realistic Unit Testing
 Description:
     A framework for unit testing for realistic minimalists,
@@ -19,7 +19,7 @@ Depends:
 Imports: utils
 BugReports: https://github.com/gagolews/realtest/issues
 URL:
-    https://realtest.gagolewski.com,
+    https://realtest.gagolewski.com/,
     https://github.com/gagolews/realtest
 License: GPL (>= 2)
 Encoding: UTF-8

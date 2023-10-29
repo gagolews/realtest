@@ -15,7 +15,7 @@
 > accept that series of bug fixes and enhancements. Sad but true,
 > one needs to be patient.
 >
-> [*realtest*](https://realtest.gagolewski.com) is a framework for unit testing
+> [*realtest*](https://realtest.gagolewski.com/) is a framework for unit testing
 > for realistic minimalists; it aids in formalising:
 >
 > * assertions,
@@ -79,10 +79,10 @@ E(
 )
 ```
 
-Refer to the on-line documentation at <https://realtest.gagolewski.com>
+Refer to the on-line documentation at <https://realtest.gagolewski.com/>
 for more details.
 
-To learn more about R, check out Marek's recent open-access (free!) textbook
+To learn more about R, check out Marek's open-access (free!) textbook
 [*Deep R Programming*](https://deepr.gagolewski.com/).
 
 
@@ -92,7 +92,7 @@ To learn more about R, check out Marek's recent open-access (free!) textbook
 **Package Maintainer and Author**:
 [Marek Gagolewski](https://www.gagolewski.com/)
 
-**Homepage**: https://realtest.gagolewski.com
+**Homepage**: https://realtest.gagolewski.com/
 
 **CRAN Entry**: https://CRAN.R-project.org/package=realtest
 
