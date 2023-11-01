@@ -1,20 +1,8 @@
-# **realtest**
+<a href="https://realtest.gagolewski.com"><img src="https://www.gagolewski.com/_static/img/realtest.png" align="right" height="128" width="128" /></a>
+# [**realtest**](https://realtest.gagolewski.com)
 
-## Where Expectations Meet Reality: Realistic Unit Testing in [R](https://www.r-project.org/)
+### Where Expectations Meet Reality: Realistic Unit Testing in [R](https://www.r-project.org/)
 
---------------------------------------------------------------------------------
-
-> We are all adults here. We can't always get what we want.
-> Such is life. You may say we're dreamers, but we're not the only ones:
-> in an ideal world, things could look different, there could be more
-> or less of this or that. Sometimes, there might be many equally correct
-> outcomes. Other behaviours are good enough for now, but we shall improve
-> them eventually, say, during the 2029 summer holidays. Sometimes, what we
-> have is barely acceptable, but we'll fix it when we have time.
-> Or when other dependencies will finally take our feedback into account and
-> accept that series of bug fixes and enhancements. Sad but true,
-> one needs to be patient.
->
 > [*realtest*](https://realtest.gagolewski.com/) is a framework for unit testing
 > for realistic minimalists; it aids in formalising:
 >
@@ -25,9 +13,6 @@
 > * requested features to be implemented in due time
 >   (e.g., as part of the monitoring of third-party
 >   software projects for changes).
-
---------------------------------------------------------------------------------
-
 
 The introduced vocabulary is (and will be kept!) minimalistic:
 
