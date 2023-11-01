@@ -7,8 +7,8 @@ realtest: Where expectations meet reality: Realistic unit testing in R
     in an ideal world, things could look different, there could be more
     or less of this or that. Sometimes, there might be many equally correct
     outcomes. Other behaviours are good enough for now, but we shall improve
-    them eventually, say, during the 2029 summer holidays. Sometimes, what we
-    have is barely acceptable, but we'll fix it when we have time.
+    them eventually, say, during the 2029 summer holidays. More often than not,
+    what we have is barely acceptable, but we'll fix it when we have time.
     Or when other dependencies will finally take our feedback into account
     and accept that series of bug fixes and enhancements.
     Sad but true, one needs to be patient.
@@ -29,8 +29,8 @@ for realistic minimalists; it aids in formalising:
 The introduced vocabulary is (and will be kept!) minimalistic:
 
 *   **P** is *prototype* – you can use it to manually create a descriptor like
-    "*I expect this function to return ``c(1, 2, 3)``, with a warning*"
-    or "*that should result in an error*";
+    "*I expect this function to return* ``c(1, 2, 3)``, *with a warning*"
+    or "*this code chunk should result in an error*";
 
 *   **R** stands for *record* – creates a descriptor by evaluating an
     expression and capturing its direct and indirect effects:
@@ -97,7 +97,7 @@ You can then summarise/visualise/analyse/customise the results to your liking
 the test outcomes are represented as ordinary R lists.
 
 
-Pros:
+**Pros:**
 
 *   minimalist – clean design and non-overwhelming vocabulary;
 *   general and flexible – can be easily adapted to suit your needs;
@@ -108,7 +108,7 @@ Pros:
     can you tell based on the observed facts?
 
 
-Cons:
+**Cons:**
 
 *   steeper (or, should we rather say, normal) learning curve, you are
     limited by your imagination and programming skills;

@@ -158,6 +158,9 @@
     <div class="sidebar-container">
       
       <div class="sidebar-sticky">
+<div class="sidebar-logo-container">
+  <a class="sidebar-brand" href="#"><img class="sidebar-logo" src="https://www.gagolewski.com/_static/img/realtest.png" alt="Logo"/></a>
+</div>
 
 <span class="sidebar-brand-text">
 <a class="sidebar-brand" href="#">realtest</a>
@@ -244,8 +247,8 @@ Such is life. You may say we’re dreamers, but we’re not the only ones:
 in an ideal world, things could look different, there could be more
 or less of this or that. Sometimes, there might be many equally correct
 outcomes. Other behaviours are good enough for now, but we shall improve
-them eventually, say, during the 2029 summer holidays. Sometimes, what we
-have is barely acceptable, but we’ll fix it when we have time.
+them eventually, say, during the 2029 summer holidays. More often than not,
+what we have is barely acceptable, but we’ll fix it when we have time.
 Or when other dependencies will finally take our feedback into account
 and accept that series of bug fixes and enhancements.
 Sad but true, one needs to be patient.</p>
@@ -264,8 +267,8 @@ software projects for changes).</p></li>
 <p>The introduced vocabulary is (and will be kept!) minimalistic:</p>
 <ul class="simple">
 <li><p><strong>P</strong> is <em>prototype</em> – you can use it to manually create a descriptor like
-“<em>I expect this function to return ``c(1, 2, 3)``, with a warning</em>”
-or “<em>that should result in an error</em>”;</p></li>
+“<em>I expect this function to return</em> <code class="docutils literal notranslate"><span class="pre">c(1,</span> <span class="pre">2,</span> <span class="pre">3)</span></code>, <em>with a warning</em>”
+or “<em>this code chunk should result in an error</em>”;</p></li>
 <li><p><strong>R</strong> stands for <em>record</em> – creates a descriptor by evaluating an
 expression and capturing its direct and indirect effects:</p>
 <ul>
@@ -321,7 +324,7 @@ a pairwise comparer provided) and stores the matching one (if any).</p></li>
 You can then summarise/visualise/analyse/customise the results to your liking
 (e.g., how many <cite>good</cite> or <cite>bad</cite> instances have been caught) –
 the test outcomes are represented as ordinary R lists.</p>
-<p>Pros:</p>
+<p><strong>Pros:</strong></p>
 <ul class="simple">
 <li><p>minimalist – clean design and non-overwhelming vocabulary;</p></li>
 <li><p>general and flexible – can be easily adapted to suit your needs;</p></li>
@@ -331,7 +334,7 @@ all its different effects can be examined in a single unit;</p></li>
 <li><p>analysable – introduces data science to unit testing: what story
 can you tell based on the observed facts?</p></li>
 </ul>
-<p>Cons:</p>
+<p><strong>Cons:</strong></p>
 <ul class="simple">
 <li><p>steeper (or, should we rather say, normal) learning curve, you are
 limited by your imagination and programming skills;</p></li>
@@ -385,7 +388,7 @@ GNU General Public License, either Version 2 or Version 3, see
               Some rights reserved. Licensed under <a href='https://creativecommons.org/licenses/by-nc-nd/4.0/'>CC BY-NC-ND 4.0</a>.
               Built with <a href="https://sphinx-doc.org/">Sphinx</a>
               and a customised <a href="https://github.com/pradyunsg/furo">Furo</a> theme.
-              Last updated on 2023-10-29T14:58:53+1100.
+              Last updated on 2023-11-01T12:07:45+1100.
               This site will never display any ads: it is a non-profit project.
               It does not collect any data.
             </div>

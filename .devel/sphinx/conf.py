@@ -14,6 +14,7 @@ pkg_title = "realtest"
 pkg_version = get_package_version()
 copyright_year = "2021–2023"
 html_baseurl = "https://realtest.gagolewski.com/"
+html_logo = "https://www.gagolewski.com/_static/img/realtest.png"
 github_url = "https://github.com/gagolews/realtest"
 github_star_repo = "gagolews/realtest"
 analytics_id = None  # don't use it! this site does not track its users
