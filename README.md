@@ -1,9 +1,9 @@
-<a href="https://realtest.gagolewski.com"><img src="https://www.gagolewski.com/_static/img/realtest.png" align="right" height="128" width="128" /></a>
-# [**realtest**](https://realtest.gagolewski.com)
+<a href="https://realtest.gagolewski.com/"><img src="https://www.gagolewski.com/_static/img/realtest.png" align="right" height="128" width="128" /></a>
+# [**`realtest`**](https://realtest.gagolewski.com)
 
 ### Where Expectations Meet Reality: Realistic Unit Testing in [R](https://www.r-project.org/)
 
-> [*realtest*](https://realtest.gagolewski.com/) is a framework for unit testing
+> [**`realtest`**](https://realtest.gagolewski.com/) is a framework for unit testing
 > for realistic minimalists; it aids in formalising:
 >
 > * assertions,
@@ -82,7 +82,7 @@ To learn more about R, check out Marek's open-access (free!) textbook
 **CRAN Entry**: https://CRAN.R-project.org/package=realtest
 
 **License**:
-*realtest* is distributed under the terms of the GNU General Public License,
+**`realtest`** is distributed under the terms of the GNU General Public License,
 either Version 2 or Version 3, see
 [LICENSE](https://raw.githubusercontent.com/gagolews/realtest/master/LICENSE)
 

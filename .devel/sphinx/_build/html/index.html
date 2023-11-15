@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="E: Test Which Expectations are Met" href="rapi/E.html" />
         <link rel="canonical" href="https://realtest.gagolewski.com/index.html" />
 
-    <link rel="shortcut icon" href="https://www.gagolewski.com/_static/img/realtest.png"/><!-- Generated with Sphinx 7.2.5 and Furo 2023.08.19 -->
+    <link rel="shortcut icon" href="https://www.gagolewski.com/_static/img/realtest.png"/><!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
         <title>R Package realtest</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
@@ -239,7 +239,7 @@
           </label>
         </div>
         <article role="main">
-          <section id="realtest-where-expectations-meet-reality-realistic-unit-testing-in-r">
+          <section class="tex2jax_ignore mathjax_ignore" id="realtest-where-expectations-meet-reality-realistic-unit-testing-in-r">
 <h1>realtest: Where expectations meet reality: Realistic unit testing in R<a class="headerlink" href="#realtest-where-expectations-meet-reality-realistic-unit-testing-in-r" title="Link to this heading">#</a></h1>
 <blockquote class="epigraph">
 <div><p>We are all adults here. We can’t always get what we want.
@@ -253,7 +253,7 @@ Or when other dependencies will finally take our feedback into account
 and accept that series of bug fixes and enhancements.
 Sad but true, one needs to be patient.</p>
 </div></blockquote>
-<p><em>realtest</em> is a framework for unit testing
+<p><strong class="program">realtest</strong> is a framework for unit testing
 for realistic minimalists; it aids in formalising:</p>
 <ul class="simple">
 <li><p>assertions,</p></li>
@@ -266,20 +266,20 @@ software projects for changes).</p></li>
 </ul>
 <p>The introduced vocabulary is (and will be kept!) minimalistic:</p>
 <ul class="simple">
-<li><p><strong>P</strong> is <em>prototype</em> – you can use it to manually create a descriptor like
-“<em>I expect this function to return</em> <code class="docutils literal notranslate"><span class="pre">c(1,</span> <span class="pre">2,</span> <span class="pre">3)</span></code>, <em>with a warning</em>”
+<li><p><strong class="command">P</strong> is <em>prototype</em> – you can use it to manually create a descriptor like
+“<em>I expect this function to return</em> <strong class="command">c</strong><code class="code docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">2,</span> <span class="pre">3)</span></code>, <em>with a warning</em>”
 or “<em>this code chunk should result in an error</em>”;</p></li>
-<li><p><strong>R</strong> stands for <em>record</em> – creates a descriptor by evaluating an
+<li><p><strong class="command">R</strong> stands for <em>record</em> – creates a descriptor by evaluating an
 expression and capturing its direct and indirect effects:</p>
 <ul>
 <li><p>values generated (together with object attributes),</p></li>
 <li><p>errors,</p></li>
 <li><p>warnings and messages,</p></li>
-<li><p>text output on <cite>stdout</cite> and <cite>stderr</cite>;</p></li>
+<li><p>text output on <code class="docutils literal notranslate"><span class="pre">stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">stderr</span></code>;</p></li>
 </ul>
 </li>
-<li><p><strong>E</strong> means <em>expect</em> – compares an expression under scrutiny (via <cite>R</cite>)
-with a series of descriptors (created via <cite>P</cite> or <cite>R</cite> and using
+<li><p><strong class="command">E</strong> means <em>expect</em> – compares an expression under scrutiny (via <strong class="command">R</strong>)
+with a series of descriptors (created via <strong class="command">P</strong> or <strong class="command">R</strong> and using
 a pairwise comparer provided) and stores the matching one (if any).</p></li>
 </ul>
 <p>Some examples:</p>
@@ -319,10 +319,15 @@ a pairwise comparer provided) and stores the matching one (if any).</p></li>
 <span class="nf">E</span><span class="p">(</span><span class="nf">E</span><span class="p">(</span><span class="nf">sin</span><span class="p">(</span><span class="kc">pi</span><span class="p">),</span><span class="w"> </span><span class="m">7</span><span class="p">),</span><span class="w"> </span><span class="nf">P</span><span class="p">(</span><span class="n">error</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">stdout</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span><span class="w">  </span><span class="c1"># inception: realtest tests itself</span>
 </pre></div>
 </div>
-<p>Labels <cite>desired</cite>, <cite>current</cite>, <cite>undesired</cite>, <cite>good</cite>, <cite>better</cite>,
-<cite>bad</cite>, <cite>worst</cite>, etc., are not hard-coded – you choose the vocabulary yourself.
+<!--
+% COMMENT
+% s <- summary(test_dir("~/R/realtest/tests"))
+% knitr::kable(table(s[[".file"]], s[["match"]]))
+-->
+<p>Labels <code class="docutils literal notranslate"><span class="pre">desired</span></code>, <code class="docutils literal notranslate"><span class="pre">current</span></code>, <code class="docutils literal notranslate"><span class="pre">undesired</span></code>, <code class="docutils literal notranslate"><span class="pre">good</span></code>, <code class="docutils literal notranslate"><span class="pre">better</span></code>,
+<code class="docutils literal notranslate"><span class="pre">bad</span></code>, <code class="docutils literal notranslate"><span class="pre">worst</span></code>, etc., are not hard-coded – you choose the vocabulary yourself.
 You can then summarise/visualise/analyse/customise the results to your liking
-(e.g., how many <cite>good</cite> or <cite>bad</cite> instances have been caught) –
+(e.g., how many <code class="docutils literal notranslate"><span class="pre">good</span></code> or <code class="docutils literal notranslate"><span class="pre">bad</span></code> instances have been caught) –
 the test outcomes are represented as ordinary R lists.</p>
 <p><strong>Pros:</strong></p>
 <ul class="simple">
@@ -339,12 +344,12 @@ can you tell based on the observed facts?</p></li>
 <li><p>steeper (or, should we rather say, normal) learning curve, you are
 limited by your imagination and programming skills;</p></li>
 <li><p>other tools, e.g.,
-<a class="reference external" href="https://CRAN.R-project.org/package=tinytest">tinytest</a>,
-<a class="reference external" href="https://CRAN.R-project.org/package=testthat">testthat</a>,
-<a class="reference external" href="https://CRAN.R-project.org/package=RUnit">RUnit</a>,
+<a class="reference external" href="https://CRAN.R-project.org/package=tinytest"><strong class="program">tinytest</strong></a>,
+<a class="reference external" href="https://CRAN.R-project.org/package=testthat"><strong class="program">testthat</strong></a>,
+<a class="reference external" href="https://CRAN.R-project.org/package=RUnit">R<strong class="program">Unit</strong></a>,
 might be more suitable for the more <em>typical</em> use cases.</p></li>
 </ul>
-<p><em>realtest</em>’s source code is hosted on
+<p><strong class="program">realtest</strong>’s source code is hosted on
 <a class="reference external" href="https://github.com/gagolews/realtest">GitHub</a> and official releases
 are available on <a class="reference external" href="https://cran.r-project.org/package=realtest">CRAN</a>.
 It is a free software project distributed under the terms of the
@@ -359,6 +364,9 @@ GNU General Public License, either Version 2 or Version 3, see
 </div>
 <div class="toctree-wrapper compound">
 </div>
+<!--
+% rapi.md
+-->
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -388,7 +396,7 @@ GNU General Public License, either Version 2 or Version 3, see
               Some rights reserved. Licensed under <a href='https://creativecommons.org/licenses/by-nc-nd/4.0/'>CC BY-NC-ND 4.0</a>.
               Built with <a href="https://sphinx-doc.org/">Sphinx</a>
               and a customised <a href="https://github.com/pradyunsg/furo">Furo</a> theme.
-              Last updated on 2023-11-05T12:33:19+1100.
+              Last updated on 2023-11-16T10:46:13+1100.
               This site will never display any ads: it is a non-profit project.
               It does not collect any data.
             </div>
