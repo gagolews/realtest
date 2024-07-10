@@ -8,7 +8,7 @@
 >
 > * assertions,
 > * current behaviour that we'd like to see changed in the future,
-> * alternative yet perfectly acceptable behaviours (e.g., when outputs
+> * alternative yet perfectly acceptable practices (e.g., when outputs
 >   are platform-dependent and should remain so),
 > * requested features to be implemented in due time
 >   (e.g., as part of the monitoring of third-party
@@ -77,9 +77,9 @@ To learn more about R, check out Marek's open-access (free!) textbook
 **Package Maintainer and Author**:
 [Marek Gagolewski](https://www.gagolewski.com/)
 
-**Homepage**: https://realtest.gagolewski.com/
+**Homepage**: <https://realtest.gagolewski.com/>
 
-**CRAN Entry**: https://CRAN.R-project.org/package=realtest
+**CRAN Entry**: <https://CRAN.R-project.org/package=realtest>
 
 **License**:
 **`realtest`** is distributed under the terms of the GNU General Public License,

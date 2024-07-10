@@ -1,4 +1,4 @@
-# Copyleft (C) 2020-2023, Marek Gagolewski <https://www.gagolewski.com/>
+# Copyleft (C) 2020-2024, Marek Gagolewski <https://www.gagolewski.com/>
 
 # based on https://bitbucket.org/pybtex-devs/pybtex/src/HEAD/pybtex/style/formatting/unsrt.py
 
@@ -113,7 +113,7 @@ class AlphaMarek(AlphaStyle):
             self.format_btitle(e, 'title'),
             self.format_volume_and_series(e),
             sentence [
-                field('publisher'),
+                optional_field('publisher'),
                 optional_field('address'),
                 self.format_edition(e)
             ],

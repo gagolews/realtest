@@ -18,13 +18,13 @@ E(
 
 ## Arguments
 
-|                  |                                                                                                                                                                                                                                                                                                                                    |
-|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `expr`           | an expression to be recorded (via [`R`](R.md)) and and compared with the prototypes                                                                                                                                                                                                                                                |
-| `...`            | a sequence of 1 or more (possibly named) prototypes constructed via [`R`](R.md) or [`P`](P.md) (objects which are not of class `realtest_descriptor` will be passed to [`P`](P.md)); arguments whose names start with a dot (like `.label=value`) can be used to introduce metadata (e.g., additional details in natural language) |
-| `value_comparer` | a two-argument function used (unless overridden by the prototype) to compare the values with each other, e.g., [`identical`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/identical.html) or [`all.equal`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/all.equal.html)                                      |
-| `sides_comparer` | a two-argument function used (unless overridden by the prototype) to compare the side effects (essentially: two lists) with each other, e.g., [`sides_similar`](comparers.md) or [`ignore_differences`](comparers.md)                                                                                                              |
-| `postprocessor`  | a function to call on the generated `realtest_result`, e.g., [`failstop`](postprocessors.md)                                                                                                                                                                                                                                       |
+|  |  |
+|----|----|
+| `expr` | an expression to be recorded (via [`R`](R.md)) and and compared with the prototypes |
+| `...` | a sequence of 1 or more (possibly named) prototypes constructed via [`R`](R.md) or [`P`](P.md) (objects which are not of class `realtest_descriptor` will be passed to [`P`](P.md)); arguments whose names start with a dot (like `.label=value`) can be used to introduce metadata (e.g., additional details in natural language) |
+| `value_comparer` | a two-argument function used (unless overridden by the prototype) to compare the values with each other, e.g., [`identical`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/identical.html) or [`all.equal`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/all.equal.html) |
+| `sides_comparer` | a two-argument function used (unless overridden by the prototype) to compare the side effects (essentially: two lists) with each other, e.g., [`sides_similar`](comparers.md) or [`ignore_differences`](comparers.md) |
+| `postprocessor` | a function to call on the generated `realtest_result`, e.g., [`failstop`](postprocessors.md) |
 
 ## Details
 
@@ -65,7 +65,7 @@ Related functions: [`P`](P.md), [`R`](R.md), [`test_dir`](test_dir.md)
 
 
 
-```r
+``` r
 # the default result postprocessor throws an error on a failed test:
 E(E(sqrt(4), P(7)), P(error=TRUE, stdout=TRUE))
 E(sqrt(4), 2.0)  # the same as E(sqrt(4), P(2.0))
@@ -128,7 +128,7 @@ print(e)
 ## $value_comparer
 ## function (target, current, ...) 
 ## UseMethod("all.equal")
-## <bytecode: 0x55f3c1db42c8>
+## <bytecode: 0x564395cfa758>
 ## <environment: namespace:base>
 ## 
 ## attr(,"class")

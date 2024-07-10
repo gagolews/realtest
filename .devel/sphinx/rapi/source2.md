@@ -12,9 +12,9 @@ source2(file, local = FALSE)
 
 ## Arguments
 
-|         |                                                                                                                                                    |
-|---------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| `file`  | usually a file name, see [`parse`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/parse.html)                                             |
+|  |  |
+|----|----|
+| `file` | usually a file name, see [`parse`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/parse.html) |
 | `local` | specifies the environment where expressions will be evaluated, see [`source`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/source.html) |
 
 ## Details
@@ -44,7 +44,7 @@ The official online manual of <span class="pkg">realtest</span> at <https://real
 
 
 
-```r
+``` r
 # example error handler - report source file and line number
 old_option_error <- getOption("error")
 options(error=function()

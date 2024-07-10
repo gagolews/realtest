@@ -1,4 +1,4 @@
-# Copyright (c) 2021-2023, Marek Gagolewski <https://www.gagolewski.com/>
+# Copyright (c) 2021-2024, Marek Gagolewski <https://www.gagolewski.com/>
 
 .PHONY:  r check build clean purge html docs test
 
@@ -51,7 +51,7 @@ weave:
 	#cd .devel/sphinx/weave && make && cd ../../../
 
 news:
-	cd .devel/sphinx && cp ../../NEWS news.md
+	cd  .devel/sphinx && cp ../../NEWS news.md
 
 html: stop-on-utf8 r weave rd2myst news weave-examples
 	rm -rf .devel/sphinx/_build/

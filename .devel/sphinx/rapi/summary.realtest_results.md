@@ -16,12 +16,12 @@ summary(object, label_pass = "pass", label_fail = "fail", ...)
 
 ## Arguments
 
-|              |                                                                |
-|--------------|----------------------------------------------------------------|
-| `x`          | object returned by `summary.realtest_results`                  |
-| `label_fail` | single string labelling failed test cases                      |
-| `...`        | currently ignored                                              |
-| `object`     | list of objects of class `realtest_result`, see [`E`](E.md).   |
+|  |  |
+|----|----|
+| `x` | object returned by `summary.realtest_results` |
+| `label_fail` | single string labelling failed test cases |
+| `...` | currently ignored |
+| `object` | list of objects of class `realtest_result`, see [`E`](E.md). |
 | `label_pass` | single string denoting the default name for unnamed prototypes |
 
 ## Value
@@ -55,7 +55,7 @@ Related functions: [`test_dir`](test_dir.md)
 
 
 
-```r
+``` r
 # r <- test_dir("~/R/realtest/inst/realtest")  # some path
 # s <- summary(r)  # summary.realtest_results
 # print(s)  # print.realtest_results_summary

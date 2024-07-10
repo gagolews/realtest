@@ -47,7 +47,7 @@ Related functions: [`E`](E.md), [`P`](P.md)
 
 
 
-```r
+``` r
 y <- 1:10; R(sum(y^2))
 ```
 
@@ -67,7 +67,7 @@ y <- 1:10; R(sum(y^2))
 ## [1] "realtest_descriptor" "realtest"
 ```
 
-```r
+``` r
 R(cat("a bit talkative, innit?"))
 ```
 
@@ -87,7 +87,7 @@ R(cat("a bit talkative, innit?"))
 ## [1] "realtest_descriptor" "realtest"
 ```
 
-```r
+``` r
 R(sqrt(c(-1, 0, 1, 2, 4)))
 ```
 
@@ -107,7 +107,7 @@ R(sqrt(c(-1, 0, 1, 2, 4)))
 ## [1] "realtest_descriptor" "realtest"
 ```
 
-```r
+``` r
 R(log("aaaargh"))
 ```
 
@@ -127,7 +127,7 @@ R(log("aaaargh"))
 ## [1] "realtest_descriptor" "realtest"
 ```
 
-```r
+``` r
 R({
     cat("STDOUT"); cat("STDERR", file=stderr()); message("MESSAGE");
     warning("WARNING"); warning("WARNING AGAIN"); cat("MORE STDOUT");

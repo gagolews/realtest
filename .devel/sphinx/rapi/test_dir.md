@@ -19,11 +19,11 @@ test_dir(
 
 ## Arguments
 
-|               |                                                                                                      |
-|---------------|------------------------------------------------------------------------------------------------------|
-| `path`        | directory with scripts to execute                                                                    |
-| `pattern`     | regular expression specifying the file names to execute                                              |
-| `recursive`   | logical, see [`list.files`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/list.files.html) |
+|  |  |
+|----|----|
+| `path` | directory with scripts to execute |
+| `pattern` | regular expression specifying the file names to execute |
+| `recursive` | logical, see [`list.files`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/list.files.html) |
 | `ignore.case` | logical, see [`list.files`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/list.files.html) |
 
 ## Value
@@ -45,7 +45,7 @@ Related functions: [`source2`](source2.md), [`summary.realtest_results`](summary
 
 
 
-```r
+``` r
 # r <- test_dir("~/R/realtest/inst/realtest")  # some path
 # s <- summary(r)  # summary.realtest_results
 # print(s)  # print.realtest_results_summary

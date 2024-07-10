@@ -21,12 +21,12 @@ P(
 
 ## Arguments
 
-|                                    |                                                                                                                                                                                                                                                                                                                                                                    |
-|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `value`                            | object (may of course be equipped with attributes)                                                                                                                                                                                                                                                                                                                 |
-| `error`, `warning`, `message`      | [conditions](https://stat.ethz.ch/R-manual/R-devel/library/base/html/conditions.html) expected to occur, see [`stop`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stop.html), [`warning`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/warning.html), and [`message`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/message.html) |
-| `stdout`, `stderr`                 | character data expected on [`stdout`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stdout.html) and [`stderr`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stderr.html), respectively                                                                                                                                                       |
-| `value_comparer`, `sides_comparer` | optional two-argument functions which may be used to override the default comparers used by [`E`](E.md)                                                                                                                                                                                                                                                            |
+|  |  |
+|----|----|
+| `value` | object (may of course be equipped with attributes) |
+| `error`, `warning`, `message` | [conditions](https://stat.ethz.ch/R-manual/R-devel/library/base/html/conditions.html) expected to occur, see [`stop`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stop.html), [`warning`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/warning.html), and [`message`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/message.html) |
+| `stdout`, `stderr` | character data expected on [`stdout`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stdout.html) and [`stderr`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/stderr.html), respectively |
+| `value_comparer`, `sides_comparer` | optional two-argument functions which may be used to override the default comparers used by [`E`](E.md) |
 
 ## Details
 
@@ -63,7 +63,7 @@ Related functions: [`E`](E.md), [`R`](R.md)
 
 
 
-```r
+``` r
 # the desired outcome is c(1L, 2L, 3L):
 P(1:3)
 ```
@@ -76,7 +76,7 @@ P(1:3)
 ## [1] "realtest_descriptor" "realtest"
 ```
 
-```r
+``` r
 # expecting c(1L, 2L, 3L), with a warning:
 P(1:3, warning=TRUE)
 ```
@@ -94,6 +94,6 @@ P(1:3, warning=TRUE)
 ## [1] "realtest_descriptor" "realtest"
 ```
 
-```r
+``` r
 # note, however, that it is the sides_comparer that defines the semantics
 ```

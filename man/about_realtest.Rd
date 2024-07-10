@@ -2,6 +2,7 @@
 % Please edit documentation in R/about_realtest.R
 \docType{package}
 \name{about_realtest}
+\alias{-package}
 \alias{about_realtest}
 \alias{realtest}
 \alias{realtest-package}

@@ -6,7 +6,7 @@ Such is life. You may say we're dreamers, but we're not the only ones:
 in an ideal world, things could look different, there could be more
 or less of this or that. Sometimes, there might be many equally correct
 outcomes. Other behaviours are good enough for now, but we shall improve
-them eventually, say, during the 2029 summer holidays. More often than not,
+them eventually, say, during the 2034 summer holidays. More often than not,
 what we have is barely acceptable, but we'll fix it when we have time.
 Or when other dependencies will finally take our feedback into account
 and accept that series of bug fixes and enhancements.
@@ -18,7 +18,7 @@ for realistic minimalists; it aids in formalising:
 
 - assertions,
 - current behaviour that we'd like to see changed in the future,
-- alternative yet perfectly acceptable behaviours (e.g., when outputs
+- alternative yet perfectly acceptable practices (e.g., when outputs
   are platform-dependent and should remain so),
 - requested features to be implemented in due time
   (e.g., as part of the monitoring of third-party
