@@ -66,4 +66,5 @@ and so forth.
 }
 \seealso{
 The official online manual of \pkg{realtest} at \url{https://realtest.gagolewski.com/}
+
 }

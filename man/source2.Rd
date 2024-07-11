@@ -48,4 +48,5 @@ options(error=old_option_error)  # cleanup
 }
 \seealso{
 The official online manual of \pkg{realtest} at \url{https://realtest.gagolewski.com/}
+
 }
